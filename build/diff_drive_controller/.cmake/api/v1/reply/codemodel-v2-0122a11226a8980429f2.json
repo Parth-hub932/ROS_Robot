@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-ac18d1e8c890490211b0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "diff_drive_controller",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "diff_drive_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diff_drive_controller-Release-6cbe90fb34b81bffb98c.json",
+					"name" : "diff_drive_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "diff_drive_controller_parameters::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diff_drive_controller_parameters-Release-a4372292177115b2229d.json",
+					"name" : "diff_drive_controller_parameters",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "diff_drive_controller_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diff_drive_controller_uninstall-Release-55a7047a41683453ad12.json",
+					"name" : "diff_drive_controller_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-bb527c098d7def2e72be.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ros2_ws/build/diff_drive_controller",
+		"source" : "/root/ros2_ws/src/ros2_controllers/diff_drive_controller"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

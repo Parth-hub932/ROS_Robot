@@ -1,0 +1,3 @@
+/root/ros2_ws/install/controller_interface/lib/libcontroller_interface.so
+/root/ros2_ws/install/controller_interface/share/controller_interface/cmake/export_controller_interfaceExport.cmake
+/root/ros2_ws/install/controller_interface/share/controller_interface/cmake/export_controller_interfaceExport-release.cmake

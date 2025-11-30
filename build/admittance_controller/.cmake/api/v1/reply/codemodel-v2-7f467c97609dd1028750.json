@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-204761b7cb1f68b792a6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "admittance_controller",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "admittance_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-admittance_controller-Release-d5619e4ed9c2a349a9c2.json",
+					"name" : "admittance_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "admittance_controller_parameters::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-admittance_controller_parameters-Release-024261bdcdf3df35d3ef.json",
+					"name" : "admittance_controller_parameters",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "admittance_controller_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-admittance_controller_uninstall-Release-98374cbc42d6a995d3f5.json",
+					"name" : "admittance_controller_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-18008f343a1e07c39501.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ros2_ws/build/admittance_controller",
+		"source" : "/root/ros2_ws/src/ros2_controllers/admittance_controller"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

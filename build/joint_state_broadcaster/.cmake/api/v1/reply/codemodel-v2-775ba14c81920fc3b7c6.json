@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-b7a5375629e8b6c13da9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "joint_state_broadcaster",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "joint_state_broadcaster::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joint_state_broadcaster-Release-bd6c616e4a54d6b75b84.json",
+					"name" : "joint_state_broadcaster",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joint_state_broadcaster_parameters::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joint_state_broadcaster_parameters-Release-23c12ace5386c260cf7d.json",
+					"name" : "joint_state_broadcaster_parameters",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joint_state_broadcaster_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joint_state_broadcaster_uninstall-Release-ddd2f4725c6044761b81.json",
+					"name" : "joint_state_broadcaster_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-8aa1ec2c0960bc65ac46.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ros2_ws/build/joint_state_broadcaster",
+		"source" : "/root/ros2_ws/src/ros2_controllers/joint_state_broadcaster"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

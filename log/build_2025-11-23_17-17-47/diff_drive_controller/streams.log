@@ -1,0 +1,84 @@
+[0.032s] Invoking command in '/root/ros2_ws/build/diff_drive_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/diff_drive_controller -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/diff_drive_controller
+[0.144s] -- The CXX compiler identification is GNU 11.4.0
+[0.156s] -- Detecting CXX compiler ABI info
+[0.290s] -- Detecting CXX compiler ABI info - done
+[0.302s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.302s] -- Detecting CXX compile features
+[0.303s] -- Detecting CXX compile features - done
+[0.307s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.532s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.631s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.677s] -- Found controller_interface: 2.52.2 (/root/ros2_ws/install/controller_interface/share/controller_interface/cmake)
+[0.735s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.744s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.758s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.777s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.803s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.114s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.118s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.158s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.262s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.267s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.284s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.289s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.302s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.317s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.333s] -- Looking for C++ include pthread.h
+[1.530s] -- Looking for C++ include pthread.h - found
+[1.530s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.733s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.735s] -- Found Threads: TRUE  
+[1.814s] -- Found generate_parameter_library: 0.5.0 (/opt/ros/humble/share/generate_parameter_library/cmake)
+[1.817s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[1.844s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.873s] -- Found realtime_tools: 2.14.1 (/opt/ros/humble/share/realtime_tools/cmake)
+[1.896s] -- Found tf2: 0.25.16 (/opt/ros/humble/share/tf2/cmake)
+[1.903s] -- Found tf2_msgs: 0.25.16 (/opt/ros/humble/share/tf2_msgs/cmake)
+[2.045s] -- Configuring done
+[2.071s] -- Generating done
+[2.078s] -- Build files have been written to: /root/ros2_ws/build/diff_drive_controller
+[2.096s] Invoked command in '/root/ros2_ws/build/diff_drive_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/diff_drive_controller -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/diff_drive_controller
+[2.099s] Invoking command in '/root/ros2_ws/build/diff_drive_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/diff_drive_controller -- -j4 -l4
+[2.193s] [ 16%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/diff_drive_controller/include/diff_drive_controller/diff_drive_controller_parameters.hpp /root/ros2_ws/src/ros2_controllers/diff_drive_controller/src/diff_drive_controller_parameter.yaml `[0m
+[3.275s] [ 33%] [34m[1mCreating deprecated header file /root/ros2_ws/build/diff_drive_controller/include/diff_drive_controller_parameters.hpp[0m
+[3.308s] [ 33%] Built target diff_drive_controller_parameters
+[3.350s] [ 83%] [32mBuilding CXX object CMakeFiles/diff_drive_controller.dir/src/speed_limiter.cpp.o[0m
+[3.350s] [ 83%] [32mBuilding CXX object CMakeFiles/diff_drive_controller.dir/src/diff_drive_controller.cpp.o[0m
+[3.350s] [ 83%] [32mBuilding CXX object CMakeFiles/diff_drive_controller.dir/src/odometry.cpp.o[0m
+[36.796s] [100%] [32m[1mLinking CXX shared library libdiff_drive_controller.so[0m
+[37.211s] [100%] Built target diff_drive_controller
+[37.231s] Invoked command in '/root/ros2_ws/build/diff_drive_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/diff_drive_controller -- -j4 -l4
+[37.234s] Invoking command in '/root/ros2_ws/build/diff_drive_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/diff_drive_controller
+[37.247s] -- Install configuration: "Release"
+[37.248s] -- Execute custom install script
+[37.249s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/include/diff_drive_controller/diff_drive_controller_parameters.hpp
+[37.266s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller//diff_drive_plugin.xml
+[37.283s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/include/diff_drive_controller/diff_drive_controller/diff_drive_controller.hpp
+[37.300s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/include/diff_drive_controller/diff_drive_controller/odometry.hpp
+[37.317s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/include/diff_drive_controller/diff_drive_controller/speed_limiter.hpp
+[37.333s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/include/diff_drive_controller/diff_drive_controller/visibility_control.h
+[37.350s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/library_path.sh
+[37.367s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/library_path.dsv
+[37.384s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/ament_index/resource_index/package_run_dependencies/diff_drive_controller
+[37.401s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/ament_index/resource_index/parent_prefix_path/diff_drive_controller
+[37.418s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/ament_prefix_path.sh
+[37.435s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/ament_prefix_path.dsv
+[37.452s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/path.sh
+[37.468s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/environment/path.dsv
+[37.484s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/local_setup.bash
+[37.499s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/local_setup.sh
+[37.518s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/local_setup.zsh
+[37.534s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/local_setup.dsv
+[37.551s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/package.dsv
+[37.569s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/ament_index/resource_index/packages/diff_drive_controller
+[37.585s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/ament_index/resource_index/controller_interface__pluginlib__plugin/diff_drive_controller
+[37.603s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/ament_cmake_export_dependencies-extras.cmake
+[37.620s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/ament_cmake_export_targets-extras.cmake
+[37.636s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/diff_drive_controllerConfig.cmake
+[37.653s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/diff_drive_controllerConfig-version.cmake
+[37.669s] -- Symlinking: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/package.xml
+[37.686s] -- Installing: /root/ros2_ws/install/diff_drive_controller/lib/libdiff_drive_controller.so
+[37.690s] -- Set runtime path of "/root/ros2_ws/install/diff_drive_controller/lib/libdiff_drive_controller.so" to ""
+[37.690s] -- Installing: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/export_diff_drive_controllerExport.cmake
+[37.691s] -- Installing: /root/ros2_ws/install/diff_drive_controller/share/diff_drive_controller/cmake/export_diff_drive_controllerExport-release.cmake
+[37.695s] Invoked command in '/root/ros2_ws/build/diff_drive_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/diff_drive_controller

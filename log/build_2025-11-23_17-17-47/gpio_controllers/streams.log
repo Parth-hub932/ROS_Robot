@@ -1,0 +1,81 @@
+[0.033s] Invoking command in '/root/ros2_ws/build/gpio_controllers': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/gpio_controllers -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/gpio_controllers
+[0.129s] -- The C compiler identification is GNU 11.4.0
+[0.220s] -- The CXX compiler identification is GNU 11.4.0
+[0.232s] -- Detecting C compiler ABI info
+[0.354s] -- Detecting C compiler ABI info - done
+[0.365s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.365s] -- Detecting C compile features
+[0.366s] -- Detecting C compile features - done
+[0.370s] -- Detecting CXX compiler ABI info
+[0.504s] -- Detecting CXX compiler ABI info - done
+[0.516s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.516s] -- Detecting CXX compile features
+[0.517s] -- Detecting CXX compile features - done
+[0.521s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.746s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.846s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.887s] -- Found controller_interface: 2.52.2 (/root/ros2_ws/install/controller_interface/share/controller_interface/cmake)
+[0.947s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.956s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.969s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.988s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.012s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.315s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.319s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.358s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.461s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.465s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.482s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.486s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.499s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.514s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.530s] -- Looking for pthread.h
+[1.659s] -- Looking for pthread.h - found
+[1.659s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.786s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.788s] -- Found Threads: TRUE  
+[1.864s] -- Found realtime_tools: 2.14.1 (/opt/ros/humble/share/realtime_tools/cmake)
+[1.887s] -- Found generate_parameter_library: 0.5.0 (/opt/ros/humble/share/generate_parameter_library/cmake)
+[1.890s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[2.025s] -- Configuring done
+[2.047s] -- Generating done
+[2.055s] -- Build files have been written to: /root/ros2_ws/build/gpio_controllers
+[2.075s] Invoked command in '/root/ros2_ws/build/gpio_controllers' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/gpio_controllers -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/gpio_controllers
+[2.077s] Invoking command in '/root/ros2_ws/build/gpio_controllers': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/gpio_controllers -- -j4 -l4
+[2.168s] [ 25%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/gpio_controllers/include/gpio_controllers/gpio_command_controller_parameters.hpp /root/ros2_ws/src/ros2_controllers/gpio_controllers/src/gpio_command_controller_parameters.yaml `[0m
+[2.523s] [ 50%] [34m[1mCreating deprecated header file /root/ros2_ws/build/gpio_controllers/include/gpio_command_controller_parameters.hpp[0m
+[2.556s] [ 50%] Built target gpio_command_controller_parameters
+[2.595s] [ 75%] [32mBuilding CXX object CMakeFiles/gpio_controllers.dir/src/gpio_command_controller.cpp.o[0m
+[22.363s] [100%] [32m[1mLinking CXX shared library libgpio_controllers.so[0m
+[22.681s] [100%] Built target gpio_controllers
+[22.703s] Invoked command in '/root/ros2_ws/build/gpio_controllers' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/gpio_controllers -- -j4 -l4
+[22.705s] Invoking command in '/root/ros2_ws/build/gpio_controllers': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/gpio_controllers
+[22.718s] -- Install configuration: "Release"
+[22.719s] -- Execute custom install script
+[22.720s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/include/gpio_controllers/gpio_command_controller_parameters.hpp
+[22.737s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers//gpio_controllers_plugin.xml
+[22.753s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/include/gpio_controllers/gpio_command_controller.hpp
+[22.769s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/include/gpio_controllers/visibility_control.h
+[22.786s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/lib/libgpio_controllers.so
+[22.802s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/library_path.sh
+[22.818s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/library_path.dsv
+[22.835s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/ament_index/resource_index/package_run_dependencies/gpio_controllers
+[22.851s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/ament_index/resource_index/parent_prefix_path/gpio_controllers
+[22.868s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/ament_prefix_path.sh
+[22.885s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/ament_prefix_path.dsv
+[22.902s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/path.sh
+[22.918s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/environment/path.dsv
+[22.934s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/local_setup.bash
+[22.951s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/local_setup.sh
+[22.967s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/local_setup.zsh
+[22.985s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/local_setup.dsv
+[23.002s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/package.dsv
+[23.018s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/ament_index/resource_index/packages/gpio_controllers
+[23.035s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/ament_index/resource_index/controller_interface__pluginlib__plugin/gpio_controllers
+[23.052s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/cmake/ament_cmake_export_dependencies-extras.cmake
+[23.070s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/cmake/ament_cmake_export_include_directories-extras.cmake
+[23.087s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/cmake/ament_cmake_export_libraries-extras.cmake
+[23.103s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/cmake/gpio_controllersConfig.cmake
+[23.120s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/cmake/gpio_controllersConfig-version.cmake
+[23.136s] -- Symlinking: /root/ros2_ws/install/gpio_controllers/share/gpio_controllers/package.xml
+[23.157s] Invoked command in '/root/ros2_ws/build/gpio_controllers' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/gpio_controllers

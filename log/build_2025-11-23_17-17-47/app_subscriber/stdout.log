@@ -1,0 +1,24 @@
+running develop
+running egg_info
+creating app_subscriber.egg-info
+writing app_subscriber.egg-info/PKG-INFO
+writing dependency_links to app_subscriber.egg-info/dependency_links.txt
+writing entry points to app_subscriber.egg-info/entry_points.txt
+writing requirements to app_subscriber.egg-info/requires.txt
+writing top-level names to app_subscriber.egg-info/top_level.txt
+writing manifest file 'app_subscriber.egg-info/SOURCES.txt'
+reading manifest file 'app_subscriber.egg-info/SOURCES.txt'
+writing manifest file 'app_subscriber.egg-info/SOURCES.txt'
+running build_ext
+Creating /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app-subscriber.egg-link (link to .)
+Installing data_controller script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+Installing feedback_publisher script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+Installing listener_node script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+
+Installed /root/ros2_ws/build/app_subscriber
+running symlink_data
+creating /root/ros2_ws/install/app_subscriber/share/ament_index
+creating /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index
+creating /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index/packages
+symbolically linking /root/ros2_ws/build/app_subscriber/resource/app_subscriber -> /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index/packages
+symbolically linking /root/ros2_ws/build/app_subscriber/package.xml -> /root/ros2_ws/install/app_subscriber/share/app_subscriber

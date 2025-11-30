@@ -1,0 +1,87 @@
+[0.033s] Invoking command in '/root/ros2_ws/build/forward_command_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/forward_command_controller -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/forward_command_controller
+[0.146s] -- The CXX compiler identification is GNU 11.4.0
+[0.157s] -- Detecting CXX compiler ABI info
+[0.294s] -- Detecting CXX compiler ABI info - done
+[0.305s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.305s] -- Detecting CXX compile features
+[0.306s] -- Detecting CXX compile features - done
+[0.310s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.539s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.638s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.684s] -- Found controller_interface: 2.52.2 (/root/ros2_ws/install/controller_interface/share/controller_interface/cmake)
+[0.743s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.752s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.765s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.784s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.809s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.114s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.119s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.157s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.258s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.262s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.280s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.285s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.298s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.313s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.329s] -- Looking for C++ include pthread.h
+[1.535s] -- Looking for C++ include pthread.h - found
+[1.535s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.738s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.740s] -- Found Threads: TRUE  
+[1.815s] -- Found generate_parameter_library: 0.5.0 (/opt/ros/humble/share/generate_parameter_library/cmake)
+[1.819s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[1.846s] -- Found realtime_tools: 2.14.1 (/opt/ros/humble/share/realtime_tools/cmake)
+[1.977s] -- Configuring done
+[2.000s] -- Generating done
+[2.008s] -- Build files have been written to: /root/ros2_ws/build/forward_command_controller
+[2.026s] Invoked command in '/root/ros2_ws/build/forward_command_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/forward_command_controller -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/forward_command_controller
+[2.029s] Invoking command in '/root/ros2_ws/build/forward_command_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/forward_command_controller -- -j4 -l4
+[2.122s] [ 25%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/forward_command_controller/include/forward_command_controller/forward_command_controller_parameters.hpp /root/ros2_ws/src/ros2_controllers/forward_command_controller/src/forward_command_controller_parameters.yaml `[0m
+[2.122s] [ 25%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/forward_command_controller/include/forward_command_controller/multi_interface_forward_command_controller_parameters.hpp /root/ros2_ws/src/ros2_controllers/forward_command_controller/src/multi_interface_forward_command_controller_parameters.yaml `[0m
+[2.411s] [ 50%] [34m[1mCreating deprecated header file /root/ros2_ws/build/forward_command_controller/include/forward_command_controller_parameters.hpp[0m
+[2.411s] [ 50%] [34m[1mCreating deprecated header file /root/ros2_ws/build/forward_command_controller/include/multi_interface_forward_command_controller_parameters.hpp[0m
+[2.442s] [ 50%] Built target forward_command_controller_parameters
+[2.443s] [ 50%] Built target multi_interface_forward_command_controller_parameters
+[2.483s] [ 87%] [32mBuilding CXX object CMakeFiles/forward_command_controller.dir/src/forward_controllers_base.cpp.o[0m
+[2.483s] [ 87%] [32mBuilding CXX object CMakeFiles/forward_command_controller.dir/src/forward_command_controller.cpp.o[0m
+[2.484s] [ 87%] [32mBuilding CXX object CMakeFiles/forward_command_controller.dir/src/multi_interface_forward_command_controller.cpp.o[0m
+[19.566s] [100%] [32m[1mLinking CXX shared library libforward_command_controller.so[0m
+[19.875s] [100%] Built target forward_command_controller
+[19.896s] Invoked command in '/root/ros2_ws/build/forward_command_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/forward_command_controller -- -j4 -l4
+[19.898s] Invoking command in '/root/ros2_ws/build/forward_command_controller': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/forward_command_controller
+[19.913s] -- Install configuration: "Release"
+[19.913s] -- Execute custom install script
+[19.914s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller_parameters.hpp
+[19.931s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/multi_interface_forward_command_controller_parameters.hpp
+[19.948s] -- Up-to-date symlink: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller_parameters.hpp
+[19.948s] -- Up-to-date symlink: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/multi_interface_forward_command_controller_parameters.hpp
+[19.948s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller//forward_command_plugin.xml
+[19.965s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller/forward_command_controller.hpp
+[19.982s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller/forward_controllers_base.hpp
+[19.998s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller/multi_interface_forward_command_controller.hpp
+[20.015s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/include/forward_command_controller/forward_command_controller/visibility_control.h
+[20.031s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/library_path.sh
+[20.049s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/library_path.dsv
+[20.066s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/ament_index/resource_index/package_run_dependencies/forward_command_controller
+[20.082s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/ament_index/resource_index/parent_prefix_path/forward_command_controller
+[20.099s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/ament_prefix_path.sh
+[20.116s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/ament_prefix_path.dsv
+[20.132s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/path.sh
+[20.148s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/environment/path.dsv
+[20.164s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/local_setup.bash
+[20.181s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/local_setup.sh
+[20.197s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/local_setup.zsh
+[20.215s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/local_setup.dsv
+[20.231s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/package.dsv
+[20.248s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/ament_index/resource_index/packages/forward_command_controller
+[20.265s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/ament_index/resource_index/controller_interface__pluginlib__plugin/forward_command_controller
+[20.282s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/ament_cmake_export_dependencies-extras.cmake
+[20.299s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/ament_cmake_export_targets-extras.cmake
+[20.315s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/forward_command_controllerConfig.cmake
+[20.333s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/forward_command_controllerConfig-version.cmake
+[20.349s] -- Symlinking: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/package.xml
+[20.366s] -- Installing: /root/ros2_ws/install/forward_command_controller/lib/libforward_command_controller.so
+[20.369s] -- Set runtime path of "/root/ros2_ws/install/forward_command_controller/lib/libforward_command_controller.so" to ""
+[20.369s] -- Installing: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/export_forward_command_controllerExport.cmake
+[20.369s] -- Installing: /root/ros2_ws/install/forward_command_controller/share/forward_command_controller/cmake/export_forward_command_controllerExport-release.cmake
+[20.373s] Invoked command in '/root/ros2_ws/build/forward_command_controller' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/forward_command_controller

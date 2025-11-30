@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-65c81050dedd2d750266.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "hardware_interface",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_generate_version_header__hardware_interface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_generate_version_header__hardware_interface-Release-95694f79eb8ae9383fc5.json",
+					"name" : "ament_generate_version_header__hardware_interface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_components::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_components-Release-c0a8c4ac5f2f160fddab.json",
+					"name" : "fake_components",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hardware_interface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardware_interface-Release-4d69e097d4eee46e2956.json",
+					"name" : "hardware_interface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hardware_interface_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardware_interface_uninstall-Release-da3043c5e043a4eeab90.json",
+					"name" : "hardware_interface_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mock_components::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mock_components-Release-42a28ae47fdda9762885.json",
+					"name" : "mock_components",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-755d5cdb6a005df3e7c9.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ros2_ws/build/hardware_interface",
+		"source" : "/root/ros2_ws/src/ros2_control/hardware_interface"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

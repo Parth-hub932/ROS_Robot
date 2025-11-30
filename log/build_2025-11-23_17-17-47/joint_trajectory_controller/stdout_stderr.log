@@ -1,0 +1,73 @@
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found angles: 1.15.0 (/opt/ros/humble/share/angles/cmake)
+-- Found control_msgs: 4.8.0 (/opt/ros/humble/share/control_msgs/cmake)
+-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found control_toolbox: 3.6.2 (/opt/ros/humble/share/control_toolbox/cmake)
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found controller_interface: 2.52.2 (/root/ros2_ws/install/controller_interface/share/controller_interface/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/ros2_ws/build/joint_trajectory_controller
+[ 20%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller_parameters.hpp /root/ros2_ws/src/ros2_controllers/joint_trajectory_controller/src/joint_trajectory_controller_parameters.yaml validate_jtc_parameters.hpp`[0m
+[ 40%] [34m[1mCreating deprecated header file /root/ros2_ws/build/joint_trajectory_controller/include/joint_trajectory_controller_parameters.hpp[0m
+[ 40%] Built target joint_trajectory_controller_parameters
+[ 80%] [32mBuilding CXX object CMakeFiles/joint_trajectory_controller.dir/src/joint_trajectory_controller.cpp.o[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/joint_trajectory_controller.dir/src/trajectory.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library libjoint_trajectory_controller.so[0m
+[100%] Built target joint_trajectory_controller
+-- Install configuration: "Release"
+-- Execute custom install script
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller_parameters.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/validate_jtc_parameters.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller//joint_trajectory_plugin.xml
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/interpolation_methods.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/joint_trajectory_controller.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/tolerances.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/trajectory.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/validate_jtc_parameters.hpp
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/include/joint_trajectory_controller/joint_trajectory_controller/visibility_control.h
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/library_path.sh
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/library_path.dsv
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/ament_index/resource_index/package_run_dependencies/joint_trajectory_controller
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/ament_index/resource_index/parent_prefix_path/joint_trajectory_controller
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/ament_prefix_path.sh
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/ament_prefix_path.dsv
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/path.sh
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/environment/path.dsv
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/local_setup.bash
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/local_setup.sh
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/local_setup.zsh
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/local_setup.dsv
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/package.dsv
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/ament_index/resource_index/packages/joint_trajectory_controller
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/ament_index/resource_index/controller_interface__pluginlib__plugin/joint_trajectory_controller
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/ament_cmake_export_targets-extras.cmake
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig.cmake
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig-version.cmake
+-- Symlinking: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/package.xml
+-- Installing: /root/ros2_ws/install/joint_trajectory_controller/lib/libjoint_trajectory_controller.so
+-- Set runtime path of "/root/ros2_ws/install/joint_trajectory_controller/lib/libjoint_trajectory_controller.so" to ""
+-- Installing: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/export_joint_trajectory_controllerExport.cmake
+-- Installing: /root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/export_joint_trajectory_controllerExport-release.cmake

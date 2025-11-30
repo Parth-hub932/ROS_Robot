@@ -1,0 +1,83 @@
+[0.032s] Invoking command in '/root/ros2_ws/build/range_sensor_broadcaster': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/range_sensor_broadcaster -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/range_sensor_broadcaster
+[0.130s] -- The C compiler identification is GNU 11.4.0
+[0.228s] -- The CXX compiler identification is GNU 11.4.0
+[0.241s] -- Detecting C compiler ABI info
+[0.362s] -- Detecting C compiler ABI info - done
+[0.373s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.374s] -- Detecting C compile features
+[0.374s] -- Detecting C compile features - done
+[0.378s] -- Detecting CXX compiler ABI info
+[0.514s] -- Detecting CXX compiler ABI info - done
+[0.525s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.525s] -- Detecting CXX compile features
+[0.526s] -- Detecting CXX compile features - done
+[0.531s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.760s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.859s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.903s] -- Found controller_interface: 2.52.2 (/root/ros2_ws/install/controller_interface/share/controller_interface/cmake)
+[0.963s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.971s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.985s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.004s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.029s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.335s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.340s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.378s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.482s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.487s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.504s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.509s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.522s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.537s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.552s] -- Looking for pthread.h
+[1.734s] -- Looking for pthread.h - found
+[1.735s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.916s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.918s] -- Found Threads: TRUE  
+[1.993s] -- Found generate_parameter_library: 0.5.0 (/opt/ros/humble/share/generate_parameter_library/cmake)
+[1.996s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[2.023s] -- Found realtime_tools: 2.14.1 (/opt/ros/humble/share/realtime_tools/cmake)
+[2.155s] -- Configuring done
+[2.178s] -- Generating done
+[2.185s] -- Build files have been written to: /root/ros2_ws/build/range_sensor_broadcaster
+[2.206s] Invoked command in '/root/ros2_ws/build/range_sensor_broadcaster' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /root/ros2_ws/src/ros2_controllers/range_sensor_broadcaster -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/range_sensor_broadcaster
+[2.208s] Invoking command in '/root/ros2_ws/build/range_sensor_broadcaster': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/range_sensor_broadcaster -- -j4 -l4
+[2.303s] [ 25%] [34m[1mRunning `/opt/ros/humble/bin/generate_parameter_library_cpp /root/ros2_ws/build/range_sensor_broadcaster/include/range_sensor_broadcaster/range_sensor_broadcaster_parameters.hpp /root/ros2_ws/src/ros2_controllers/range_sensor_broadcaster/src/range_sensor_broadcaster_parameters.yaml `[0m
+[2.631s] [ 50%] [34m[1mCreating deprecated header file /root/ros2_ws/build/range_sensor_broadcaster/include/range_sensor_broadcaster_parameters.hpp[0m
+[2.664s] [ 50%] Built target range_sensor_broadcaster_parameters
+[2.704s] [ 75%] [32mBuilding CXX object CMakeFiles/range_sensor_broadcaster.dir/src/range_sensor_broadcaster.cpp.o[0m
+[12.826s] [100%] [32m[1mLinking CXX shared library librange_sensor_broadcaster.so[0m
+[13.062s] [100%] Built target range_sensor_broadcaster
+[13.084s] Invoked command in '/root/ros2_ws/build/range_sensor_broadcaster' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros2_ws/build/range_sensor_broadcaster -- -j4 -l4
+[13.087s] Invoking command in '/root/ros2_ws/build/range_sensor_broadcaster': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/range_sensor_broadcaster
+[13.101s] -- Install configuration: "Release"
+[13.101s] -- Execute custom install script
+[13.102s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/include/range_sensor_broadcaster/range_sensor_broadcaster_parameters.hpp
+[13.119s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster//range_sensor_broadcaster.xml
+[13.137s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/include/range_sensor_broadcaster/range_sensor_broadcaster.hpp
+[13.153s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/include/range_sensor_broadcaster/visibility_control.h
+[13.170s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/library_path.sh
+[13.187s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/library_path.dsv
+[13.203s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/ament_index/resource_index/package_run_dependencies/range_sensor_broadcaster
+[13.220s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/ament_index/resource_index/parent_prefix_path/range_sensor_broadcaster
+[13.236s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/ament_prefix_path.sh
+[13.252s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/ament_prefix_path.dsv
+[13.269s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/path.sh
+[13.286s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/environment/path.dsv
+[13.303s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/local_setup.bash
+[13.319s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/local_setup.sh
+[13.336s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/local_setup.zsh
+[13.352s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/local_setup.dsv
+[13.368s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/package.dsv
+[13.385s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/ament_index/resource_index/packages/range_sensor_broadcaster
+[13.402s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/ament_index/resource_index/controller_interface__pluginlib__plugin/range_sensor_broadcaster
+[13.419s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/ament_cmake_export_dependencies-extras.cmake
+[13.436s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/ament_cmake_export_targets-extras.cmake
+[13.452s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/range_sensor_broadcasterConfig.cmake
+[13.468s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/range_sensor_broadcasterConfig-version.cmake
+[13.484s] -- Symlinking: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/package.xml
+[13.502s] -- Installing: /root/ros2_ws/install/range_sensor_broadcaster/lib/librange_sensor_broadcaster.so
+[13.503s] -- Set runtime path of "/root/ros2_ws/install/range_sensor_broadcaster/lib/librange_sensor_broadcaster.so" to ""
+[13.503s] -- Installing: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/export_range_sensor_broadcasterExport.cmake
+[13.503s] -- Installing: /root/ros2_ws/install/range_sensor_broadcaster/share/range_sensor_broadcaster/cmake/export_range_sensor_broadcasterExport-release.cmake
+[13.507s] Invoked command in '/root/ros2_ws/build/range_sensor_broadcaster' returned '0': AMENT_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_manager_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_ws/install/controller_manager:/root/ros2_ws/install/hardware_interface_testing:/root/ros2_ws/install/controller_interface:/root/ros2_ws/install/hardware_interface:/root/ros2_ws/install/ros2_control_test_assets:/root/ros2_ws/install/controller_manager_msgs:/root/ros2_ws/install/app_subscriber:/opt/ros/humble LD_LIBRARY_PATH=/root/ros2_ws/install/controller_manager/lib:/root/ros2_ws/install/hardware_interface_testing/lib:/root/ros2_ws/install/controller_interface/lib:/root/ros2_ws/install/hardware_interface/lib:/root/ros2_ws/install/controller_manager_msgs/lib:/root/ros2_ws/install/ros2_control_test_assets/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/root/ros2_ws/install/controller_manager/local/lib/python3.10/dist-packages:/root/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /root/ros2_ws/build/range_sensor_broadcaster
