@@ -1,0 +1,5 @@
+[console_scripts]
+data_controller = mecanum_bot.data_controller_node:main
+hardware_driver = mecanum_bot.hardware_driver:main
+pid = mecanum_bot.pid:main
+

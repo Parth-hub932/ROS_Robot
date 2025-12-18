@@ -1,0 +1,4 @@
+source;share/mecanum_hardware/local_setup.bash
+source;share/mecanum_hardware/local_setup.dsv
+source;share/mecanum_hardware/local_setup.sh
+source;share/mecanum_hardware/local_setup.zsh

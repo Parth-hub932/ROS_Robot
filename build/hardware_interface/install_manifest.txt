@@ -1,5 +1,0 @@
-/root/ros2_ws/install/hardware_interface/lib/libfake_components.so
-/root/ros2_ws/install/hardware_interface/lib/libmock_components.so
-/root/ros2_ws/install/hardware_interface/lib/libhardware_interface.so
-/root/ros2_ws/install/hardware_interface/share/hardware_interface/cmake/export_hardware_interfaceExport.cmake
-/root/ros2_ws/install/hardware_interface/share/hardware_interface/cmake/export_hardware_interfaceExport-release.cmake

@@ -1,0 +1,29 @@
+[0.018s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[0.088s] [35m[1mConsolidate compiler generated dependencies of target mecanum_hardware[0m
+[0.120s] [100%] Built target mecanum_hardware
+[0.138s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[0.156s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware
+[0.168s] -- Install configuration: ""
+[0.168s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[0.169s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so
+[0.169s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include
+[0.169s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware
+[0.169s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp
+[0.169s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/package_run_dependencies/mecanum_hardware
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/parent_prefix_path/mecanum_hardware
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.sh
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.dsv
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.sh
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.dsv
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.bash
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.sh
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.zsh
+[0.170s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.dsv
+[0.171s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv
+[0.171s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/packages/mecanum_hardware
+[0.171s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/mecanum_hardware
+[0.171s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig.cmake
+[0.171s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig-version.cmake
+[0.171s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.xml
+[0.174s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware

@@ -1,0 +1,9 @@
+<library path="mecanum_hardware">
+  <class name="mecanum_hardware/MecanumSystem" 
+         type="mecanum_hardware::MecanumSystem" 
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      PSoC C++ Hardware Interface
+    </description>
+  </class>
+</library>

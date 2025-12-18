@@ -1,0 +1,26 @@
+[0.824s] Invoking command in '/root/ros2_ws/src/mecanum_bot': PYTHONPATH=/root/ros2_ws/build/mecanum_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mecanum_bot build --build-base /root/ros2_ws/build/mecanum_bot/build install --record /root/ros2_ws/build/mecanum_bot/install.log --single-version-externally-managed install_data
+[1.100s] running egg_info
+[1.101s] writing ../../build/mecanum_bot/mecanum_bot.egg-info/PKG-INFO
+[1.102s] writing dependency_links to ../../build/mecanum_bot/mecanum_bot.egg-info/dependency_links.txt
+[1.103s] writing entry points to ../../build/mecanum_bot/mecanum_bot.egg-info/entry_points.txt
+[1.103s] writing requirements to ../../build/mecanum_bot/mecanum_bot.egg-info/requires.txt
+[1.104s] writing top-level names to ../../build/mecanum_bot/mecanum_bot.egg-info/top_level.txt
+[1.108s] reading manifest file '../../build/mecanum_bot/mecanum_bot.egg-info/SOURCES.txt'
+[1.109s] writing manifest file '../../build/mecanum_bot/mecanum_bot.egg-info/SOURCES.txt'
+[1.109s] running build
+[1.110s] running build_py
+[1.110s] copying mecanum_bot/pid.py -> /root/ros2_ws/build/mecanum_bot/build/lib/mecanum_bot
+[1.111s] running install
+[1.111s] running install_lib
+[1.112s] copying /root/ros2_ws/build/mecanum_bot/build/lib/mecanum_bot/pid.py -> /root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot
+[1.113s] byte-compiling /root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot/pid.py to pid.cpython-310.pyc
+[1.115s] running install_data
+[1.115s] running install_egg_info
+[1.118s] removing '/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot-0.0.0-py3.10.egg-info' (and everything under it)
+[1.120s] Copying ../../build/mecanum_bot/mecanum_bot.egg-info to /root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot-0.0.0-py3.10.egg-info
+[1.121s] running install_scripts
+[1.149s] Installing data_controller script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+[1.150s] Installing hardware_driver script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+[1.151s] Installing pid script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+[1.152s] writing list of installed files to '/root/ros2_ws/build/mecanum_bot/install.log'
+[1.212s] Invoked command in '/root/ros2_ws/src/mecanum_bot' returned '0': PYTHONPATH=/root/ros2_ws/build/mecanum_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mecanum_bot build --build-base /root/ros2_ws/build/mecanum_bot/build install --record /root/ros2_ws/build/mecanum_bot/install.log --single-version-externally-managed install_data

@@ -1,0 +1,54 @@
+[0.899s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[1.006s] [35m[1mConsolidate compiler generated dependencies of target mecanum_hardware[0m
+[1.043s] [ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[4.961s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_configure(const rclcpp_lifecycle::State&)[m[K’:
+[4.961s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:47:96:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.962s]    47 | hardware_interface::CallbackReturn MecanumSystem::on_configure([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+[4.962s]       |                                                                [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[4.962s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_deactivate(const rclcpp_lifecycle::State&)[m[K’:
+[4.962s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:85:97:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.962s]    85 | hardware_interface::CallbackReturn MecanumSystem::on_deactivate([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+[4.962s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[4.967s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[4.967s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:92:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.967s]    92 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+[4.967s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[4.968s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:93:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.968s]    93 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+[4.968s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[4.968s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[4.969s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:214:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.969s]   214 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+[4.969s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[4.969s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:215:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.969s]   215 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+[4.969s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[8.577s] [100%] [32m[1mLinking CXX shared library libmecanum_hardware.so[0m
+[9.104s] [100%] Built target mecanum_hardware
+[9.123s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[9.140s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware
+[9.152s] -- Install configuration: ""
+[9.152s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[9.153s] -- Installing: /root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so
+[9.160s] -- Set runtime path of "/root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so" to ""
+[9.160s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/package_run_dependencies/mecanum_hardware
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/parent_prefix_path/mecanum_hardware
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.sh
+[9.161s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.dsv
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.sh
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.dsv
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.bash
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.sh
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.zsh
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.dsv
+[9.162s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/packages/mecanum_hardware
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/mecanum_hardware
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig.cmake
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig-version.cmake
+[9.162s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.xml
+[9.165s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware

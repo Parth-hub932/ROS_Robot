@@ -1,0 +1,314 @@
+[0.537s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.537s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffaaa872b0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffaaa86e00>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffaaa86e00>>, mixin_verb=('build',))
+[0.862s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.865s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[0.866s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastdds.meta'
+[0.867s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[0.867s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.867s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.867s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.867s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.867s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.867s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/ros2_ws'
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.897s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.898s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.899s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extensions ['ignore', 'ignore_ament_install']
+[0.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extension 'ignore'
+[0.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extension 'ignore_ament_install'
+[0.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extensions ['colcon_pkg']
+[0.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extension 'colcon_pkg'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extensions ['colcon_meta']
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extension 'colcon_meta'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extensions ['ros']
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(src/app_subscriber) by extension 'ros'
+[0.906s] DEBUG:colcon.colcon_core.package_identification:Package 'src/app_subscriber' with type 'ros.ament_python' and name 'app_subscriber'
+[0.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[0.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[0.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) ignored
+[0.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extensions ['ignore', 'ignore_ament_install']
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extension 'ignore'
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extension 'ignore_ament_install'
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extensions ['colcon_pkg']
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extension 'colcon_pkg'
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extensions ['colcon_meta']
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extension 'colcon_meta'
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extensions ['ros']
+[0.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/distance_pid) by extension 'ros'
+[0.910s] DEBUG:colcon.colcon_core.package_identification:Package 'src/distance_pid' with type 'ros.ament_python' and name 'distance_pid'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extensions ['ignore', 'ignore_ament_install']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extension 'ignore'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) ignored
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extensions ['ignore', 'ignore_ament_install']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extension 'ignore'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) ignored
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extensions ['ignore', 'ignore_ament_install']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extension 'ignore'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extension 'ignore_ament_install'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extensions ['colcon_pkg']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extension 'colcon_pkg'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extensions ['colcon_meta']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extension 'colcon_meta'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extensions ['ros']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_bot) by extension 'ros'
+[0.913s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mecanum_bot' with type 'ros.ament_python' and name 'mecanum_bot'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extensions ['ignore', 'ignore_ament_install']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extension 'ignore'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extension 'ignore_ament_install'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extensions ['colcon_pkg']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extension 'colcon_pkg'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extensions ['colcon_meta']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extension 'colcon_meta'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extensions ['ros']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/mecanum_hardware) by extension 'ros'
+[0.915s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mecanum_hardware' with type 'ros.ament_cmake' and name 'mecanum_hardware'
+[0.915s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.915s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.915s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.915s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.915s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.976s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_target' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_clean_cache' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_clean_first' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'cmake_force_configure' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'ament_cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'catkin_cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'app_subscriber' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.977s] DEBUG:colcon.colcon_core.verb:Building package 'app_subscriber' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros2_ws/build/app_subscriber', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros2_ws/install/app_subscriber', 'merge_install': False, 'path': '/root/ros2_ws/src/app_subscriber', 'symlink_install': False, 'test_result_base': None}
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_target' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_clean_cache' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_clean_first' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'cmake_force_configure' from command line to 'False'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'ament_cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'catkin_cmake_args' from command line to 'None'
+[0.977s] Level 5:colcon.colcon_core.verb:set package 'distance_pid' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.977s] DEBUG:colcon.colcon_core.verb:Building package 'distance_pid' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros2_ws/build/distance_pid', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros2_ws/install/distance_pid', 'merge_install': False, 'path': '/root/ros2_ws/src/distance_pid', 'symlink_install': False, 'test_result_base': None}
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_args' from command line to 'None'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_target' from command line to 'None'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_clean_cache' from command line to 'False'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_clean_first' from command line to 'False'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'cmake_force_configure' from command line to 'False'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'ament_cmake_args' from command line to 'None'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'catkin_cmake_args' from command line to 'None'
+[0.978s] Level 5:colcon.colcon_core.verb:set package 'mecanum_bot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.978s] DEBUG:colcon.colcon_core.verb:Building package 'mecanum_bot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros2_ws/build/mecanum_bot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros2_ws/install/mecanum_bot', 'merge_install': False, 'path': '/root/ros2_ws/src/mecanum_bot', 'symlink_install': False, 'test_result_base': None}
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_args' from command line to 'None'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_target' from command line to 'None'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_clean_cache' from command line to 'False'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_clean_first' from command line to 'False'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'cmake_force_configure' from command line to 'False'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'ament_cmake_args' from command line to 'None'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'catkin_cmake_args' from command line to 'None'
+[0.979s] Level 5:colcon.colcon_core.verb:set package 'mecanum_hardware' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.979s] DEBUG:colcon.colcon_core.verb:Building package 'mecanum_hardware' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros2_ws/build/mecanum_hardware', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros2_ws/install/mecanum_hardware', 'merge_install': False, 'path': '/root/ros2_ws/src/mecanum_hardware', 'symlink_install': False, 'test_result_base': None}
+[0.979s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.980s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.981s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/root/ros2_ws/src/app_subscriber' with build type 'ament_python'
+[0.981s] Level 1:colcon.colcon_core.shell:create_environment_hook('app_subscriber', 'ament_prefix_path')
+[0.992s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.992s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/ament_prefix_path.ps1'
+[0.994s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/ament_prefix_path.dsv'
+[0.995s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/ament_prefix_path.sh'
+[0.996s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.996s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.000s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/ros2_ws/install/mecanum_hardware' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[1.000s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/ros2_ws/install/mecanum_bot' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[1.000s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/root/ros2_ws/install/distance_pid' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[1.000s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/root/ros2_ws/install/mecanum_hardware' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[1.007s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/root/ros2_ws/src/distance_pid' with build type 'ament_python'
+[1.007s] Level 1:colcon.colcon_core.shell:create_environment_hook('distance_pid', 'ament_prefix_path')
+[1.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/ament_prefix_path.ps1'
+[1.009s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/ament_prefix_path.dsv'
+[1.010s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/ament_prefix_path.sh'
+[1.011s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.011s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.015s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/root/ros2_ws/src/mecanum_bot' with build type 'ament_python'
+[1.016s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_bot', 'ament_prefix_path')
+[1.016s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/ament_prefix_path.ps1'
+[1.017s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/ament_prefix_path.dsv'
+[1.018s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/ament_prefix_path.sh'
+[1.019s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.019s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.024s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ros2_ws/src/mecanum_hardware' with build type 'ament_cmake'
+[1.024s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ros2_ws/src/mecanum_hardware'
+[1.025s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.025s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.338s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/root/ros2_ws/src/app_subscriber'
+[1.338s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.338s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.636s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/root/ros2_ws/src/distance_pid'
+[1.636s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.636s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.936s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/root/ros2_ws/src/mecanum_bot'
+[1.936s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.936s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.944s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[3.389s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/src/mecanum_bot': PYTHONPATH=/root/ros2_ws/build/mecanum_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mecanum_bot build --build-base /root/ros2_ws/build/mecanum_bot/build install --record /root/ros2_ws/build/mecanum_bot/install.log --single-version-externally-managed install_data
+[3.392s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/src/app_subscriber': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data
+[3.399s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/src/distance_pid': PYTHONPATH=/root/ros2_ws/build/distance_pid/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/distance_pid build --build-base /root/ros2_ws/build/distance_pid/build install --record /root/ros2_ws/build/distance_pid/install.log --single-version-externally-managed install_data
+[3.964s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/src/distance_pid' returned '0': PYTHONPATH=/root/ros2_ws/build/distance_pid/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/distance_pid build --build-base /root/ros2_ws/build/distance_pid/build install --record /root/ros2_ws/build/distance_pid/install.log --single-version-externally-managed install_data
+[3.993s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid' for CMake module files
+[3.994s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid' for CMake config files
+[3.996s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid/lib'
+[3.996s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid/bin'
+[3.996s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid/lib/pkgconfig/distance_pid.pc'
+[3.997s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages'
+[3.997s] Level 1:colcon.colcon_core.shell:create_environment_hook('distance_pid', 'pythonpath')
+[3.998s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/pythonpath.ps1'
+[4.001s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/pythonpath.dsv'
+[4.002s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/distance_pid/share/distance_pid/hook/pythonpath.sh'
+[4.003s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/distance_pid/bin'
+[4.003s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(distance_pid)
+[4.004s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/distance_pid/share/distance_pid/package.ps1'
+[4.006s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros2_ws/install/distance_pid/share/distance_pid/package.dsv'
+[4.008s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/distance_pid/share/distance_pid/package.sh'
+[4.010s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/distance_pid/share/distance_pid/package.bash'
+[4.012s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/distance_pid/share/distance_pid/package.zsh'
+[4.014s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros2_ws/install/distance_pid/share/colcon-core/packages/distance_pid)
+[4.017s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot' for CMake module files
+[4.018s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/src/mecanum_bot' returned '0': PYTHONPATH=/root/ros2_ws/build/mecanum_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mecanum_bot build --build-base /root/ros2_ws/build/mecanum_bot/build install --record /root/ros2_ws/build/mecanum_bot/install.log --single-version-externally-managed install_data
+[4.019s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot' for CMake config files
+[4.019s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot/lib'
+[4.019s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot/bin'
+[4.020s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot/lib/pkgconfig/mecanum_bot.pc'
+[4.020s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages'
+[4.020s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_bot', 'pythonpath')
+[4.020s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/pythonpath.ps1'
+[4.021s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/pythonpath.dsv'
+[4.021s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/hook/pythonpath.sh'
+[4.023s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_bot/bin'
+[4.023s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mecanum_bot)
+[4.023s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/package.ps1'
+[4.024s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/package.dsv'
+[4.025s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/package.sh'
+[4.025s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/package.bash'
+[4.026s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_bot/share/mecanum_bot/package.zsh'
+[4.026s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros2_ws/install/mecanum_bot/share/colcon-core/packages/mecanum_bot)
+[4.027s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber' for CMake module files
+[4.028s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/src/app_subscriber' returned '0': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data
+[4.028s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber' for CMake config files
+[4.029s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber/lib'
+[4.029s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber/bin'
+[4.029s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber/lib/pkgconfig/app_subscriber.pc'
+[4.030s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages'
+[4.030s] Level 1:colcon.colcon_core.shell:create_environment_hook('app_subscriber', 'pythonpath')
+[4.030s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/pythonpath.ps1'
+[4.031s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/pythonpath.dsv'
+[4.031s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/app_subscriber/share/app_subscriber/hook/pythonpath.sh'
+[4.032s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/app_subscriber/bin'
+[4.032s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(app_subscriber)
+[4.033s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/app_subscriber/share/app_subscriber/package.ps1'
+[4.034s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros2_ws/install/app_subscriber/share/app_subscriber/package.dsv'
+[4.035s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/app_subscriber/share/app_subscriber/package.sh'
+[4.035s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/app_subscriber/share/app_subscriber/package.bash'
+[4.036s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/app_subscriber/share/app_subscriber/package.zsh'
+[4.037s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros2_ws/install/app_subscriber/share/colcon-core/packages/app_subscriber)
+[5.696s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[5.699s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[14.752s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[14.770s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware
+[14.795s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mecanum_hardware)
+[14.796s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware' for CMake module files
+[14.796s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware
+[14.797s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware' for CMake config files
+[14.797s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_hardware', 'cmake_prefix_path')
+[14.797s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.ps1'
+[14.798s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.dsv'
+[14.798s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.sh'
+[14.799s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib'
+[14.799s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_hardware', 'ld_library_path_lib')
+[14.799s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.ps1'
+[14.800s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.dsv'
+[14.800s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.sh'
+[14.800s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/bin'
+[14.800s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib/pkgconfig/mecanum_hardware.pc'
+[14.801s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib/python3.10/site-packages'
+[14.801s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/bin'
+[14.802s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.ps1'
+[14.802s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv'
+[14.803s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.sh'
+[14.803s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.bash'
+[14.804s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.zsh'
+[14.804s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros2_ws/install/mecanum_hardware/share/colcon-core/packages/mecanum_hardware)
+[14.805s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mecanum_hardware)
+[14.805s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware' for CMake module files
+[14.805s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware' for CMake config files
+[14.806s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_hardware', 'cmake_prefix_path')
+[14.806s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.ps1'
+[14.828s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.dsv'
+[14.837s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/cmake_prefix_path.sh'
+[14.848s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib'
+[14.848s] Level 1:colcon.colcon_core.shell:create_environment_hook('mecanum_hardware', 'ld_library_path_lib')
+[14.848s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.ps1'
+[14.856s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.dsv'
+[14.862s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/hook/ld_library_path_lib.sh'
+[14.869s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/bin'
+[14.869s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib/pkgconfig/mecanum_hardware.pc'
+[14.870s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/lib/python3.10/site-packages'
+[14.870s] Level 1:colcon.colcon_core.environment:checking '/root/ros2_ws/install/mecanum_hardware/bin'
+[14.871s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.ps1'
+[14.884s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv'
+[14.894s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.sh'
+[14.902s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.bash'
+[14.903s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.zsh'
+[14.904s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros2_ws/install/mecanum_hardware/share/colcon-core/packages/mecanum_hardware)
+[14.905s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[14.906s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[14.906s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[14.906s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[14.946s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[14.946s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[14.947s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[14.947s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[14.947s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[14.947s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[14.947s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros2_ws/install/local_setup.ps1'
+[14.949s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ros2_ws/install/_local_setup_util_ps1.py'
+[14.952s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros2_ws/install/setup.ps1'
+[14.954s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros2_ws/install/local_setup.sh'
+[14.955s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ros2_ws/install/_local_setup_util_sh.py'
+[14.981s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros2_ws/install/setup.sh'
+[14.983s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros2_ws/install/local_setup.bash'
+[14.984s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros2_ws/install/setup.bash'
+[14.986s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros2_ws/install/local_setup.zsh'
+[14.987s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros2_ws/install/setup.zsh'

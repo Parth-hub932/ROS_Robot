@@ -1,3 +1,0 @@
-/root/ros2_ws/install/joint_trajectory_controller/lib/libjoint_trajectory_controller.so
-/root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/export_joint_trajectory_controllerExport.cmake
-/root/ros2_ws/install/joint_trajectory_controller/share/joint_trajectory_controller/cmake/export_joint_trajectory_controllerExport-release.cmake

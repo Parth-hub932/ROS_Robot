@@ -1,3 +1,0 @@
-/root/ros2_ws/install/velocity_controllers/lib/libvelocity_controllers.so
-/root/ros2_ws/install/velocity_controllers/share/velocity_controllers/cmake/export_velocity_controllersExport.cmake
-/root/ros2_ws/install/velocity_controllers/share/velocity_controllers/cmake/export_velocity_controllersExport-release.cmake

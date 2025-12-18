@@ -1,0 +1,23 @@
+running develop
+running egg_info
+writing mecanum_bot.egg-info/PKG-INFO
+writing dependency_links to mecanum_bot.egg-info/dependency_links.txt
+writing entry points to mecanum_bot.egg-info/entry_points.txt
+writing requirements to mecanum_bot.egg-info/requires.txt
+writing top-level names to mecanum_bot.egg-info/top_level.txt
+reading manifest file 'mecanum_bot.egg-info/SOURCES.txt'
+writing manifest file 'mecanum_bot.egg-info/SOURCES.txt'
+running build_ext
+Creating /root/ros2_ws/install/mecanum_bot/lib/python3.10/site-packages/mecanum-bot.egg-link (link to .)
+Installing data_controller script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+Installing hardware_driver script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+Installing pid script to /root/ros2_ws/install/mecanum_bot/lib/mecanum_bot
+
+Installed /root/ros2_ws/build/mecanum_bot
+running symlink_data
+symbolically linking /root/ros2_ws/build/mecanum_bot/resource/mecanum_bot -> /root/ros2_ws/install/mecanum_bot/share/ament_index/resource_index/packages
+symbolically linking /root/ros2_ws/build/mecanum_bot/package.xml -> /root/ros2_ws/install/mecanum_bot/share/mecanum_bot
+symbolically linking /root/ros2_ws/build/mecanum_bot/launch/bringup.launch.py -> /root/ros2_ws/install/mecanum_bot/share/mecanum_bot/launch
+symbolically linking /root/ros2_ws/build/mecanum_bot/config/controllers.yaml -> /root/ros2_ws/install/mecanum_bot/share/mecanum_bot/config
+symbolically linking /root/ros2_ws/build/mecanum_bot/config/ekf.yaml -> /root/ros2_ws/install/mecanum_bot/share/mecanum_bot/config
+creating /root/ros2_ws/install/mecanum_bot/share/mecanum_bot/description

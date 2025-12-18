@@ -1,9 +1,0 @@
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/uninstall.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/ros2_control_test_assets_uninstall.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/test.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/edit_cache.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/rebuild_cache.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/list_install_components.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/install.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/install/local.dir
-/root/ros2_ws/build/ros2_control_test_assets/CMakeFiles/install/strip.dir

@@ -1,0 +1,45 @@
+[1.707s] Invoking command in '/root/ros2_ws/src/app_subscriber': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data
+[2.100s] running egg_info
+[2.100s] creating ../../build/app_subscriber/app_subscriber.egg-info
+[2.100s] writing ../../build/app_subscriber/app_subscriber.egg-info/PKG-INFO
+[2.100s] writing dependency_links to ../../build/app_subscriber/app_subscriber.egg-info/dependency_links.txt
+[2.101s] writing entry points to ../../build/app_subscriber/app_subscriber.egg-info/entry_points.txt
+[2.101s] writing requirements to ../../build/app_subscriber/app_subscriber.egg-info/requires.txt
+[2.101s] writing top-level names to ../../build/app_subscriber/app_subscriber.egg-info/top_level.txt
+[2.103s] writing manifest file '../../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'
+[2.105s] reading manifest file '../../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'
+[2.107s] writing manifest file '../../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'
+[2.107s] running build
+[2.108s] running build_py
+[2.108s] creating /root/ros2_ws/build/app_subscriber/build
+[2.109s] creating /root/ros2_ws/build/app_subscriber/build/lib
+[2.109s] creating /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber
+[2.109s] copying app_subscriber/data_controller_node.py -> /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber
+[2.110s] copying app_subscriber/listener_node.py -> /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber
+[2.111s] copying app_subscriber/feedback_publisher.py -> /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber
+[2.111s] copying app_subscriber/__init__.py -> /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber
+[2.112s] running install
+[2.112s] running install_lib
+[2.113s] creating /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber
+[2.113s] copying /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber/data_controller_node.py -> /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber
+[2.113s] copying /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber/listener_node.py -> /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber
+[2.113s] copying /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber/feedback_publisher.py -> /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber
+[2.113s] copying /root/ros2_ws/build/app_subscriber/build/lib/app_subscriber/__init__.py -> /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber
+[2.114s] byte-compiling /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/data_controller_node.py to data_controller_node.cpython-310.pyc
+[2.117s] byte-compiling /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/listener_node.py to listener_node.cpython-310.pyc
+[2.117s] byte-compiling /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/feedback_publisher.py to feedback_publisher.cpython-310.pyc
+[2.120s] byte-compiling /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/__init__.py to __init__.cpython-310.pyc
+[2.121s] running install_data
+[2.121s] creating /root/ros2_ws/install/app_subscriber/share/ament_index
+[2.121s] creating /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index
+[2.121s] creating /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index/packages
+[2.121s] copying resource/app_subscriber -> /root/ros2_ws/install/app_subscriber/share/ament_index/resource_index/packages
+[2.122s] copying package.xml -> /root/ros2_ws/install/app_subscriber/share/app_subscriber
+[2.122s] running install_egg_info
+[2.127s] Copying ../../build/app_subscriber/app_subscriber.egg-info to /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber-0.0.0-py3.10.egg-info
+[2.127s] running install_scripts
+[2.169s] Installing data_controller script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.171s] Installing feedback_publisher script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.171s] Installing listener_node script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.171s] writing list of installed files to '/root/ros2_ws/build/app_subscriber/install.log'
+[2.296s] Invoked command in '/root/ros2_ws/src/app_subscriber' returned '0': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data

@@ -1,3 +1,0 @@
-/root/ros2_ws/install/transmission_interface/lib/libtransmission_interface.so
-/root/ros2_ws/install/transmission_interface/share/transmission_interface/cmake/export_transmission_interfaceExport.cmake
-/root/ros2_ws/install/transmission_interface/share/transmission_interface/cmake/export_transmission_interfaceExport-release.cmake

@@ -1,3 +1,0 @@
-/root/ros2_ws/install/pose_broadcaster/lib/libpose_broadcaster.so
-/root/ros2_ws/install/pose_broadcaster/share/pose_broadcaster/cmake/export_pose_broadcasterExport.cmake
-/root/ros2_ws/install/pose_broadcaster/share/pose_broadcaster/cmake/export_pose_broadcasterExport-release.cmake

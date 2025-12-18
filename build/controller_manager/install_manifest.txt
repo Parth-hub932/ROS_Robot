@@ -1,3 +1,0 @@
-/root/ros2_ws/install/controller_manager/lib/libcontroller_manager.so
-/root/ros2_ws/install/controller_manager/share/controller_manager/cmake/export_controller_managerExport.cmake
-/root/ros2_ws/install/controller_manager/share/controller_manager/cmake/export_controller_managerExport-release.cmake

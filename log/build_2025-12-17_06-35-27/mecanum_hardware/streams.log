@@ -1,0 +1,70 @@
+[0.900s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[1.273s] -- The C compiler identification is GNU 11.4.0
+[1.421s] -- The CXX compiler identification is GNU 11.4.0
+[1.449s] -- Detecting C compiler ABI info
+[1.728s] -- Detecting C compiler ABI info - done
+[1.744s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.745s] -- Detecting C compile features
+[1.747s] -- Detecting C compile features - done
+[1.759s] -- Detecting CXX compiler ABI info
+[1.957s] -- Detecting CXX compiler ABI info - done
+[1.970s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.970s] -- Detecting CXX compile features
+[1.973s] -- Detecting CXX compile features - done
+[1.979s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.398s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.623s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[2.711s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.722s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.742s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.770s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.805s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.903s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.911s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.103s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.133s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.177s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.196s] -- Looking for pthread.h
+[3.323s] -- Looking for pthread.h - found
+[3.324s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.453s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.455s] -- Found Threads: TRUE  
+[3.569s] -- Found rclcpp_lifecycle: 16.0.15 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[3.615s] -- Found hardware_interface: 2.52.2 (/opt/ros/humble/share/hardware_interface/cmake)
+[3.874s] -- LibSerial include dir: /usr/include/libserial
+[3.874s] -- LibSerial library: /usr/lib/aarch64-linux-gnu/libserial.so
+[3.979s] -- Configuring done
+[3.998s] -- Generating done
+[4.005s] -- Build files have been written to: /root/ros2_ws/build/mecanum_hardware
+[4.022s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[4.024s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[4.111s] [ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[11.368s] [100%] [32m[1mLinking CXX shared library libmecanum_hardware.so[0m
+[12.009s] [100%] Built target mecanum_hardware
+[12.028s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[12.048s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware
+[12.060s] -- Install configuration: ""
+[12.060s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[12.061s] -- Installing: /root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so
+[12.065s] -- Set runtime path of "/root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so" to ""
+[12.065s] -- Installing: /root/ros2_ws/install/mecanum_hardware/include
+[12.065s] -- Installing: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware
+[12.065s] -- Installing: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp
+[12.065s] -- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+[12.066s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/package_run_dependencies/mecanum_hardware
+[12.066s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/parent_prefix_path/mecanum_hardware
+[12.066s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.sh
+[12.066s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.dsv
+[12.066s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.sh
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.dsv
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.bash
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.sh
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.zsh
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.dsv
+[12.067s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv
+[12.068s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/packages/mecanum_hardware
+[12.068s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/mecanum_hardware
+[12.068s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig.cmake
+[12.068s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig-version.cmake
+[12.068s] -- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.xml
+[12.072s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/build/mecanum_hardware

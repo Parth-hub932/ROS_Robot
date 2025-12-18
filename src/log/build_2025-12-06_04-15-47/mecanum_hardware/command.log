@@ -1,0 +1,2 @@
+Invoking command in '/root/ros2_ws/src/build/mecanum_hardware': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/install/mecanum_hardware
+Invoked command in '/root/ros2_ws/src/build/mecanum_hardware' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/install/mecanum_hardware

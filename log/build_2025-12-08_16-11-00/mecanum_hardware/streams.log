@@ -1,0 +1,150 @@
+[0.015s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[0.091s] [35m[1mConsolidate compiler generated dependencies of target mecanum_hardware[0m
+[0.119s] [ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[3.639s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_configure(const rclcpp_lifecycle::State&)[m[K’:
+[3.639s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:47:96:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.639s]    47 | hardware_interface::CallbackReturn MecanumSystem::on_configure([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+[3.639s]       |                                                                [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[3.639s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_deactivate(const rclcpp_lifecycle::State&)[m[K’:
+[3.639s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:85:97:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.640s]    85 | hardware_interface::CallbackReturn MecanumSystem::on_deactivate([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+[3.640s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[3.640s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[3.640s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:123:8:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[Kcatch[m[K’ before ‘[01m[K([m[K’ token
+[3.640s]   123 |     if [01;31m[K([m[Kline.rfind("D,", 0) == 0)
+[3.640s]       |        [01;31m[K^[m[K
+[3.642s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:123:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kline[m[K’ does not name a type
+[3.642s]   123 |     if ([01;31m[Kline[m[K.rfind("D,", 0) == 0)
+[3.643s]       |         [01;31m[K^~~~[m[K
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:123:13:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K.[m[K’ token
+[3.643s]   123 |     if [34m[K([m[Kline[01;31m[K.[m[Krfind("D,", 0) == 0)
+[3.643s]       |        [34m[K~[m[K    [01;31m[K^[m[K
+[3.643s]       |             [32m[K)[m[K
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:123:13:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K.[m[K’ token
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:123:13:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K.[m[K’ token
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:92:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.643s]    92 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+[3.643s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:93:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.643s]    93 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+[3.643s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K At global scope:
+[3.643s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:192:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kcatch[m[K’
+[3.644s]   192 |   [01;31m[Kcatch[m[K (const std::exception &e)
+[3.644s]       |   [01;31m[K^~~~~[m[K
+[3.644s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:207:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kcatch[m[K’
+[3.644s]   207 |   [01;31m[Kcatch[m[K (...)
+[3.644s]       |   [01;31m[K^~~~~[m[K
+[3.644s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:214:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kreturn[m[K’
+[3.644s]   214 |   [01;31m[Kreturn[m[K hardware_interface::return_type::OK;
+[3.644s]       |   [01;31m[K^~~~~~[m[K
+[3.644s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:222:33:[m[K [01;31m[Kerror: [m[K‘[01m[KMecanumSystem[m[K’ has not been declared
+[3.644s]   222 | hardware_interface::return_type [01;31m[KMecanumSystem[m[K::write(
+[3.644s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.649s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[3.649s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[3.650s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[3.650s]                  from [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:15[m[K,
+[3.650s]                  from [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:1[m[K:
+[3.650s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In function ‘[01m[Khardware_interface::return_type write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[3.650s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:230:8:[m[K [01;31m[Kerror: [m[K‘[01m[Knode_[m[K’ was not declared in this scope; did you mean ‘[01m[Kmode_t[m[K’?
+[3.650s]   230 |       *[01;31m[Knode_[m[K->get_clock(),
+[3.650s]       |        [01;31m[K^~~~~[m[K
+[3.657s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In lambda function:
+[3.657s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:228:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kc[m[K’ was not declared in this scope
+[3.657s]   228 |   [01;31m[KRCLCPP_INFO_THROTTLE[m[K(
+[3.657s]       |   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[3.665s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[3.666s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[3.666s]                  from [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:15[m[K,
+[3.666s]                  from [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:1[m[K:
+[3.666s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In function ‘[01m[Khardware_interface::return_type write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[3.666s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:233:7:[m[K [01;31m[Kerror: [m[K‘[01m[Khw_commands_[m[K’ was not declared in this scope
+[3.666s]   233 |       [01;31m[Khw_commands_[m[K[0],
+[3.666s]       |       [01;31m[K^~~~~~~~~~~~[m[K
+[3.673s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:234:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kticks_per_rev_[m[K’ was not declared in this scope
+[3.673s]   234 |       [01;31m[Kticks_per_rev_[m[K,
+[3.674s]       |       [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.674s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:252:10:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble dt[m[K’
+[3.674s]   252 |   double [01;31m[Kdt[m[K = 0.01;   // 10 ms control period
+[3.674s]       |          [01;31m[K^~[m[K
+[3.674s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:226:10:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble dt[m[K’ previously declared here
+[3.674s]   226 |   double [01;36m[Kdt[m[K = 0.01;
+[3.674s]       |          [01;36m[K^~[m[K
+[3.682s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:258:8:[m[K [01;31m[Kerror: [m[K‘[01m[Khw_commands_[m[K’ was not declared in this scope
+[3.682s]   258 |       ([01;31m[Khw_commands_[m[K[i] / (2.0 * M_PI)) * ticks_per_rev_ * dt;
+[3.682s]       |        [01;31m[K^~~~~~~~~~~~[m[K
+[3.689s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:258:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kticks_per_rev_[m[K’ was not declared in this scope
+[3.690s]   258 |       (hw_commands_[i] / (2.0 * M_PI)) * [01;31m[Kticks_per_rev_[m[K * dt;
+[3.690s]       |                                          [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.697s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:265:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_tx_cmd_[m[K’ was not declared in this scope
+[3.697s]   265 |     [01;31m[Klast_tx_cmd_[m[K[i] = cmd;     // STORE FOR ACK VERIFICATION
+[3.697s]       |     [01;31m[K^~~~~~~~~~~~[m[K
+[3.705s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:286:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port_[m[K’ was not declared in this scope
+[3.705s]   286 |   [01;31m[Kserial_port_[m[K.Write(out);
+[3.705s]       |   [01;31m[K^~~~~~~~~~~~[m[K
+[3.713s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:289:3:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_tx_time_[m[K’ was not declared in this scope
+[3.714s]   289 |   [01;31m[Klast_tx_time_[m[K = rclcpp::Clock().now();
+[3.714s]       |   [01;31m[K^~~~~~~~~~~~~[m[K
+[3.722s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:290:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kack_received_[m[K’ was not declared in this scope
+[3.722s]   290 |   [01;31m[Kack_received_[m[K = false;
+[3.723s]       |   [01;31m[K^~~~~~~~~~~~~[m[K
+[3.723s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:223:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.723s]   223 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+[3.723s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.723s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:224:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[3.723s]   224 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+[3.723s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.723s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K At global scope:
+[3.723s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:299:49:[m[K [01;31m[Kerror: [m[K‘[01m[KMecanumSystem[m[K’ has not been declared
+[3.723s]   299 | std::vector<hardware_interface::StateInterface> [01;31m[KMecanumSystem[m[K::export_state_interfaces()
+[3.723s]       |                                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[3.733s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In function ‘[01m[Kstd::vector<hardware_interface::StateInterface> export_state_interfaces()[m[K’:
+[3.733s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:302:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kinfo_[m[K’ was not declared in this scope
+[3.733s]   302 |   for (size_t i = 0; i < [01;31m[Kinfo_[m[K.joints.size(); i++) {
+[3.733s]       |                          [01;31m[K^~~~~[m[K
+[3.741s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:304:66:[m[K [01;31m[Kerror: [m[K‘[01m[Khw_positions_[m[K’ was not declared in this scope
+[3.741s]   304 |       info_.joints[i].name, hardware_interface::HW_IF_POSITION, &[01;31m[Khw_positions_[m[K[i]));
+[3.741s]       |                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[3.749s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:306:66:[m[K [01;31m[Kerror: [m[K‘[01m[Khw_velocities_[m[K’ was not declared in this scope
+[3.750s]   306 |       info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &[01;31m[Khw_velocities_[m[K[i]));
+[3.750s]       |                                                                  [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.750s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K At global scope:
+[3.750s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:311:51:[m[K [01;31m[Kerror: [m[K‘[01m[KMecanumSystem[m[K’ has not been declared
+[3.750s]   311 | std::vector<hardware_interface::CommandInterface> [01;31m[KMecanumSystem[m[K::export_command_interfaces()
+[3.750s]       |                                                   [01;31m[K^~~~~~~~~~~~~[m[K
+[3.760s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In function ‘[01m[Kstd::vector<hardware_interface::CommandInterface> export_command_interfaces()[m[K’:
+[3.760s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:314:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kinfo_[m[K’ was not declared in this scope
+[3.760s]   314 |   for (size_t i = 0; i < [01;31m[Kinfo_[m[K.joints.size(); i++) {
+[3.760s]       |                          [01;31m[K^~~~~[m[K
+[3.767s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:316:66:[m[K [01;31m[Kerror: [m[K‘[01m[Khw_commands_[m[K’ was not declared in this scope
+[3.767s]   316 |       info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &[01;31m[Khw_commands_[m[K[i]));
+[3.768s]       |                                                                  [01;31m[K^~~~~~~~~~~~[m[K
+[3.768s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K At global scope:
+[3.768s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:321:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+[3.768s]   321 | [01;31m[K}[m[K  // namespace mecanum_hardware
+[3.768s]       | [01;31m[K^[m[K
+[4.861s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[4.861s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:191:7:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+[4.861s]   191 |       [01;35m[K}[m[K
+[4.861s]       |       [01;35m[K^[m[K
+[4.916s] gmake[2]: *** [CMakeFiles/mecanum_hardware.dir/build.make:76: CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o] Error 1
+[4.917s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mecanum_hardware.dir/all] Error 2
+[4.917s] gmake: *** [Makefile:146: all] Error 2
+[4.921s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4

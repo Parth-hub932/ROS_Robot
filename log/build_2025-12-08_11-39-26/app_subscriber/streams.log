@@ -1,0 +1,23 @@
+[1.679s] Invoking command in '/root/ros2_ws/src/app_subscriber': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data
+[2.022s] running egg_info
+[2.025s] writing ../../build/app_subscriber/app_subscriber.egg-info/PKG-INFO
+[2.026s] writing dependency_links to ../../build/app_subscriber/app_subscriber.egg-info/dependency_links.txt
+[2.027s] writing entry points to ../../build/app_subscriber/app_subscriber.egg-info/entry_points.txt
+[2.028s] writing requirements to ../../build/app_subscriber/app_subscriber.egg-info/requires.txt
+[2.028s] writing top-level names to ../../build/app_subscriber/app_subscriber.egg-info/top_level.txt
+[2.032s] reading manifest file '../../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'
+[2.033s] writing manifest file '../../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'
+[2.035s] running build
+[2.036s] running build_py
+[2.037s] running install
+[2.038s] running install_lib
+[2.038s] running install_data
+[2.040s] running install_egg_info
+[2.045s] removing '/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber-0.0.0-py3.10.egg-info' (and everything under it)
+[2.047s] Copying ../../build/app_subscriber/app_subscriber.egg-info to /root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages/app_subscriber-0.0.0-py3.10.egg-info
+[2.048s] running install_scripts
+[2.088s] Installing data_controller script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.088s] Installing feedback_publisher script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.089s] Installing listener_node script to /root/ros2_ws/install/app_subscriber/lib/app_subscriber
+[2.091s] writing list of installed files to '/root/ros2_ws/build/app_subscriber/install.log'
+[2.234s] Invoked command in '/root/ros2_ws/src/app_subscriber' returned '0': PYTHONPATH=/root/ros2_ws/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/app_subscriber/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/app_subscriber build --build-base /root/ros2_ws/build/app_subscriber/build install --record /root/ros2_ws/build/app_subscriber/install.log --single-version-externally-managed install_data

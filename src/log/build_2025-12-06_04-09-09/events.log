@@ -1,0 +1,230 @@
+[0.000000] (-) TimerEvent: {}
+[0.000429] (app_subscriber) JobQueued: {'identifier': 'app_subscriber', 'dependencies': OrderedDict()}
+[0.000480] (distance_pid) JobQueued: {'identifier': 'distance_pid', 'dependencies': OrderedDict()}
+[0.000505] (mecanum_bot) JobQueued: {'identifier': 'mecanum_bot', 'dependencies': OrderedDict()}
+[0.000526] (mecanum_hardware) JobQueued: {'identifier': 'mecanum_hardware', 'dependencies': OrderedDict()}
+[0.000876] (app_subscriber) JobStarted: {'identifier': 'app_subscriber'}
+[0.024898] (distance_pid) JobStarted: {'identifier': 'distance_pid'}
+[0.032268] (mecanum_bot) JobStarted: {'identifier': 'mecanum_bot'}
+[0.040215] (mecanum_hardware) JobStarted: {'identifier': 'mecanum_hardware'}
+[0.099572] (-) TimerEvent: {}
+[0.200182] (-) TimerEvent: {}
+[0.300546] (-) TimerEvent: {}
+[0.400930] (-) TimerEvent: {}
+[0.501296] (-) TimerEvent: {}
+[0.601656] (-) TimerEvent: {}
+[0.702116] (-) TimerEvent: {}
+[0.803089] (-) TimerEvent: {}
+[0.903449] (-) TimerEvent: {}
+[1.003849] (-) TimerEvent: {}
+[1.023564] (mecanum_hardware) JobProgress: {'identifier': 'mecanum_hardware', 'progress': 'cmake'}
+[1.024241] (mecanum_hardware) Command: {'cmd': ['/usr/bin/cmake', '/root/ros2_ws/src/mecanum_hardware', '-DCMAKE_INSTALL_PREFIX=/root/ros2_ws/src/install/mecanum_hardware'], 'cwd': '/root/ros2_ws/src/build/mecanum_hardware', 'env': OrderedDict([('HOSTNAME', 'pi5'), ('GIT_ASKPASS', '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/helpers/browser.sh'), ('HOME', '/root'), ('OLDPWD', '/root/ros2_ws'), ('TERM_PROGRAM_VERSION', '1.106.3'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-0c254b68-fc0f-4f22-bfe5-37ede1f29439.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-b674d25c-05a5-4db5-82b7-bf42428d6e30.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-405ffee2fd.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/bash'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/root/ros2_ws/src/build/mecanum_hardware'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.103999] (-) TimerEvent: {}
+[1.204881] (-) TimerEvent: {}
+[1.305376] (-) TimerEvent: {}
+[1.406886] (-) TimerEvent: {}
+[1.507409] (-) TimerEvent: {}
+[1.539046] (mecanum_hardware) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.607511] (-) TimerEvent: {}
+[1.709027] (-) TimerEvent: {}
+[1.810161] (-) TimerEvent: {}
+[1.910710] (-) TimerEvent: {}
+[1.933415] (mecanum_hardware) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.959989] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.010819] (-) TimerEvent: {}
+[2.111725] (-) TimerEvent: {}
+[2.130872] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.155367] (mecanum_hardware) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.156874] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.161071] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.173267] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.211866] (-) TimerEvent: {}
+[2.313778] (-) TimerEvent: {}
+[2.414422] (-) TimerEvent: {}
+[2.431720] (mecanum_bot) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/mecanum_bot', 'build', '--build-base', '/root/ros2_ws/src/build/mecanum_bot/build', 'install', '--record', '/root/ros2_ws/src/build/mecanum_bot/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/root/ros2_ws/src/mecanum_bot', 'env': {'HOSTNAME': 'pi5', 'GIT_ASKPASS': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/helpers/browser.sh', 'HOME': '/root', 'OLDPWD': '/root/ros2_ws', 'TERM_PROGRAM_VERSION': '1.106.3', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-0c254b68-fc0f-4f22-bfe5-37ede1f29439.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'ROS_DISTRO': 'humble', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-b674d25c-05a5-4db5-82b7-bf42428d6e30.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X1","/root/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-405ffee2fd.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X1', 'SHELL': '/bin/bash', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/root/ros2_ws/src/build/mecanum_bot', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/root/ros2_ws/src/build/mecanum_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.442484] (distance_pid) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/distance_pid', 'build', '--build-base', '/root/ros2_ws/src/build/distance_pid/build', 'install', '--record', '/root/ros2_ws/src/build/distance_pid/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/root/ros2_ws/src/distance_pid', 'env': {'HOSTNAME': 'pi5', 'GIT_ASKPASS': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/helpers/browser.sh', 'HOME': '/root', 'OLDPWD': '/root/ros2_ws', 'TERM_PROGRAM_VERSION': '1.106.3', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-0c254b68-fc0f-4f22-bfe5-37ede1f29439.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'ROS_DISTRO': 'humble', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-b674d25c-05a5-4db5-82b7-bf42428d6e30.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X1","/root/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-405ffee2fd.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X1', 'SHELL': '/bin/bash', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/root/ros2_ws/src/build/distance_pid', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/root/ros2_ws/src/build/distance_pid/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/src/install/distance_pid/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.465943] (app_subscriber) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/app_subscriber', 'build', '--build-base', '/root/ros2_ws/src/build/app_subscriber/build', 'install', '--record', '/root/ros2_ws/src/build/app_subscriber/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/root/ros2_ws/src/app_subscriber', 'env': {'HOSTNAME': 'pi5', 'GIT_ASKPASS': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/helpers/browser.sh', 'HOME': '/root', 'OLDPWD': '/root/ros2_ws', 'TERM_PROGRAM_VERSION': '1.106.3', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-0c254b68-fc0f-4f22-bfe5-37ede1f29439.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'ROS_DISTRO': 'humble', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-b674d25c-05a5-4db5-82b7-bf42428d6e30.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/bin/bf9252a2fb45be6893dd8870c0bf37e2e1766d61/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X1","/root/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-405ffee2fd.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X1', 'SHELL': '/bin/bash', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/root/ros2_ws/src/build/app_subscriber', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/root/ros2_ws/src/build/app_subscriber/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[2.472870] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.493688] (mecanum_hardware) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.494671] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.496141] (mecanum_hardware) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.513064] (mecanum_hardware) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[2.515705] (-) TimerEvent: {}
+[2.616669] (-) TimerEvent: {}
+[2.718722] (-) TimerEvent: {}
+[2.819168] (-) TimerEvent: {}
+[2.843856] (distance_pid) StdoutLine: {'line': b'running egg_info\n'}
+[2.844225] (distance_pid) StdoutLine: {'line': b'creating ../build/distance_pid/distance_pid.egg-info\n'}
+[2.844395] (distance_pid) StdoutLine: {'line': b'writing ../build/distance_pid/distance_pid.egg-info/PKG-INFO\n'}
+[2.844517] (distance_pid) StdoutLine: {'line': b'writing dependency_links to ../build/distance_pid/distance_pid.egg-info/dependency_links.txt\n'}
+[2.844605] (distance_pid) StdoutLine: {'line': b'writing entry points to ../build/distance_pid/distance_pid.egg-info/entry_points.txt\n'}
+[2.844728] (distance_pid) StdoutLine: {'line': b'writing requirements to ../build/distance_pid/distance_pid.egg-info/requires.txt\n'}
+[2.844810] (distance_pid) StdoutLine: {'line': b'writing top-level names to ../build/distance_pid/distance_pid.egg-info/top_level.txt\n'}
+[2.844878] (distance_pid) StdoutLine: {'line': b"writing manifest file '../build/distance_pid/distance_pid.egg-info/SOURCES.txt'\n"}
+[2.845117] (distance_pid) StdoutLine: {'line': b"reading manifest file '../build/distance_pid/distance_pid.egg-info/SOURCES.txt'\n"}
+[2.846367] (distance_pid) StdoutLine: {'line': b"writing manifest file '../build/distance_pid/distance_pid.egg-info/SOURCES.txt'\n"}
+[2.846783] (distance_pid) StdoutLine: {'line': b'running build\n'}
+[2.846960] (distance_pid) StdoutLine: {'line': b'running build_py\n'}
+[2.847986] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/distance_pid/build\n'}
+[2.848093] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/distance_pid/build/lib\n'}
+[2.848173] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/distance_pid/build/lib/distance_pid\n'}
+[2.848247] (distance_pid) StdoutLine: {'line': b'copying distance_pid/__init__.py -> /root/ros2_ws/src/build/distance_pid/build/lib/distance_pid\n'}
+[2.849765] (distance_pid) StdoutLine: {'line': b'running install\n'}
+[2.850146] (distance_pid) StdoutLine: {'line': b'running install_lib\n'}
+[2.850582] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/distance_pid/lib/python3.10/site-packages/distance_pid\n'}
+[2.850735] (distance_pid) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/distance_pid/build/lib/distance_pid/__init__.py -> /root/ros2_ws/src/install/distance_pid/lib/python3.10/site-packages/distance_pid\n'}
+[2.851592] (distance_pid) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/distance_pid/lib/python3.10/site-packages/distance_pid/__init__.py to __init__.cpython-310.pyc\n'}
+[2.852032] (distance_pid) StdoutLine: {'line': b'running install_data\n'}
+[2.852391] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/distance_pid/share/ament_index\n'}
+[2.852571] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/distance_pid/share/ament_index/resource_index\n'}
+[2.852717] (distance_pid) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/distance_pid/share/ament_index/resource_index/packages\n'}
+[2.852919] (distance_pid) StdoutLine: {'line': b'copying resource/distance_pid -> /root/ros2_ws/src/install/distance_pid/share/ament_index/resource_index/packages\n'}
+[2.853020] (distance_pid) StdoutLine: {'line': b'copying package.xml -> /root/ros2_ws/src/install/distance_pid/share/distance_pid\n'}
+[2.853109] (distance_pid) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.857020] (distance_pid) StdoutLine: {'line': b'Copying ../build/distance_pid/distance_pid.egg-info to /root/ros2_ws/src/install/distance_pid/lib/python3.10/site-packages/distance_pid-0.0.0-py3.10.egg-info\n'}
+[2.858588] (distance_pid) StdoutLine: {'line': b'running install_scripts\n'}
+[2.874913] (mecanum_bot) StdoutLine: {'line': b'running egg_info\n'}
+[2.875373] (mecanum_bot) StdoutLine: {'line': b'creating ../build/mecanum_bot/mecanum_bot.egg-info\n'}
+[2.875504] (mecanum_bot) StdoutLine: {'line': b'writing ../build/mecanum_bot/mecanum_bot.egg-info/PKG-INFO\n'}
+[2.876348] (mecanum_bot) StdoutLine: {'line': b'writing dependency_links to ../build/mecanum_bot/mecanum_bot.egg-info/dependency_links.txt\n'}
+[2.877029] (mecanum_bot) StdoutLine: {'line': b'writing entry points to ../build/mecanum_bot/mecanum_bot.egg-info/entry_points.txt\n'}
+[2.877499] (mecanum_bot) StdoutLine: {'line': b'writing requirements to ../build/mecanum_bot/mecanum_bot.egg-info/requires.txt\n'}
+[2.877929] (mecanum_bot) StdoutLine: {'line': b'writing top-level names to ../build/mecanum_bot/mecanum_bot.egg-info/top_level.txt\n'}
+[2.878616] (mecanum_bot) StdoutLine: {'line': b"writing manifest file '../build/mecanum_bot/mecanum_bot.egg-info/SOURCES.txt'\n"}
+[2.882706] (mecanum_bot) StdoutLine: {'line': b"reading manifest file '../build/mecanum_bot/mecanum_bot.egg-info/SOURCES.txt'\n"}
+[2.885826] (mecanum_bot) StdoutLine: {'line': b"writing manifest file '../build/mecanum_bot/mecanum_bot.egg-info/SOURCES.txt'\n"}
+[2.886190] (mecanum_bot) StdoutLine: {'line': b'running build\n'}
+[2.887588] (mecanum_bot) StdoutLine: {'line': b'running build_py\n'}
+[2.888746] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/mecanum_bot/build\n'}
+[2.889778] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/mecanum_bot/build/lib\n'}
+[2.889979] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot\n'}
+[2.890080] (mecanum_bot) StdoutLine: {'line': b'copying mecanum_bot/data_controller_node.py -> /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot\n'}
+[2.890184] (mecanum_bot) StdoutLine: {'line': b'copying mecanum_bot/pid.py -> /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot\n'}
+[2.890275] (mecanum_bot) StdoutLine: {'line': b'copying mecanum_bot/__init__.py -> /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot\n'}
+[2.890357] (mecanum_bot) StdoutLine: {'line': b'running install\n'}
+[2.890433] (mecanum_hardware) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[2.891782] (mecanum_bot) StdoutLine: {'line': b'running install_lib\n'}
+[2.892031] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot\n'}
+[2.892121] (mecanum_bot) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot/data_controller_node.py -> /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot\n'}
+[2.892200] (mecanum_bot) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot/pid.py -> /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot\n'}
+[2.892276] (mecanum_bot) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/mecanum_bot/build/lib/mecanum_bot/__init__.py -> /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot\n'}
+[2.892893] (mecanum_bot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot/data_controller_node.py to data_controller_node.cpython-310.pyc\n'}
+[2.895707] (mecanum_bot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot/pid.py to pid.cpython-310.pyc\n'}
+[2.898520] (mecanum_bot) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot/__init__.py to __init__.cpython-310.pyc\n'}
+[2.899339] (mecanum_bot) StdoutLine: {'line': b'running install_data\n'}
+[2.899610] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/mecanum_bot/share/ament_index\n'}
+[2.900398] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/mecanum_bot/share/ament_index/resource_index\n'}
+[2.900621] (mecanum_bot) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/mecanum_bot/share/ament_index/resource_index/packages\n'}
+[2.900861] (mecanum_bot) StdoutLine: {'line': b'copying resource/mecanum_bot -> /root/ros2_ws/src/install/mecanum_bot/share/ament_index/resource_index/packages\n'}
+[2.901063] (mecanum_bot) StdoutLine: {'line': b'copying package.xml -> /root/ros2_ws/src/install/mecanum_bot/share/mecanum_bot\n'}
+[2.901222] (mecanum_bot) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.904336] (distance_pid) StdoutLine: {'line': b"writing list of installed files to '/root/ros2_ws/src/build/distance_pid/install.log'\n"}
+[2.907264] (mecanum_bot) StdoutLine: {'line': b'Copying ../build/mecanum_bot/mecanum_bot.egg-info to /root/ros2_ws/src/install/mecanum_bot/lib/python3.10/site-packages/mecanum_bot-0.0.0-py3.10.egg-info\n'}
+[2.912787] (mecanum_bot) StdoutLine: {'line': b'running install_scripts\n'}
+[2.914379] (app_subscriber) StdoutLine: {'line': b'running egg_info\n'}
+[2.916364] (app_subscriber) StdoutLine: {'line': b'creating ../build/app_subscriber/app_subscriber.egg-info\n'}
+[2.919276] (app_subscriber) StdoutLine: {'line': b'writing ../build/app_subscriber/app_subscriber.egg-info/PKG-INFO\n'}
+[2.919606] (-) TimerEvent: {}
+[2.920506] (app_subscriber) StdoutLine: {'line': b'writing dependency_links to ../build/app_subscriber/app_subscriber.egg-info/dependency_links.txt\n'}
+[2.922917] (app_subscriber) StdoutLine: {'line': b'writing entry points to ../build/app_subscriber/app_subscriber.egg-info/entry_points.txt\n'}
+[2.923213] (app_subscriber) StdoutLine: {'line': b'writing requirements to ../build/app_subscriber/app_subscriber.egg-info/requires.txt\n'}
+[2.923319] (app_subscriber) StdoutLine: {'line': b'writing top-level names to ../build/app_subscriber/app_subscriber.egg-info/top_level.txt\n'}
+[2.923405] (app_subscriber) StdoutLine: {'line': b"writing manifest file '../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'\n"}
+[2.926221] (app_subscriber) StdoutLine: {'line': b"reading manifest file '../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'\n"}
+[2.931663] (app_subscriber) StdoutLine: {'line': b"writing manifest file '../build/app_subscriber/app_subscriber.egg-info/SOURCES.txt'\n"}
+[2.933147] (app_subscriber) StdoutLine: {'line': b'running build\n'}
+[2.934681] (app_subscriber) StdoutLine: {'line': b'running build_py\n'}
+[2.934904] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/app_subscriber/build\n'}
+[2.935042] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/app_subscriber/build/lib\n'}
+[2.937760] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber\n'}
+[2.938315] (app_subscriber) StdoutLine: {'line': b'copying app_subscriber/data_controller_node.py -> /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber\n'}
+[2.938803] (app_subscriber) StdoutLine: {'line': b'copying app_subscriber/listener_node.py -> /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber\n'}
+[2.939066] (app_subscriber) StdoutLine: {'line': b'copying app_subscriber/feedback_publisher.py -> /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber\n'}
+[2.939417] (app_subscriber) StdoutLine: {'line': b'copying app_subscriber/__init__.py -> /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber\n'}
+[2.939686] (app_subscriber) StdoutLine: {'line': b'running install\n'}
+[2.939816] (app_subscriber) StdoutLine: {'line': b'running install_lib\n'}
+[2.939923] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber\n'}
+[2.940037] (app_subscriber) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber/data_controller_node.py -> /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber\n'}
+[2.940159] (app_subscriber) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber/listener_node.py -> /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber\n'}
+[2.940271] (app_subscriber) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber/feedback_publisher.py -> /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber\n'}
+[2.940407] (app_subscriber) StdoutLine: {'line': b'copying /root/ros2_ws/src/build/app_subscriber/build/lib/app_subscriber/__init__.py -> /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber\n'}
+[2.944086] (app_subscriber) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/data_controller_node.py to data_controller_node.cpython-310.pyc\n'}
+[2.945017] (app_subscriber) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/listener_node.py to listener_node.cpython-310.pyc\n'}
+[2.945473] (app_subscriber) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/feedback_publisher.py to feedback_publisher.cpython-310.pyc\n'}
+[2.946473] (app_subscriber) StdoutLine: {'line': b'byte-compiling /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber/__init__.py to __init__.cpython-310.pyc\n'}
+[2.946879] (app_subscriber) StdoutLine: {'line': b'running install_data\n'}
+[2.947165] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/app_subscriber/share/ament_index\n'}
+[2.947307] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/app_subscriber/share/ament_index/resource_index\n'}
+[2.947516] (app_subscriber) StdoutLine: {'line': b'creating /root/ros2_ws/src/install/app_subscriber/share/ament_index/resource_index/packages\n'}
+[2.947715] (app_subscriber) StdoutLine: {'line': b'copying resource/app_subscriber -> /root/ros2_ws/src/install/app_subscriber/share/ament_index/resource_index/packages\n'}
+[2.947959] (app_subscriber) StdoutLine: {'line': b'copying package.xml -> /root/ros2_ws/src/install/app_subscriber/share/app_subscriber\n'}
+[2.948084] (app_subscriber) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.954209] (app_subscriber) StdoutLine: {'line': b'Copying ../build/app_subscriber/app_subscriber.egg-info to /root/ros2_ws/src/install/app_subscriber/lib/python3.10/site-packages/app_subscriber-0.0.0-py3.10.egg-info\n'}
+[2.957183] (app_subscriber) StdoutLine: {'line': b'running install_scripts\n'}
+[2.971985] (mecanum_bot) StdoutLine: {'line': b'Installing data_controller script to /root/ros2_ws/src/install/mecanum_bot/lib/mecanum_bot\n'}
+[2.973507] (mecanum_bot) StdoutLine: {'line': b'Installing hardware_driver script to /root/ros2_ws/src/install/mecanum_bot/lib/mecanum_bot\n'}
+[2.976242] (mecanum_bot) StdoutLine: {'line': b'Installing pid script to /root/ros2_ws/src/install/mecanum_bot/lib/mecanum_bot\n'}
+[2.976765] (mecanum_bot) StdoutLine: {'line': b"writing list of installed files to '/root/ros2_ws/src/build/mecanum_bot/install.log'\n"}
+[3.011716] (distance_pid) CommandEnded: {'returncode': 0}
+[3.019761] (-) TimerEvent: {}
+[3.022288] (app_subscriber) StdoutLine: {'line': b'Installing data_controller script to /root/ros2_ws/src/install/app_subscriber/lib/app_subscriber\n'}
+[3.022684] (app_subscriber) StdoutLine: {'line': b'Installing feedback_publisher script to /root/ros2_ws/src/install/app_subscriber/lib/app_subscriber\n'}
+[3.022850] (app_subscriber) StdoutLine: {'line': b'Installing listener_node script to /root/ros2_ws/src/install/app_subscriber/lib/app_subscriber\n'}
+[3.024058] (app_subscriber) StdoutLine: {'line': b"writing list of installed files to '/root/ros2_ws/src/build/app_subscriber/install.log'\n"}
+[3.067345] (distance_pid) JobEnded: {'identifier': 'distance_pid', 'rc': 0}
+[3.100799] (mecanum_bot) CommandEnded: {'returncode': 0}
+[3.115100] (mecanum_bot) JobEnded: {'identifier': 'mecanum_bot', 'rc': 0}
+[3.120903] (-) TimerEvent: {}
+[3.131091] (app_subscriber) CommandEnded: {'returncode': 0}
+[3.141427] (app_subscriber) JobEnded: {'identifier': 'app_subscriber', 'rc': 0}
+[3.214287] (mecanum_hardware) StdoutLine: {'line': b'-- Found rclcpp: 16.0.14 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[3.220998] (-) TimerEvent: {}
+[3.321389] (-) TimerEvent: {}
+[3.333771] (mecanum_hardware) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[3.346255] (mecanum_hardware) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[3.368528] (mecanum_hardware) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[3.400805] (mecanum_hardware) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.421502] (-) TimerEvent: {}
+[3.441708] (mecanum_hardware) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.521629] (-) TimerEvent: {}
+[3.545132] (mecanum_hardware) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[3.551893] (mecanum_hardware) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.621759] (-) TimerEvent: {}
+[3.722193] (-) TimerEvent: {}
+[3.754857] (mecanum_hardware) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[3.787847] (mecanum_hardware) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[3.822293] (-) TimerEvent: {}
+[3.834103] (mecanum_hardware) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.855876] (mecanum_hardware) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[3.922424] (-) TimerEvent: {}
+[4.009329] (mecanum_hardware) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[4.009572] (mecanum_hardware) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[4.022544] (-) TimerEvent: {}
+[4.122957] (-) TimerEvent: {}
+[4.164967] (mecanum_hardware) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[4.165354] (mecanum_hardware) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[4.223072] (-) TimerEvent: {}
+[4.301041] (mecanum_hardware) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.14 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[4.323196] (-) TimerEvent: {}
+[4.355266] (mecanum_hardware) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:12 (find_package):\n'}
+[4.355632] (mecanum_hardware) StderrLine: {'line': b'  By not providing "Findhardware_interface.cmake" in CMAKE_MODULE_PATH this\n'}
+[4.355782] (mecanum_hardware) StderrLine: {'line': b'  project has asked CMake to find a package configuration file provided by\n'}
+[4.355855] (mecanum_hardware) StderrLine: {'line': b'  "hardware_interface", but CMake did not find one.\n'}
+[4.355936] (mecanum_hardware) StderrLine: {'line': b'\n'}
+[4.356009] (mecanum_hardware) StderrLine: {'line': b'  Could not find a package configuration file provided by\n'}
+[4.356073] (mecanum_hardware) StderrLine: {'line': b'  "hardware_interface" with any of the following names:\n'}
+[4.356134] (mecanum_hardware) StderrLine: {'line': b'\n'}
+[4.356192] (mecanum_hardware) StderrLine: {'line': b'    hardware_interfaceConfig.cmake\n'}
+[4.356258] (mecanum_hardware) StderrLine: {'line': b'    hardware_interface-config.cmake\n'}
+[4.356318] (mecanum_hardware) StderrLine: {'line': b'\n'}
+[4.356379] (mecanum_hardware) StderrLine: {'line': b'  Add the installation prefix of "hardware_interface" to CMAKE_PREFIX_PATH or\n'}
+[4.356440] (mecanum_hardware) StderrLine: {'line': b'  set "hardware_interface_DIR" to a directory containing one of the above\n'}
+[4.356508] (mecanum_hardware) StderrLine: {'line': b'  files.  If "hardware_interface" provides a separate development package or\n'}
+[4.356573] (mecanum_hardware) StderrLine: {'line': b'  SDK, be sure it has been installed.\n'}
+[4.356630] (mecanum_hardware) StderrLine: {'line': b'\n'}
+[4.356707] (mecanum_hardware) StderrLine: {'line': b'\x1b[0m\n'}
+[4.356769] (mecanum_hardware) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[4.356853] (mecanum_hardware) StdoutLine: {'line': b'See also "/root/ros2_ws/src/build/mecanum_hardware/CMakeFiles/CMakeOutput.log".\n'}
+[4.368946] (mecanum_hardware) CommandEnded: {'returncode': 1}
+[4.396006] (mecanum_hardware) JobEnded: {'identifier': 'mecanum_hardware', 'rc': 1}
+[4.406896] (-) EventReactorShutdown: {}

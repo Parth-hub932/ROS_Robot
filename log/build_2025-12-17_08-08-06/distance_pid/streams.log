@@ -1,0 +1,20 @@
+[1.710s] Invoking command in '/root/ros2_ws/src/distance_pid': PYTHONPATH=/root/ros2_ws/build/distance_pid/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/distance_pid build --build-base /root/ros2_ws/build/distance_pid/build install --record /root/ros2_ws/build/distance_pid/install.log --single-version-externally-managed install_data
+[2.028s] running egg_info
+[2.028s] writing ../../build/distance_pid/distance_pid.egg-info/PKG-INFO
+[2.031s] writing dependency_links to ../../build/distance_pid/distance_pid.egg-info/dependency_links.txt
+[2.032s] writing entry points to ../../build/distance_pid/distance_pid.egg-info/entry_points.txt
+[2.032s] writing requirements to ../../build/distance_pid/distance_pid.egg-info/requires.txt
+[2.032s] writing top-level names to ../../build/distance_pid/distance_pid.egg-info/top_level.txt
+[2.035s] reading manifest file '../../build/distance_pid/distance_pid.egg-info/SOURCES.txt'
+[2.037s] writing manifest file '../../build/distance_pid/distance_pid.egg-info/SOURCES.txt'
+[2.037s] running build
+[2.037s] running build_py
+[2.037s] running install
+[2.038s] running install_lib
+[2.041s] running install_data
+[2.041s] running install_egg_info
+[2.045s] removing '/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages/distance_pid-0.0.0-py3.10.egg-info' (and everything under it)
+[2.045s] Copying ../../build/distance_pid/distance_pid.egg-info to /root/ros2_ws/install/distance_pid/lib/python3.10/site-packages/distance_pid-0.0.0-py3.10.egg-info
+[2.046s] running install_scripts
+[2.086s] writing list of installed files to '/root/ros2_ws/build/distance_pid/install.log'
+[2.262s] Invoked command in '/root/ros2_ws/src/distance_pid' returned '0': PYTHONPATH=/root/ros2_ws/build/distance_pid/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_ws/install/distance_pid/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/distance_pid build --build-base /root/ros2_ws/build/distance_pid/build install --record /root/ros2_ws/build/distance_pid/install.log --single-version-externally-managed install_data

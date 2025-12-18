@@ -1,0 +1,51 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_configure(const rclcpp_lifecycle::State&)[m[K’:
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:47:96:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   47 | turn MecanumSystem::on_configure([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+      |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::CallbackReturn mecanum_hardware::MecanumSystem::on_deactivate(const rclcpp_lifecycle::State&)[m[K’:
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:85:97:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kprevious_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   85 | urn MecanumSystem::on_deactivate([01;35m[Kconst rclcpp_lifecycle::State & previous_state[m[K)
+      |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:92:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   92 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:93:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   93 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:223:24:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  223 |   [01;35m[Kconst rclcpp::Time & time[m[K,
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:224:28:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  224 |   [01;35m[Kconst rclcpp::Duration & period[m[K)
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[100%] [32m[1mLinking CXX shared library libmecanum_hardware.so[0m
+[100%] Built target mecanum_hardware
+-- Install configuration: ""
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+-- Installing: /root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so
+-- Set runtime path of "/root/ros2_ws/install/mecanum_hardware/lib/libmecanum_hardware.so" to ""
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/package_run_dependencies/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/parent_prefix_path/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.sh
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.sh
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/environment/path.dsv
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.bash
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.sh
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.zsh
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/local_setup.dsv
+-- Installing: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.dsv
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/packages/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig.cmake
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig-version.cmake
+-- Up-to-date: /root/ros2_ws/install/mecanum_hardware/share/mecanum_hardware/package.xml

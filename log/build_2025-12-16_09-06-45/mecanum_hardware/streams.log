@@ -1,0 +1,77 @@
+[0.915s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[1.333s] -- The C compiler identification is GNU 11.4.0
+[1.502s] -- The CXX compiler identification is GNU 11.4.0
+[1.547s] -- Detecting C compiler ABI info
+[1.830s] -- Detecting C compiler ABI info - done
+[1.840s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.842s] -- Detecting C compile features
+[1.844s] -- Detecting C compile features - done
+[1.854s] -- Detecting CXX compiler ABI info
+[2.063s] -- Detecting CXX compiler ABI info - done
+[2.075s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.076s] -- Detecting CXX compile features
+[2.077s] -- Detecting CXX compile features - done
+[2.085s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.563s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.771s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[2.886s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.900s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.927s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.965s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.009s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.134s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.143s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.367s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.398s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.443s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.508s] -- Looking for pthread.h
+[3.632s] -- Looking for pthread.h - found
+[3.633s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.762s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.763s] -- Found Threads: TRUE  
+[3.907s] -- Found rclcpp_lifecycle: 16.0.15 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[3.975s] -- Found hardware_interface: 2.52.2 (/opt/ros/humble/share/hardware_interface/cmake)
+[4.297s] -- LibSerial include dir: /usr/include/libserial
+[4.297s] -- LibSerial library: /usr/lib/aarch64-linux-gnu/libserial.so
+[4.410s] -- Configuring done
+[4.430s] -- Generating done
+[4.436s] -- Build files have been written to: /root/ros2_ws/build/mecanum_hardware
+[4.454s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake /root/ros2_ws/src/mecanum_hardware -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/install/mecanum_hardware
+[4.457s] Invoking command in '/root/ros2_ws/build/mecanum_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4
+[4.541s] [ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[8.050s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:46:96:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K/[m[K’ token
+[8.050s]    46 | hardware_interface::CallbackReturn MecanumSystem::on_configure(const rclcpp_lifecycle::State & [01;31m[K/[m[Kprevious_state/)
+[8.050s]       |                                                                                                [01;31m[K^[m[K
+[8.057s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:94:97:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K/[m[K’ token
+[8.057s]    94 | hardware_interface::CallbackReturn MecanumSystem::on_deactivate(const rclcpp_lifecycle::State & [01;31m[K/[m[Kprevious_state/)
+[8.057s]       |                                                                                                 [01;31m[K^[m[K
+[8.057s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:101:24:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K/[m[K’ token
+[8.057s]   101 |   const rclcpp::Time & [01;31m[K/[m[Ktime/,
+[8.057s]       |                        [01;31m[K^[m[K
+[8.057s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:100:33:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Khardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&)[m[K’
+[8.057s]   100 | hardware_interface::return_type [01;31m[KMecanumSystem[m[K::read(
+[8.057s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[8.058s] In file included from [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:1[m[K:
+[8.058s] [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:38:35:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’
+[8.058s]    38 |   hardware_interface::return_type [01;36m[Kread[m[K(const rclcpp::Time & time,
+[8.058s]       |                                   [01;36m[K^~~~[m[K
+[8.058s] [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:26:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass mecanum_hardware::MecanumSystem[m[K’ defined here
+[8.058s]    26 | class [01;36m[KMecanumSystem[m[K : public hardware_interface::SystemInterface
+[8.058s]       |       [01;36m[K^~~~~~~~~~~~~[m[K
+[8.058s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:218:24:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[K/[m[K’ token
+[8.058s]   218 |   const rclcpp::Time & [01;31m[K/[m[Ktime/,
+[8.058s]       |                        [01;31m[K^[m[K
+[8.058s] [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:217:33:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Khardware_interface::return_type mecanum_hardware::MecanumSystem::write(const rclcpp::Time&)[m[K’
+[8.058s]   217 | hardware_interface::return_type [01;31m[KMecanumSystem[m[K::write(
+[8.058s]       |                                 [01;31m[K^~~~~~~~~~~~~[m[K
+[8.058s] In file included from [01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:1[m[K:
+[8.058s] [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:41:35:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’
+[8.058s]    41 |   hardware_interface::return_type [01;36m[Kwrite[m[K(const rclcpp::Time & time,
+[8.059s]       |                                   [01;36m[K^~~~~[m[K
+[8.059s] [01m[K/root/ros2_ws/src/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp:26:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass mecanum_hardware::MecanumSystem[m[K’ defined here
+[8.059s]    26 | class [01;36m[KMecanumSystem[m[K : public hardware_interface::SystemInterface
+[8.059s]       |       [01;36m[K^~~~~~~~~~~~~[m[K
+[9.260s] gmake[2]: *** [CMakeFiles/mecanum_hardware.dir/build.make:76: CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o] Error 1
+[9.261s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mecanum_hardware.dir/all] Error 2
+[9.261s] gmake: *** [Makefile:146: all] Error 2
+[9.265s] Invoked command in '/root/ros2_ws/build/mecanum_hardware' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/ros2_ws/install/mecanum_bot:/root/ros2_ws/install/distance_pid:/root/ros2_ws/install/app_subscriber:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/build/mecanum_hardware -- -j4 -l4

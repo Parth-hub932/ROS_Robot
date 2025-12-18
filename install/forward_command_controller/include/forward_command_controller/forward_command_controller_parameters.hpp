@@ -1,1 +1,0 @@
-/root/ros2_ws/build/forward_command_controller/include/forward_command_controller/forward_command_controller_parameters.hpp

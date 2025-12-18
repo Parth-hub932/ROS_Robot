@@ -1,1 +1,0 @@
-/root/ros2_ws/build/gripper_controllers/include/gripper_controllers/gripper_action_controller_parameters.hpp

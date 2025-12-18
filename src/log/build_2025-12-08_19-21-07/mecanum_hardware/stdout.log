@@ -1,0 +1,27 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library libmecanum_hardware.so[0m
+[100%] Built target mecanum_hardware
+-- Install configuration: ""
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+-- Installing: /root/ros2_ws/src/install/mecanum_hardware/lib/libmecanum_hardware.so
+-- Set runtime path of "/root/ros2_ws/src/install/mecanum_hardware/lib/libmecanum_hardware.so" to ""
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/include
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/include/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/include/mecanum_hardware/mecanum_system.hpp
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/mecanum_hardware.xml
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/ament_index/resource_index/package_run_dependencies/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/ament_index/resource_index/parent_prefix_path/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.sh
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/environment/path.sh
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/environment/path.dsv
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/local_setup.bash
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/local_setup.sh
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/local_setup.zsh
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/local_setup.dsv
+-- Installing: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/package.dsv
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/ament_index/resource_index/packages/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/mecanum_hardware
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig.cmake
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/cmake/mecanum_hardwareConfig-version.cmake
+-- Up-to-date: /root/ros2_ws/src/install/mecanum_hardware/share/mecanum_hardware/package.xml
