@@ -116,7 +116,7 @@ hardware_interface::return_type MecanumSystem::read(
           // The PSoC sends ~120 chars per line. At 230400 baud, that takes ~5ms.
           // 1ms was too short and was cutting packets in half.
           serial_port_.ReadLine(line, '\n', 20); 
-          RCLCPP_INFO(rclcpp::get_logger("MecanumSystem"), "RAW RX: %s", line.c_str());
+          //RCLCPP_INFO(rclcpp::get_logger("MecanumSystem"), "RAW RX: %s", line.c_str());
 
           // Strip whitespace (CR/LF)
           while (!line.empty() && (line.back() == '\n' || line.back() == '\r' || line.back() == '\0')) {
@@ -127,7 +127,7 @@ hardware_interface::return_type MecanumSystem::read(
 
           // --- SPY MODE: PRINT EVERYTHING ---
           // We want to see errors like "NAK:PARSE_ERROR"
-          RCLCPP_INFO(rclcpp::get_logger("MecanumSystem"), "RX: %s", line.c_str());
+          //RCLCPP_INFO(rclcpp::get_logger("MecanumSystem"), "RX: %s", line.c_str());
           
           // (Keep the filter only for the 'R' packet to avoid parsing errors below)
           if (line[0] == 'R') continue;

@@ -1,7 +1,0 @@
-[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type mecanum_hardware::MecanumSystem::write(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
-[01m[K/root/ros2_ws/src/mecanum_hardware/src/mecanum_system.cpp:247:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ks[m[K’ was not declared in this scope
-  247 |   [01;31m[Ks[m[K
-      |   [01;31m[K^[m[K
-gmake[2]: *** [CMakeFiles/mecanum_hardware.dir/build.make:76: CMakeFiles/mecanum_hardware.dir/src/mecanum_system.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mecanum_hardware.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

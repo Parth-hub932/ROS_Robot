@@ -80,12 +80,21 @@ def generate_launch_description():
             'target_topic': '/pid_goal',
             'completion_topic': '/pid_result',
             'odom_topic': '/odometry/filtered',
-            # CORRECT TOPIC FOR MECANUM CONTROLLER:
             'cmd_vel_topic': '/mecanum_base_controller/reference_unstamped',
-            'kp_lin': 1.0,
-            'kp_rot': 0.8,
-            'max_linear_vel': 0.3,
-            'max_angular_vel': 0.3
+
+            # --- Angular (Rotation) ---
+            'kp_rot': 1.2,           # Increased from 0.15 for snappier response
+            'ki_rot': 0.01,          # Tiny amount to overcome friction at the very end
+            'kd_rot': 0.05,          # Dampens the approach to prevent overshoot
+            'max_angular_vel': 0.8,  # Increased to 1.5 (approx 85 deg/s)
+            'min_angular_vel': 0.05,  # Minimum kick to keep motors turning
+    
+            # --- Linear (Movement) ---
+            'kp_lin': 8.0,           # Increased for faster acceleration
+            'ki_lin': 0.0,           # Keep at 0 unless it stops short of target
+            'kd_lin': 0.1,           # Helps stop smoothly
+            'max_linear_vel': 0.4,   # Medium walking speed
+            'min_linear_vel': 0.08,  # Minimum power to move the weight
         }]
     )
 

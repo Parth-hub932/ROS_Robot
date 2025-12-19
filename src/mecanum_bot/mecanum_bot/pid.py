@@ -94,9 +94,9 @@ class DistancePIDController(Node):
         self.declare_parameter('kd_lin', 0.01)
         
         # Angular PID Gains
-        self.declare_parameter('kp_rot', 1.5)
-        self.declare_parameter('ki_rot', 0.1) 
-        self.declare_parameter('kd_rot', 1.0) 
+        self.declare_parameter('kp_rot', 0.05)
+        self.declare_parameter('ki_rot', 0.0) 
+        self.declare_parameter('kd_rot', 0.02) 
 
         # Velocity Limits
         self.declare_parameter('max_angular_vel', 1.0)
@@ -141,7 +141,7 @@ class DistancePIDController(Node):
         
         # Publishes movement completion back to the app_subscriber
         self.completion_publisher = self.create_publisher(Point, completion_topic, 10)
-
+        
         # --- Control State ---
         self.current_state = self.STATE_IDLE
         
@@ -186,8 +186,9 @@ class DistancePIDController(Node):
 
         # Target distance is read as absolute, and direction is stored separately.
         self.target_dist = abs(msg.x) 
+        self.skip_linear = self.target_dist < 0.01
         self.target_angle_rad = msg.y
-        
+        #self.target_world_yaw = math.atan2(math.sin(self.target_world_yaw),math.cos(self.target_world_yaw))
         # Determine movement direction based on target distance sign (used in control_loop)
         self.movement_direction = math.copysign(1.0, msg.x)
         
@@ -243,18 +244,25 @@ class DistancePIDController(Node):
             angle_error = math.atan2(math.sin(angle_error), math.cos(angle_error))
             
             # Use PID Controller for turning
-            angular_vel = self.pid_rot.calculate(angle_error)
-            
+
+            angular_vel = -self.pid_rot.calculate(angle_error)
+            #print("angular vel:", angular_vel)
+            #self.get_logger().info(f"{angle_error:.3f} = "f"{self.target_angle_rad:.3f} - "f"{self.current_yaw:.3f} - "f"{self.start_yaw:.3f}")
+
             twist_msg.angular.z = angular_vel
             
             # Check for rotation completion (e.g., error less than 1 degree or 0.017 rad)
-            if abs(angle_error) < 0.5:
+            if abs(angle_error) < 0.034:
                 self.get_logger().info("Rotation complete. Switching to Linear Move.")
+                print("error within threshold")
                 twist_msg.angular.z = 0.0 # Stop rotation immediately
                 
                 # Reset linear PID and switch state
                 self.pid_dist.reset()
-                self.current_state = self.STATE_MOVING
+                if self.skip_linear:
+                    self.current_state = self.STATE_FINISHED
+                else:
+                    self.current_state = self.STATE_MOVING
 
         elif self.current_state == self.STATE_MOVING:
             # Stage 2: Linear Distance Control
