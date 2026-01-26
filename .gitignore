@@ -1,5 +1,12 @@
-src/ros2_control
-src/ros2_controllers
-log/
 build/
 install/
+log/
+.vscode/
+.DS_Store
+
+# Ignore external libraries (Keep them on disk, but don't upload to GitHub)
+src/ros2_control/
+src/ros2_controllers/
+
+__pycache__/
+*.pyc

@@ -1,5 +1,0 @@
-[console_scripts]
-data_controller = app_subscriber.data_controller_node:main
-feedback_publisher = app_subscriber.feedback_publisher:main
-listener_node = app_subscriber.listener_node:main
-

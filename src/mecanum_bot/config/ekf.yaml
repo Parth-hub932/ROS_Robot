@@ -1,9 +1,8 @@
-### ekf.yaml ###
+### ekf.yaml - Mecanum Robot Localization Config ###
 ekf_filter_node:
   ros__parameters:
     # --- PERFORMANCE TUNING ---
-    # We aim for 30 Hz as a stable target after switching to Release Mode
-    frequency: 30.0       
+    frequency: 30.0
     sensor_timeout: 0.1
     two_d_mode: true
     publish_tf: true
@@ -15,25 +14,87 @@ ekf_filter_node:
     world_frame: odom
 
     # --- 1. WHEEL ODOMETRY (Mecanum) ---
-    # Trust: Vx, Vy, Vz_rotation 
+    # Source: The ROS 2 Controller output
     odom0: /mecanum_base_controller/odometry
-    odom0_config: [true, true, false,
-               false, false, false,
-               true, true, false,
-               false, false, false,
-               false, false, false]
+
+    # Matrix Configuration: [X, Y, Z, Roll, Pitch, Yaw, Vx, Vy, Vz, Vroll, Vpitch, Vyaw, Ax, Ay, Az]
+    # FIX APPLIED:
+    # - Positions X, Y (indices 0, 1) are FALSE (Prevents "snapping" when wheels slip)
+    # - Velocities Vx, Vy (indices 6, 7) are TRUE (We trust linear speed)
+    # - Yaw Velocity (index 11) is FALSE (We IGNORE encoders for rotation)
+    odom0_config: [false, false, false,
+                   false, false, false,
+                   true,  true,  false,
+                   false, false, false,
+                   false, false, false]
 
     odom0_queue_size: 10
     odom0_differential: false
+    odom0_relative: false
 
-    # --- 2. IMU DATA (FINAL CONFIGURATION) ---
-    # Trust: ONLY Yaw (Index 5). All other IMU data is unreliable and ignored.
+    # --- 2. IMU DATA ---
+    # Source: The MecanumSystem hardware node
     imu0: /imu/data
+
+    # Matrix Configuration: [X, Y, Z, Roll, Pitch, Yaw, Vx, Vy, Vz, Vroll, Vpitch, Vyaw, Ax, Ay, Az]
+    # FIX APPLIED:
+    # - Yaw (index 5) is TRUE (Trust orientation)
+    # - Yaw Velocity (index 11) is TRUE (Trust rotation speed)
+    # - Acceleration (indices 12-14) is FALSE (Uncalibrated)
     imu0_config: [false, false, false,
-                  false, false, true,    # CHANGED: Yaw (Orientation) is now TRUE (Trusted)
+                  false, false, true,
                   false, false, false,
-                  false, false, false,   # CHANGED: Gyro Velocity (Vyaw) is FALSE (Removed)
-                  false, false, false]   # Linear Acceleration is FALSE (Removed)
-    imu0_queue_size: 10
+                  false, false, true,
+                  false, false, false]
+
     imu0_differential: false
+    imu0_relative: false
     imu0_remove_gravitational_acceleration: true
+
+    # --- 3. PROCESS NOISE COVARIANCE (The "Slip" Fix) ---
+    # Diagonal values. Large number = High Uncertainty (Low Trust).
+    process_noise_covariance: [
+      # Position (X, Y, Z) - Low trust (0.05) prevents jumpiness
+      0.05, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.05, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.06, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+     
+      # Orientation (Roll, Pitch, Yaw)
+      0.0,  0.0,  0.0,  0.03, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.03, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, # Yaw: High trust (0.01)
+
+      # Linear Velocity (Vx, Vy, Vz)
+      # CRITICAL FIX: Vx and Vy set to 0.25 (High Variance) to account for slip
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.25, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, # Vx
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.25, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0, # Vy
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.04, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+
+      # Angular Velocity (Vroll, Vpitch, Vyaw)
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,  0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.02, 0.0,  0.0,  0.0, # Vyaw
+
+      # Linear Acceleration (Ax, Ay, Az)
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,
+      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.015
+    ]
+
+    # --- 4. INITIAL ESTIMATE COVARIANCE ---
+    # Locks the starting position to (0,0) to prevent startup drift.
+    initial_estimate_covariance: [1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-9, 0.0,     0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    1e-9,  0.0,     0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     1e-9,  0.0,     0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     1e-9,  0.0,    0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     1e-9, 0.0,    0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    1e-9, 0.0,
+                                  0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,    0.0,     0.0,     0.0,     0.0,    0.0,    1e-9]

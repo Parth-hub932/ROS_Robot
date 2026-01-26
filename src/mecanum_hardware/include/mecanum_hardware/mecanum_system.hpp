@@ -31,6 +31,7 @@ public:
   // Lifecycle Methods
   hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override;
   hardware_interface::CallbackReturn on_configure(const rclcpp_lifecycle::State & previous_state) override;
+  hardware_interface::CallbackReturn on_cleanup( const rclcpp_lifecycle::State & previous_state) override;
   hardware_interface::CallbackReturn on_activate(const rclcpp_lifecycle::State & previous_state) override;
   hardware_interface::CallbackReturn on_deactivate(const rclcpp_lifecycle::State & previous_state) override;
 
@@ -52,6 +53,7 @@ private:
   LibSerial::SerialPort serial_port_;
   std::string port_name_;
   double ticks_per_rev_;
+  bool first_write_;
 
   // =========================
   // ROS2 CONTROL STORAGE
@@ -81,6 +83,7 @@ private:
 
   bool ack_received_ = false;          // True when valid ACK received
   rclcpp::Time last_tx_time_;          // For timeout watchdog
+  rclcpp::Time last_write_time_;        // For timeout watchdog
 };
 
 }  // namespace mecanum_hardware

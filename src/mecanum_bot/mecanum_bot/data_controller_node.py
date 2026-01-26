@@ -1,3 +1,5 @@
+# DataControllerNode
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -7,21 +9,20 @@ from geometry_msgs.msg import Point
 
 class DataControllerNode(Node):
     """
-    This node handles commands from the app, publishes goals to the PID node, 
-    and uses a queue-based state machine to manage sequential automation steps, 
-    waiting for feedback after each one. It implements error compensation by 
+    This node handles commands from the app, publishes goals to the PID node,
+    and uses a queue-based state machine to manage sequential automation steps,
+    waiting for feedback after each one. It implements error compensation by
     adding accumulated error to the subsequent target command.
     """
     def __init__(self):
         super().__init__('data_controller_node')
 
        
-        
         # Declare parameter for the Publisher topic name
         self.declare_parameter('target_topic_name', "/target_movement")
         # Declare parameter for the Subscriber topic name
         self.declare_parameter('completion_topic_name', "completed_movement")
-        
+       
         # Retrieve parameter values
         target_topic = self.get_parameter('target_topic_name').get_parameter_value().string_value
         completion_topic = self.get_parameter('completion_topic_name').get_parameter_value().string_value
@@ -29,30 +30,26 @@ class DataControllerNode(Node):
         # --- Publishers ---
         # 1. Publishes the polar goal command to the Distance PID node
         # Topic name is now read from the parameter
-        self.target_movement_publisher = self.create_publisher(Point, target_topic, 10) 
-        
+        self.target_movement_publisher = self.create_publisher(Point, target_topic, 10)
+       
         # 2. Publishes real-time feedback (JSON String) back to the app
         self.feedback_publisher = self.create_publisher(String, '/robot_feedback', 10)
 
         # --- Subscribers ---
         # 1. Subscribes to commands (JSON String) from the app
         self.create_subscription(String, '/polar_move_cmd', self.command_callback, 10)
-        
+       
         # 2. Subscribes to achieved movement feedback (Point) from the PID node
         # Topic name is now read from the parameter
         self.create_subscription(Point, completion_topic, self.completed_movement_callback, 10)
-        
+       
         # --- Data Persistence & State Management ---
-        
+       
         self.target_distance = 0.0      # Last commanded distance (meters)
         self.target_angle_rad = 0.0     # Last commanded angle (radians)
 
-        # NEW: Accumulators for error compensation
-        self.accumulated_dist_error = 0.0   # Accumulates distance error (meters)
-        self.accumulated_angle_error = 0.0  # Accumulates angular error (radians)
-
         # Queue and state flag for sequence management
-        self.automation_queue = deque() 
+        self.automation_queue = deque()
         self.is_moving = False          
 
         self.get_logger().info('Data Controller Node is ready. State: IDLE.')
@@ -62,7 +59,7 @@ class DataControllerNode(Node):
     def command_callback(self, msg):
         """Receives all messages from the app and decides how to handle them."""
         self.get_logger().info(f'Received message: {msg.data}')
-        
+       
         try:
             data = json.loads(msg.data)
             if 'steps' in data:
@@ -87,7 +84,7 @@ class DataControllerNode(Node):
 
     def process_next_step(self):
         """
-        Sends the next command from the queue. 
+        Sends the next command from the queue.
         CRITICAL: Applies accumulated error to the new target before publishing.
         """
         if not self.automation_queue:
@@ -97,40 +94,27 @@ class DataControllerNode(Node):
 
         next_step = self.automation_queue.popleft()
 
-        # 1. Extract and apply accumulated error
+        # 1. Extract target WITHOUT compensation
         original_radius = float(next_step.get('radius', 0.0))
         original_angle_deg = float(next_step.get('angle', 0.0))
-        
-        # Compensate Distance (Add accumulated error to the next target distance)
-        compensated_radius = original_radius + self.accumulated_dist_error
-        
-        # Compensate Angle (Convert original angle to rad, add accumulated rad error, convert back to deg)
-        original_angle_rad = original_angle_deg * (3.14159 / 180.0)
-        compensated_angle_rad = original_angle_rad + self.accumulated_angle_error
-        compensated_angle_deg = compensated_angle_rad * (180.0 / 3.14159)
 
         self.get_logger().info(
-            f"COMPENSATION APPLIED. "
-            f"Correction: Dist={self.accumulated_dist_error:.2f}m, Angle={self.accumulated_angle_error:.2f}rad. "
-            f"New Target: {compensated_radius:.2f}m, {compensated_angle_deg:.2f}deg"
+        f"Executing step WITHOUT compensation: "
+        f"{original_radius:.2f}cm, {original_angle_deg:.2f}deg"
         )
-        
-        # Update the command dictionary with compensated values
-        next_step['radius'] = compensated_radius
-        next_step['angle'] = compensated_angle_deg
 
-        # 2. Reset the accumulated errors *after* application
-        self.accumulated_dist_error = 0.0
-        self.accumulated_angle_error = 0.0
+        next_step['radius'] = original_radius
+        next_step['angle'] = original_angle_deg
+
 
         # 3. Execute with modified step
-        
+       
         self.execute_single_step(next_step)
-        
+       
     def execute_single_step(self, command_data):
         self.is_moving = True
         """
-        Stores the target, publishes the goal message. This function now receives 
+        Stores the target, publishes the goal message. This function now receives
         compensated values (if part of an automation sequence).
         """
         try:
@@ -142,11 +126,11 @@ class DataControllerNode(Node):
             return
 
         angle_rad = angle_deg * (3.14159 / 180.0)
-        
+       
         # Store target values
         self.target_distance = radius/100.0
         self.target_angle_rad = angle_rad
-        
+       
         self.get_logger().info(f"Target Stored: Dist={self.target_distance:.2f}m, Angle={self.target_angle_rad:.2f}rad")
 
         # 1. Create and populate the ROS Point message
@@ -158,10 +142,10 @@ class DataControllerNode(Node):
         # 2. Publish the goal to the PID node
         self.target_movement_publisher.publish(goal_msg)
         self.get_logger().info(f"Published Goal to PID: {goal_msg.x:.2f}m, {goal_msg.y:.2f}rad")
-        
+       
     def completed_movement_callback(self, msg):
         """
-        Receives achieved movement from PID, calculates errors, accumulates them, 
+        Receives achieved movement from PID, calculates errors, accumulates them,
         publishes feedback, and advances the sequence.
         """
         if not self.is_moving:
@@ -172,30 +156,25 @@ class DataControllerNode(Node):
         achieved_distance = msg.x
         achieved_angle_rad = msg.y
         achieved_angle_deg = achieved_angle_rad * (180.0 / 3.14159)
-        
+       
         # 2. Error Calculation
         distance_error = self.target_distance - achieved_distance
         angle_error_rad = self.target_angle_rad - achieved_angle_rad
         angle_error_deg = angle_error_rad * (180.0 / 3.14159)
-        
+       
         # 3. Accumulate Error (CRITICAL STEP for compensation)
-        self.accumulated_dist_error += distance_error
-        self.accumulated_angle_error += angle_error_rad
-        
-        self.get_logger().info(f"Errors (Instantaneous): Dist={distance_error:.2f}, Angle={angle_error_deg:.2f}deg")
-        self.get_logger().info(f"Errors (Accumulated): Dist={self.accumulated_dist_error:.2f}, Angle={self.accumulated_angle_error:.2f}rad")
+        self.get_logger().info(f"Errors (Instantaneous Only): "f"Dist={distance_error:.2f}m, Angle={angle_error_deg:.2f}deg")
 
         # 4. Publish Feedback to App (uses instantaneous error)
         self.publish_feedback(achieved_angle_deg, achieved_distance, distance_error, angle_error_deg)
 
-        # 5. Advance State Machine 
+        # 5. Advance State Machine
         if self.automation_queue:
             self.get_logger().info("Previous step complete. Dispatching next step from queue.")
             self.process_next_step()
         else:
             self.is_moving = False
             self.get_logger().info("Sequence complete. Robot is idle.")
-
 
     def publish_feedback(self, achieved_angle, achieved_distance, distance_error, angle_error):
         """
@@ -207,13 +186,12 @@ class DataControllerNode(Node):
             'moved_angle': achieved_angle,
             'error_vector': distance_error*100,
         }
-        
+       
         feedback_msg = String()
         feedback_msg.data = json.dumps(feedback_dict)
-        
+       
         self.feedback_publisher.publish(feedback_msg)
         self.get_logger().info(f'Published feedback: {feedback_msg.data}')
-
 
 def main(args=None):
     rclpy.init(args=args)

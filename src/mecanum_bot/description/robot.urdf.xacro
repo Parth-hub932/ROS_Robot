@@ -21,7 +21,8 @@
     <link name="${name}_wheel">
       <visual>
         <geometry>
-          <cylinder radius="0.0485" length="0.03"/> </geometry>
+          <cylinder radius="0.0485" length="0.03"/>
+        </geometry>
         <material name="black"><color rgba="0 0 0 1"/></material>
       </visual>
     </link>
@@ -34,20 +35,18 @@
     </joint>
   </xacro:macro>
 
-  <xacro:wheel name="fl" x="0.10"  y="0.12" />
-  <xacro:wheel name="rl" x="-0.10" y="0.12" />
-  <xacro:wheel name="fr" x="0.10"  y="-0.12"/>
-  <xacro:wheel name="rr" x="-0.10" y="-0.12"/>
-
-
+  <xacro:wheel name="fl" x="0.0975"  y="0.1035" />
+  <xacro:wheel name="rl" x="-0.0975" y="0.1035" />
+  <xacro:wheel name="fr" x="0.0975"  y="-0.1035"/>
+  <xacro:wheel name="rr" x="-0.0975" y="-0.1035"/>
 
   <ros2_control name="MecanumTopicBased" type="system">
-    
+   
     <hardware>
       <plugin>mecanum_hardware/MecanumSystem</plugin>
-      
       <param name="port">/dev/ttyACM0</param>
       <param name="baudrate">230400</param>
+      <param name="ticks_per_rev">1980</param>
     </hardware>
 
     <joint name="fl_wheel_joint">
