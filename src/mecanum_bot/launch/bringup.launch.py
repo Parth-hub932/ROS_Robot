@@ -1,3 +1,4 @@
+
 from launch import LaunchDescription
 from launch.actions import TimerAction
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
@@ -76,7 +77,7 @@ def generate_launch_description():
         name="pid_node",
         output="screen",
         parameters=[{
-            'control_rate': 50,
+            'control_rate': 25,
             'target_topic': '/pid_goal',
             'completion_topic': '/pid_result',
             'odom_topic': '/odometry/filtered',

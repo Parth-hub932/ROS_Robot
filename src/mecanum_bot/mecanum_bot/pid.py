@@ -252,7 +252,7 @@ class DistancePIDController(Node):
             twist_msg.angular.z = angular_vel
            
             # Check for rotation completion (e.g., error less than 1 degree or 0.017 rad)
-            if abs(angle_error) < 0.034:
+            if abs(angle_error) < 0.008:
                 self.get_logger().info("Rotation complete. Switching to Linear Move.")
                 print("error within threshold")
                 twist_msg.angular.z = 0.0 # Stop rotation immediately
@@ -277,7 +277,7 @@ class DistancePIDController(Node):
             twist_msg.linear.x = linear_vel * self.movement_direction
            
             # Check for movement completion (e.g., total distance remaining is less than 5cm)
-            if abs(distance_remaining) < 0.01:
+            if abs(distance_remaining) < 0.005:
                 self.get_logger().info("Linear move complete.")
                 twist_msg.linear.x = 0.0 # Stop movement immediately
                 self.current_state = self.STATE_FINISHED

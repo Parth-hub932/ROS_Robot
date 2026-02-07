@@ -12,6 +12,8 @@
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "pluginlib/class_list_macros.hpp"
+#include "std_msgs/msg/string.hpp"
+
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
@@ -65,6 +67,8 @@ serial_port_.SetParity(LibSerial::Parity::PARITY_NONE);
 serial_port_.SetStopBits(LibSerial::StopBits::STOP_BITS_1);
 node_ = rclcpp::Node::make_shared("mecanum_hardware_node");
 imu_pub_ = node_->create_publisher<sensor_msgs::msg::Imu>("/imu/data", 10);
+feedback_pub_ =node_->create_publisher<std_msgs::msg::String>("/robot_feedback", 20);
+
 RCLCPP_INFO(rclcpp::get_logger("MecanumSystem"), "Connected to PSoC on %s", port_name_.c_str());
 } catch (const LibSerial::OpenFailed& e) {
 RCLCPP_FATAL(rclcpp::get_logger("MecanumSystem"), "Failed to open %s: %s", port_name_.c_str(), e.what());
@@ -159,34 +163,55 @@ int packets_drained = 0;
 // ═══════════════════════════════════════════════════════════════════════════
 while (serial_port_.IsDataAvailable())
 {
-std::string line;
-try
-{
-serial_port_.ReadLine(line, '\n', 20);
-packets_drained++;
-// Strip trailing whitespace
-while (!line.empty() && (line.back() == '\n' || line.back() == '\r' || line.back() == '\0')) {
-line.pop_back();
+  std::string line;
+  try
+  {
+    serial_port_.ReadLine(line, '\n', 20);
+    packets_drained++;
+
+    // Strip trailing characters
+    while (!line.empty() &&
+          (line.back() == '\n' || line.back() == '\r' || line.back() == '\0')) {
+      line.pop_back();
+    }
+
+    if (line.empty()) continue;
+
+    // Skip R packets silently
+    if (line[0] == 'R') {
+      continue;
+    }
+
+    // VALID SENSOR PACKET
+    if (line.size() >= 2 && line[0] == 'D' && line[1] == ',')
+    {
+      // Handle fused packets
+      size_t pos_R = line.find(",R,");
+      if (pos_R != std::string::npos) {
+        line.erase(pos_R);
+      }
+
+      // Keep ONLY the latest D packet
+      latest_data_line = line;
+    }
+    else
+    {
+      // 🚨 EVERYTHING ELSE → /robot_feedback
+      std_msgs::msg::String feedback_msg;
+      feedback_msg.data = line;
+      feedback_pub_->publish(feedback_msg);
+    }
+  }
+  catch (const LibSerial::ReadTimeout&) {
+    break;
+  }
+  catch (const std::exception& e) {
+    RCLCPP_DEBUG(
+      rclcpp::get_logger("MecanumSystem"),
+      "Serial read error: %s", e.what());
+  }
 }
-if (line.empty()) continue;
-if (line[0] == 'R') continue; // Skip R-packets
-// Validate and save D-packets
-if (line.size() >= 2 && line[0] == 'D' && line[1] == ',') {
-// Fix fused packets: "D,...,R,..." → "D,..."
-size_t pos_R = line.find(",R,");
-if (pos_R != std::string::npos) {
-line.erase(pos_R);
-}
-latest_data_line = line; // Overwrite - keeps ONLY latest!
-}
-}
-catch (const LibSerial::ReadTimeout&) {
-break; // Timeout is expected, not an error
-}
-catch (const std::exception& e) {
-RCLCPP_DEBUG(rclcpp::get_logger("MecanumSystem"), "Serial read: %s", e.what());
-}
-}
+
 // Warn if buffer is accumulating (indicates timing issues)
 if (packets_drained > 3) {
 RCLCPP_WARN_THROTTLE(rclcpp::get_logger("MecanumSystem"),
@@ -252,14 +277,15 @@ rclcpp::Time current_time = rclcpp::Clock().now();
 if (!first_read_pass_)
 {
 double dt_read = (current_time - prev_time_).seconds();
-// Sanity check dt - reject if unreasonable
-if (dt_read < 0.005) { // Less than 5ms - shouldn't happen with our fix
+// Sanity check dt - reject if unreasonable115200
+if (dt_read < 0.01) { 
+    // Less than 5ms - shouldnt happen with our fix
 RCLCPP_WARN_THROTTLE(rclcpp::get_logger("MecanumSystem"),
 *node_->get_clock(), 1000,
 "dt too small: %.3fms - skipping", dt_read * 1000);
 return hardware_interface::return_type::OK;
 }
-if (dt_read > 0.5) { // More than 500ms - data gap
+if (dt_read > 1.25) { // More than 500ms - data gap
 RCLCPP_WARN(rclcpp::get_logger("MecanumSystem"),
 "Large dt gap: %.1fms - possible data loss", dt_read * 1000);
 // Continue processing but be aware
@@ -333,7 +359,7 @@ if (first_write_) {
 last_write_time_ = current_time;
 first_write_ = false;
 // Continue to send first command immediately
-} else if ((current_time - last_write_time_).seconds() < 0.05) {
+} else if ((current_time - last_write_time_).seconds() < 0.04) {
 return hardware_interface::return_type::OK; // Too soon, skip
 }
 last_write_time_ = current_time;

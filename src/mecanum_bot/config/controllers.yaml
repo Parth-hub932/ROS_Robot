@@ -2,7 +2,7 @@ controller_manager:
   ros__parameters:
     # SYNCHRONIZATION FIX:
     # Matches PSoC Encoder Task (20ms = 50Hz)
-    update_rate: 50
+    update_rate: 25
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster

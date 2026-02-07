@@ -1,197 +1,337 @@
-# DataControllerNode
-
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 import json
+import math
 from collections import deque
 from geometry_msgs.msg import Point
 
+
 class DataControllerNode(Node):
-    """
-    This node handles commands from the app, publishes goals to the PID node,
-    and uses a queue-based state machine to manage sequential automation steps,
-    waiting for feedback after each one. It implements error compensation by
-    adding accumulated error to the subsequent target command.
-    """
+    # Path Planner Node implementing Absolute-to-Relative Coordinate Transform.
+    # Input:  Absolute polar coordinates (radius, angle) from origin
+    # Output: Relative movement commands (turn angle, distance) to PID node
+   
     def __init__(self):
         super().__init__('data_controller_node')
+        # Delay handling
+        self.pending_delay = 0.0
+        self.delay_timer = None
 
-       
-        # Declare parameter for the Publisher topic name
+
+        # =======================================================================
+        # PARAMETERS
+        # =======================================================================
         self.declare_parameter('target_topic_name', "/target_movement")
-        # Declare parameter for the Subscriber topic name
         self.declare_parameter('completion_topic_name', "completed_movement")
        
-        # Retrieve parameter values
         target_topic = self.get_parameter('target_topic_name').get_parameter_value().string_value
         completion_topic = self.get_parameter('completion_topic_name').get_parameter_value().string_value
 
-        # --- Publishers ---
-        # 1. Publishes the polar goal command to the Distance PID node
-        # Topic name is now read from the parameter
+        # =======================================================================
+        # PUBLISHERS
+        # =======================================================================
         self.target_movement_publisher = self.create_publisher(Point, target_topic, 10)
-       
-        # 2. Publishes real-time feedback (JSON String) back to the app
         self.feedback_publisher = self.create_publisher(String, '/robot_feedback', 10)
 
-        # --- Subscribers ---
-        # 1. Subscribes to commands (JSON String) from the app
+        # =======================================================================
+        # SUBSCRIBERS
+        # =======================================================================
         self.create_subscription(String, '/polar_move_cmd', self.command_callback, 10)
-       
-        # 2. Subscribes to achieved movement feedback (Point) from the PID node
-        # Topic name is now read from the parameter
         self.create_subscription(Point, completion_topic, self.completed_movement_callback, 10)
        
-        # --- Data Persistence & State Management ---
+        # =======================================================================
+        # STATE TRACKING - Robot's Current Absolute Position
+        # =======================================================================
+        self.curr_x = 0.0           # meters - current X position from origin
+        self.curr_y = 0.0           # meters - current Y position from origin
+        self.curr_theta = 0.0       # radians - current absolute heading
        
-        self.target_distance = 0.0      # Last commanded distance (meters)
-        self.target_angle_rad = 0.0     # Last commanded angle (radians)
+        # =======================================================================
+        # TARGET STORAGE - For error calculation after PID completion
+        # =======================================================================
+        self.target_x = 0.0             # meters - target X (Cartesian)
+        self.target_y = 0.0             # meters - target Y (Cartesian)
+        self.target_dist_abs = 0.0      # meters - target radius (Polar)
+        self.target_angle_abs = 0.0     # radians - target angle (Polar)
 
-        # Queue and state flag for sequence management
+        # =======================================================================
+        # QUEUE & STATE MACHINE
+        # =======================================================================
         self.automation_queue = deque()
-        self.is_moving = False          
+        self.is_moving = False
 
-        self.get_logger().info('Data Controller Node is ready. State: IDLE.')
-        self.get_logger().info(f'Target Publisher Topic: {target_topic}')
-        self.get_logger().info(f'Completion Subscriber Topic: {completion_topic}')
+        # =======================================================================
+        # STARTUP LOG
+        # =======================================================================
+        self.get_logger().info('================================================')
+        self.get_logger().info('  DataControllerNode (Path Planner) Ready')
+        self.get_logger().info('================================================')
+        self.get_logger().info(f'Publish Topic: {target_topic}')
+        self.get_logger().info(f'Subscribe Topic: {completion_topic}')
+        self.get_logger().info(f'Initial State: ({self.curr_x:.2f}m, {self.curr_y:.2f}m, '
+                               f'{math.degrees(self.curr_theta):.1f} deg)')
 
+    # =======================================================================
+    # UTILITY: Normalize angle to [-PI, PI]
+    # =======================================================================
+    def normalize_angle(self, angle_rad):
+        # Normalize angle to range [-PI, PI] for shortest turn.
+        while angle_rad > math.pi:
+            angle_rad -= 2.0 * math.pi
+        while angle_rad < -math.pi:
+            angle_rad += 2.0 * math.pi
+        return angle_rad
+
+    # =======================================================================
+    # CALLBACK: Receive commands from app
+    # =======================================================================
     def command_callback(self, msg):
-        """Receives all messages from the app and decides how to handle them."""
-        self.get_logger().info(f'Received message: {msg.data}')
+        # Receives all messages from the app and decides how to handle them.
+        self.get_logger().info(f'Received: {msg.data}')
        
         try:
             data = json.loads(msg.data)
+           
             if 'steps' in data:
-                self.get_logger().info('Automation file detected. Starting sequence...')
+                self.get_logger().info('Automation sequence detected.')
                 self.start_automation_sequence(data['steps'])
             else:
-                self.get_logger().info('Single manual command detected.')
+                self.get_logger().info('Single command detected.')
                 self.execute_single_step(data)
 
         except json.JSONDecodeError:
-            self.get_logger().error(f"Failed to parse incoming JSON: {msg.data}")
+            self.get_logger().error(f"JSON parse error: {msg.data}")
 
+    # =======================================================================
+    # AUTOMATION: Load queue and start sequence
+    # =======================================================================
     def start_automation_sequence(self, steps):
-        """Initializes the queue and starts the first step."""
+        # Initializes the queue and starts the first step.
         if self.is_moving:
             self.get_logger().warn("Robot is busy. Cannot start new sequence.")
             return
 
-        # Load all steps into the queue
         self.automation_queue.extend(steps)
-        self.process_next_step() # Start the first command
+        self.get_logger().info(f'Loaded {len(steps)} waypoints.')
+        self.process_next_step()
 
+    # =======================================================================
+    # QUEUE PROCESSOR: Pop next step and execute
+    # =======================================================================
     def process_next_step(self):
-        """
-        Sends the next command from the queue.
-        CRITICAL: Applies accumulated error to the new target before publishing.
-        """
+        # Pops next step from queue and passes to execute_single_step.
         if not self.automation_queue:
             self.is_moving = False
-            self.get_logger().info('Automation sequence complete.')
+            self.get_logger().info('================================================')
+            self.get_logger().info('  SEQUENCE COMPLETE')
+            self.get_logger().info('================================================')
             return
 
         next_step = self.automation_queue.popleft()
-
-        # 1. Extract target WITHOUT compensation
-        original_radius = float(next_step.get('radius', 0.0))
-        original_angle_deg = float(next_step.get('angle', 0.0))
-
-        self.get_logger().info(
-        f"Executing step WITHOUT compensation: "
-        f"{original_radius:.2f}cm, {original_angle_deg:.2f}deg"
-        )
-
-        next_step['radius'] = original_radius
-        next_step['angle'] = original_angle_deg
-
-
-        # 3. Execute with modified step
-       
+        self.get_logger().info(f'Processing waypoint ({len(self.automation_queue)} remaining)')
         self.execute_single_step(next_step)
-       
+
+    # =======================================================================
+    # CORE: Absolute-to-Relative Transform & Publish
+    # =======================================================================
     def execute_single_step(self, command_data):
+        # THE CORE PATH PLANNING FUNCTION
+        # Converts absolute polar target to relative movement command.
+        # Input: command_data with 'radius' (cm) and 'angle' (deg) - ABSOLUTE from origin
+        # Output: Publishes relative (distance, turn) to PID node
+       
         self.is_moving = True
-        """
-        Stores the target, publishes the goal message. This function now receives
-        compensated values (if part of an automation sequence).
-        """
+       
+        # -----------------------------------------------------------------------
+        # EXTRACT INPUT - Absolute Polar Target (from app)
+        # -----------------------------------------------------------------------
         try:
-            # Note: radius and angle are already compensated if coming from process_next_step
-            radius = float(command_data.get('radius', 0.0))
+            radius_cm = float(command_data.get('radius', 0.0))
             angle_deg = float(command_data.get('angle', 0.0))
+            delay_sec = float(command_data.get('delaySeconds', 0.0))
+            self.pending_delay = max(0.0, delay_sec)
+
         except ValueError as e:
-            self.get_logger().error(f"Invalid numeric input for radius or angle: {e}")
+            self.get_logger().error(f"Invalid input: {e}")
+            self.is_moving = False
             return
 
-        angle_rad = angle_deg * (3.14159 / 180.0)
+        # -----------------------------------------------------------------------
+        # STEP F: Store absolute target for error calculation later
+        # -----------------------------------------------------------------------
+        self.target_dist_abs = radius_cm / 100.0          # cm -> meters
+        self.target_angle_abs = math.radians(angle_deg)   # deg -> radians
        
-        # Store target values
-        self.target_distance = radius/100.0
-        self.target_angle_rad = angle_rad
+        self.get_logger().info(f'------------------------------------------------')
+        self.get_logger().info(f'TARGET (Absolute Polar): {radius_cm:.1f}cm @ {angle_deg:.1f} deg')
        
-        self.get_logger().info(f"Target Stored: Dist={self.target_distance:.2f}m, Angle={self.target_angle_rad:.2f}rad")
-
-        # 1. Create and populate the ROS Point message
+        # -----------------------------------------------------------------------
+        # STEP A: Convert Absolute Polar -> Absolute Cartesian
+        # -----------------------------------------------------------------------
+        self.target_x = self.target_dist_abs * math.cos(self.target_angle_abs)
+        self.target_y = self.target_dist_abs * math.sin(self.target_angle_abs)
+       
+        self.get_logger().info(f'TARGET (Cartesian): ({self.target_x:.3f}m, {self.target_y:.3f}m)')
+        self.get_logger().info(f'CURRENT State: ({self.curr_x:.3f}m, {self.curr_y:.3f}m, '
+                               f'{math.degrees(self.curr_theta):.1f} deg)')
+       
+        # -----------------------------------------------------------------------
+        # STEP B: Calculate Vector from Current Position to Target
+        # -----------------------------------------------------------------------
+        dx = self.target_x - self.curr_x
+        dy = self.target_y - self.curr_y
+       
+        # -----------------------------------------------------------------------
+        # STEP C: Calculate Relative Command
+        # -----------------------------------------------------------------------
+        rel_dist = math.sqrt(dx * dx + dy * dy)
+       
+        # Handle edge case: already at target
+        if rel_dist < 0.001:
+            target_heading = self.curr_theta  # No movement needed
+        else:
+            target_heading = math.atan2(dy, dx)
+       
+        rel_angle = target_heading - self.curr_theta
+       
+        # -----------------------------------------------------------------------
+        # STEP D: Normalize relative angle to [-PI, PI]
+        # -----------------------------------------------------------------------
+        rel_angle = self.normalize_angle(rel_angle)
+       
+        self.get_logger().info(f'RELATIVE Command Calculated:')
+        self.get_logger().info(f'  dx={dx:.3f}m, dy={dy:.3f}m')
+        self.get_logger().info(f'  rel_dist={rel_dist:.3f}m ({rel_dist*100:.1f}cm)')
+        self.get_logger().info(f'  target_heading={math.degrees(target_heading):.1f} deg')
+        self.get_logger().info(f'  rel_angle={math.degrees(rel_angle):.1f} deg')
+       
+        # -----------------------------------------------------------------------
+        # STEP E: Publish to PID Node
+        # Point.x = relative distance (meters)
+        # Point.y = relative turn angle (radians)
+        # -----------------------------------------------------------------------
         goal_msg = Point()
-        goal_msg.x = self.target_distance
-        goal_msg.y = self.target_angle_rad
+        goal_msg.x = rel_dist       # meters
+        goal_msg.y = rel_angle      # radians
         goal_msg.z = 0.0
-
-        # 2. Publish the goal to the PID node
-        self.target_movement_publisher.publish(goal_msg)
-        self.get_logger().info(f"Published Goal to PID: {goal_msg.x:.2f}m, {goal_msg.y:.2f}rad")
        
+        self.target_movement_publisher.publish(goal_msg)
+        self.get_logger().info(f'PUBLISHED to PID: dist={rel_dist:.3f}m, turn={math.degrees(rel_angle):.1f} deg')
+
+    def delay_timer_callback(self):
+    # One-shot timer: cancel after firing
+        if self.delay_timer:
+            self.delay_timer.cancel()
+            self.delay_timer = None
+
+        self.pending_delay = 0.0
+        self.get_logger().info('Delay complete. Proceeding to next step.')
+        self.process_next_step()
+
+
+    # =======================================================================
+    # FEEDBACK: Receive completion, update state, calculate error
+    # =======================================================================
     def completed_movement_callback(self, msg):
-        """
-        Receives achieved movement from PID, calculates errors, accumulates them,
-        publishes feedback, and advances the sequence.
-        """
+        # Receives achieved RELATIVE movement from PID node.
+        # 1. Updates absolute state based on relative movement
+        # 2. Calculates error between absolute target and new position
+        # 3. Publishes absolute feedback to app
+        # 4. Advances to next waypoint if queue not empty
+       
         if not self.is_moving:
-            self.get_logger().warn("Received unexpected completion message. Robot was not moving.")
+            self.get_logger().warn("Unexpected completion message. Ignoring.")
             return
 
-        # 1. Data Extraction and Conversion
-        achieved_distance = msg.x
-        achieved_angle_rad = msg.y
-        achieved_angle_deg = achieved_angle_rad * (180.0 / 3.14159)
+        # -----------------------------------------------------------------------
+        # EXTRACT: Achieved relative movement from PID
+        # -----------------------------------------------------------------------
+        achieved_rel_dist = msg.x       # meters
+        achieved_rel_angle = msg.y      # radians
        
-        # 2. Error Calculation
-        distance_error = self.target_distance - achieved_distance
-        angle_error_rad = self.target_angle_rad - achieved_angle_rad
-        angle_error_deg = angle_error_rad * (180.0 / 3.14159)
+        self.get_logger().info(f'------------------------------------------------')
+        self.get_logger().info(f'PID FEEDBACK (Relative):')
+        self.get_logger().info(f'  achieved_dist={achieved_rel_dist:.3f}m')
+        self.get_logger().info(f'  achieved_turn={math.degrees(achieved_rel_angle):.1f} deg')
        
-        # 3. Accumulate Error (CRITICAL STEP for compensation)
-        self.get_logger().info(f"Errors (Instantaneous Only): "f"Dist={distance_error:.2f}m, Angle={angle_error_deg:.2f}deg")
-
-        # 4. Publish Feedback to App (uses instantaneous error)
-        self.publish_feedback(achieved_angle_deg, achieved_distance, distance_error, angle_error_deg)
-
-        # 5. Advance State Machine
+        # -----------------------------------------------------------------------
+        # UPDATE STATE: Apply relative movement to absolute state
+        # Order: First turn, then move in new direction
+        # -----------------------------------------------------------------------
+        # Update heading first
+        self.curr_theta += achieved_rel_angle
+        self.curr_theta = self.normalize_angle(self.curr_theta)
+       
+        # Then update position (move in direction of new heading)
+        self.curr_x += achieved_rel_dist * math.cos(self.curr_theta)
+        self.curr_y += achieved_rel_dist * math.sin(self.curr_theta)
+       
+        self.get_logger().info(f'STATE UPDATED:')
+        self.get_logger().info(f'  New Position: ({self.curr_x:.3f}m, {self.curr_y:.3f}m)')
+        self.get_logger().info(f'  New Heading: {math.degrees(self.curr_theta):.1f} deg')
+       
+        # -----------------------------------------------------------------------
+        # CALCULATE: New absolute position in polar (for app feedback)
+        # -----------------------------------------------------------------------
+        moved_radius_abs = math.sqrt(self.curr_x ** 2 + self.curr_y ** 2)
+        moved_angle_abs_rad = math.atan2(self.curr_y, self.curr_x)
+        moved_angle_abs_deg = math.degrees(moved_angle_abs_rad)
+       
+        # -----------------------------------------------------------------------
+        # ERROR: Calculate between absolute target and actual position
+        # -----------------------------------------------------------------------
+        error_x = self.target_x - self.curr_x
+        error_y = self.target_y - self.curr_y
+        error_dist = math.sqrt(error_x ** 2 + error_y ** 2)
+       
+        self.get_logger().info(f'ERROR CALCULATION:')
+        self.get_logger().info(f'  Target: ({self.target_x:.3f}m, {self.target_y:.3f}m)')
+        self.get_logger().info(f'  Actual: ({self.curr_x:.3f}m, {self.curr_y:.3f}m)')
+        self.get_logger().info(f'  Error Vector: {error_dist*100:.2f}cm')
+       
+        # -----------------------------------------------------------------------
+        # PUBLISH: Absolute feedback to app
+        # -----------------------------------------------------------------------
+        self.publish_feedback(moved_radius_abs, moved_angle_abs_deg, error_dist)
+       
+        # -----------------------------------------------------------------------
+        # ADVANCE: Process next waypoint or complete
+        # -----------------------------------------------------------------------
         if self.automation_queue:
-            self.get_logger().info("Previous step complete. Dispatching next step from queue.")
-            self.process_next_step()
+            if self.pending_delay > 0.0:
+                self.get_logger().info(f'Waiting {self.pending_delay:.2f}s before next step...')
+                self.delay_timer = self.create_timer(self.pending_delay, self.delay_timer_callback)
+            else:
+                self.process_next_step()
         else:
             self.is_moving = False
-            self.get_logger().info("Sequence complete. Robot is idle.")
+            self.get_logger().info('------------------------------------------------')
+            self.get_logger().info('Sequence complete. State: IDLE')
+            self.get_logger().info(f'Final Position: ({self.curr_x:.3f}m, {self.curr_y:.3f}m)')
+            self.get_logger().info(f'Final Heading: {math.degrees(self.curr_theta):.1f} deg')
 
-    def publish_feedback(self, achieved_angle, achieved_distance, distance_error, angle_error):
-        """
-        Constructs the JSON string with achieved and error values, and publishes it back to the app.
-        """
-        # Dictionary structure compatible with app (3 keys)
-        feedback_dict = {
-            'moved_radius': achieved_distance*100,
-            'moved_angle': achieved_angle,
-            'error_vector': distance_error*100,
+    # =======================================================================
+    # PUBLISH: Absolute feedback to app
+    # =======================================================================
+    def publish_feedback(self, moved_radius_m, moved_angle_deg, error_dist_m):
+       # Robot position angle w.r.t origin
+        pos_angle_deg = math.degrees(math.atan2(self.curr_y, self.curr_x))
+        if pos_angle_deg < 0:
+            pos_angle_deg += 360.0
+
+        feedback_dict = {"moved_radius": round(moved_radius_m * 100, 2),   # cm (distance from origin)
+        "moved_angle": round(pos_angle_deg, 2),           # deg (position angle, 0–360)
+        "error_vector": round(error_dist_m * 100, 2),     # cm
         }
-       
+
         feedback_msg = String()
         feedback_msg.data = json.dumps(feedback_dict)
-       
+
         self.feedback_publisher.publish(feedback_msg)
-        self.get_logger().info(f'Published feedback: {feedback_msg.data}')
+        self.get_logger().info(f'FEEDBACK to App: {feedback_msg.data}')
+
+
 
 def main(args=None):
     rclpy.init(args=args)
@@ -203,6 +343,7 @@ def main(args=None):
     finally:
         node.destroy_node()
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()

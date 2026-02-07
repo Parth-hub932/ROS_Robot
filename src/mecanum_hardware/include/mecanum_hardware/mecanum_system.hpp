@@ -13,6 +13,8 @@
 #include "rclcpp/macros.hpp"
 #include "rclcpp_lifecycle/state.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
 
 // LibSerial for UART
 #include <libserial/SerialPort.h>
@@ -74,6 +76,7 @@ private:
   // =========================
   rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
   std::shared_ptr<rclcpp::Node> node_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr feedback_pub_;
 
   // =========================
   // ACK SAFETY VERIFICATION
