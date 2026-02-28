@@ -22,9 +22,9 @@ ekf_filter_node:
     # - Positions X, Y (indices 0, 1) are FALSE (Prevents "snapping" when wheels slip)
     # - Velocities Vx, Vy (indices 6, 7) are TRUE (We trust linear speed)
     # - Yaw Velocity (index 11) is FALSE (We IGNORE encoders for rotation)
-    odom0_config: [false, false, false,
+    odom0_config: [true, true, false,
                    false, false, false,
-                   true,  true,  false,
+                   false,  false,  false,
                    false, false, false,
                    false, false, false]
 

@@ -86,16 +86,23 @@ def generate_launch_description():
             # --- Angular (Rotation) ---
             'kp_rot': 1.2,           # Increased from 0.15 for snappier response
             'ki_rot': 0.01,          # Tiny amount to overcome friction at the very end
-            'kd_rot': 0.04,          # Dampens the approach to prevent overshoot
+            'kd_rot': 0.05,          # Dampens the approach to prevent overshoot
             'max_angular_vel': 0.8,  # Increased to 1.5 (approx 85 deg/s)
-            'min_angular_vel': 0.05,  # Minimum kick to keep motors turning
+            'min_angular_vel': 0.02,  # Minimum kick to keep motors turning
     
             # --- Linear (Movement) ---
             'kp_lin': 1.2,           # Increased for faster acceleration
-            'ki_lin': 0.01,           # Keep at 0 unless it stops short of target
-            'kd_lin': 0.04,           # Helps stop smoothly
-            'max_linear_vel': 0.1,   # Medium walking speed
-            'min_linear_vel': 0.04,  # Minimum power to move the weight
+            'ki_lin': 0.17,           # Keep at 0 unless it stops short of target
+            'kd_lin': 0.25,           # Helps stop smoothly
+            'max_linear_vel': 0.15,   # Medium walking speed
+            'min_linear_vel': 0.01,  # Minimum power to move the weight
+
+            #heading correction
+            'kp_head': 3.0,          # Proportional gain for head control
+            'ki_head': 0.2,          # Integral gain for head control (set to 0 for now)
+            'kd_head': 0.25,          # Derivative gain for head control
+            'max_correction_rate': 1.0,     # Max velocity for head movement
+            'min_correction_rate': 0.0,    # Minimum velocity to move the head
         }]
     )
 
@@ -106,6 +113,9 @@ def generate_launch_description():
         name="data_controller_node",
         output="screen",
         parameters=[{
+            'init_angle_deg': 0.0,
+            'init_radius_cm': 0.0,
+
             'target_topic_name': '/pid_goal',
             'completion_topic_name': '/pid_result'
         }]

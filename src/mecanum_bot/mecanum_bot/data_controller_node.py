@@ -24,9 +24,23 @@ class DataControllerNode(Node):
         # =======================================================================
         self.declare_parameter('target_topic_name', "/target_movement")
         self.declare_parameter('completion_topic_name', "completed_movement")
+        
+        # ╔═════════════════════════════════════════════════════════════════════╗
+        # ║  NEW LINES: Initial offset parameters (2 lines added)               ║
+        # ╚═════════════════════════════════════════════════════════════════════╝
+        self.declare_parameter('init_radius_cm', 0.0)    # Distance from origin (cm)
+        self.declare_parameter('init_angle_deg', 0.0)    # Angle from origin (degrees)
        
         target_topic = self.get_parameter('target_topic_name').get_parameter_value().string_value
         completion_topic = self.get_parameter('completion_topic_name').get_parameter_value().string_value
+        
+        # ╔═════════════════════════════════════════════════════════════════════╗
+        # ║  NEW LINES: Retrieve and convert offset values (4 lines added)      ║
+        # ╚═════════════════════════════════════════════════════════════════════╝
+        init_radius_cm = self.get_parameter('init_radius_cm').get_parameter_value().double_value
+        init_angle_deg = self.get_parameter('init_angle_deg').get_parameter_value().double_value
+        init_radius_m = init_radius_cm / 100.0
+        init_angle_rad = math.radians(init_angle_deg)
 
         # =======================================================================
         # PUBLISHERS
@@ -42,10 +56,17 @@ class DataControllerNode(Node):
        
         # =======================================================================
         # STATE TRACKING - Robot's Current Absolute Position
+        # ╔═════════════════════════════════════════════════════════════════════╗
+        # ║  MODIFIED LINES: Changed from 0.0 to calculated offset (3 lines)    ║
+        # ║  ORIGINAL:                                                          ║
+        # ║    self.curr_x = 0.0                                                ║
+        # ║    self.curr_y = 0.0                                                ║
+        # ║    self.curr_theta = 0.0                                            ║
+        # ╚═════════════════════════════════════════════════════════════════════╝
         # =======================================================================
-        self.curr_x = 0.0           # meters - current X position from origin
-        self.curr_y = 0.0           # meters - current Y position from origin
-        self.curr_theta = 0.0       # radians - current absolute heading
+        self.curr_x = init_radius_m * math.cos(init_angle_rad)  # meters - current X position from origin
+        self.curr_y = init_radius_m * math.sin(init_angle_rad)  # meters - current Y position from origin
+        self.curr_theta = init_angle_rad                         # radians - current absolute heading
        
         # =======================================================================
         # TARGET STORAGE - For error calculation after PID completion
@@ -63,17 +84,29 @@ class DataControllerNode(Node):
 
         # =======================================================================
         # STARTUP LOG
+        # ╔═════════════════════════════════════════════════════════════════════╗
+        # ║  MODIFIED: Added conditional offset display (8 lines changed)       ║
+        # ╚═════════════════════════════════════════════════════════════════════╝
         # =======================================================================
         self.get_logger().info('================================================')
         self.get_logger().info('  DataControllerNode (Path Planner) Ready')
         self.get_logger().info('================================================')
         self.get_logger().info(f'Publish Topic: {target_topic}')
         self.get_logger().info(f'Subscribe Topic: {completion_topic}')
-        self.get_logger().info(f'Initial State: ({self.curr_x:.2f}m, {self.curr_y:.2f}m, '
-                               f'{math.degrees(self.curr_theta):.1f} deg)')
+        
+        if init_radius_cm > 0.01:  # Offset is configured
+            self.get_logger().info('')
+            self.get_logger().info('  *** INITIAL OFFSET ACTIVE ***')
+            self.get_logger().info(f'  Simulating: Robot already at {init_angle_deg:.1f}°, {init_radius_cm:.1f}cm')
+            self.get_logger().info(f'  Position (Cartesian): ({self.curr_x*100:.2f}cm, {self.curr_y*100:.2f}cm)')
+            self.get_logger().info(f'  Heading: {init_angle_deg:.1f}°')
+        else:  # No offset - original behavior
+            self.get_logger().info(f'Initial State: ({self.curr_x:.2f}m, {self.curr_y:.2f}m, '
+                                   f'{math.degrees(self.curr_theta):.1f} deg)')
 
     # =======================================================================
     # UTILITY: Normalize angle to [-PI, PI]
+    # (UNCHANGED)
     # =======================================================================
     def normalize_angle(self, angle_rad):
         # Normalize angle to range [-PI, PI] for shortest turn.
@@ -85,6 +118,7 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # CALLBACK: Receive commands from app
+    # (UNCHANGED)
     # =======================================================================
     def command_callback(self, msg):
         # Receives all messages from the app and decides how to handle them.
@@ -105,6 +139,7 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # AUTOMATION: Load queue and start sequence
+    # (UNCHANGED)
     # =======================================================================
     def start_automation_sequence(self, steps):
         # Initializes the queue and starts the first step.
@@ -118,6 +153,7 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # QUEUE PROCESSOR: Pop next step and execute
+    # (UNCHANGED)
     # =======================================================================
     def process_next_step(self):
         # Pops next step from queue and passes to execute_single_step.
@@ -134,6 +170,7 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # CORE: Absolute-to-Relative Transform & Publish
+    # (UNCHANGED - offset is handled automatically by changed initial state)
     # =======================================================================
     def execute_single_step(self, command_data):
         # THE CORE PATH PLANNING FUNCTION
@@ -220,7 +257,7 @@ class DataControllerNode(Node):
         self.get_logger().info(f'PUBLISHED to PID: dist={rel_dist:.3f}m, turn={math.degrees(rel_angle):.1f} deg')
 
     def delay_timer_callback(self):
-    # One-shot timer: cancel after firing
+        # One-shot timer: cancel after firing
         if self.delay_timer:
             self.delay_timer.cancel()
             self.delay_timer = None
@@ -232,6 +269,7 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # FEEDBACK: Receive completion, update state, calculate error
+    # (UNCHANGED)
     # =======================================================================
     def completed_movement_callback(self, msg):
         # Receives achieved RELATIVE movement from PID node.
@@ -313,16 +351,18 @@ class DataControllerNode(Node):
 
     # =======================================================================
     # PUBLISH: Absolute feedback to app
+    # (UNCHANGED)
     # =======================================================================
     def publish_feedback(self, moved_radius_m, moved_angle_deg, error_dist_m):
-       # Robot position angle w.r.t origin
+        # Robot position angle w.r.t origin
         pos_angle_deg = math.degrees(math.atan2(self.curr_y, self.curr_x))
         if pos_angle_deg < 0:
             pos_angle_deg += 360.0
 
-        feedback_dict = {"moved_radius": round(moved_radius_m * 100, 2),   # cm (distance from origin)
-        "moved_angle": round(pos_angle_deg, 2),           # deg (position angle, 0–360)
-        "error_vector": round(error_dist_m * 100, 2),     # cm
+        feedback_dict = {
+            "moved_radius": round(moved_radius_m * 100, 2),   # cm (distance from origin)
+            "moved_angle": round(pos_angle_deg, 2),           # deg (position angle, 0–360)
+            "error_vector": round(error_dist_m * 100, 2),     # cm
         }
 
         feedback_msg = String()

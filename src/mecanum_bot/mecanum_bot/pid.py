@@ -98,11 +98,20 @@ class DistancePIDController(Node):
         self.declare_parameter('ki_rot', 0.0)
         self.declare_parameter('kd_rot', 0.02)
 
+        # HEading PID gains
+        self.declare_parameter('kp_head', 0.05)
+        self.declare_parameter('ki_head', 0.0)
+        self.declare_parameter('kd_head', 0.02)
+
         # Velocity Limits
         self.declare_parameter('max_angular_vel', 1.0)
         self.declare_parameter('max_linear_vel', 0.5)
+        self.declare_parameter('max_correction_rate', 0.5)
+
         self.declare_parameter('min_angular_vel', 0.05)
         self.declare_parameter('min_linear_vel', 0.05)
+        self.declare_parameter('min_correction_rate', 0.05)
+        
 
 
         # --- Configuration Retrieval ---
@@ -124,11 +133,19 @@ class DistancePIDController(Node):
         KI_ROT = self.get_parameter('ki_rot').get_parameter_value().double_value
         KD_ROT = self.get_parameter('kd_rot').get_parameter_value().double_value
 
+        KP_HEAD = self.get_parameter('kp_head').get_parameter_value().double_value
+        KI_HEAD = self.get_parameter('ki_head').get_parameter_value().double_value
+        KD_HEAD = self.get_parameter('kd_head').get_parameter_value().double_value
+
         # Retrieve Velocity Limits
         MAX_ANGULAR_VEL = self.get_parameter('max_angular_vel').get_parameter_value().double_value
         MAX_LINEAR_VEL = self.get_parameter('max_linear_vel').get_parameter_value().double_value
+        MAX_CORRECTION_RATE = self.get_parameter('max_correction_rate').get_parameter_value().double_value
+
+
         MIN_ANGULAR_VEL = self.get_parameter('min_angular_vel').get_parameter_value().double_value
         MIN_LINEAR_VEL = self.get_parameter('min_linear_vel').get_parameter_value().double_value
+        MIN_CORRECTION_RATE = self.get_parameter('min_correction_rate').get_parameter_value().double_value
 
 
         # --- Publishers and Subscribers ---
@@ -169,6 +186,10 @@ class DistancePIDController(Node):
                                      
         self.pid_dist = PIDController(KP_LIN, KI_LIN, KD_LIN,
                                       MAX_LINEAR_VEL, MIN_LINEAR_VEL,
+                                      self.dt, self.get_logger())
+
+        self.pid_heading = PIDController(KP_HEAD, KI_HEAD, KD_HEAD,
+                                      MAX_CORRECTION_RATE, MIN_CORRECTION_RATE,
                                       self.dt, self.get_logger())
 
         # --- Main Control Loop Timer ---
@@ -236,77 +257,61 @@ class DistancePIDController(Node):
 
         if self.current_state == self.STATE_ROTATING:
             # Stage 1: Rotation Control
-           
-            # Calculate angle needed to reach the target yaw
             angle_error = self.target_angle_rad - (self.current_yaw - self.start_yaw)
-           
-            # Normalize angle error to [-pi, pi]
             angle_error = math.atan2(math.sin(angle_error), math.cos(angle_error))
-           
-            # Use PID Controller for turning
-
+            
             angular_vel = -self.pid_rot.calculate(angle_error)
-            #print("angular vel:", angular_vel)
-            #self.get_logger().info(f"{angle_error:.3f} = "f"{self.target_angle_rad:.3f} - "f"{self.current_yaw:.3f} - "f"{self.start_yaw:.3f}")
-
             twist_msg.angular.z = angular_vel
-           
-            # Check for rotation completion (e.g., error less than 1 degree or 0.017 rad)
+            
             if abs(angle_error) < 0.008:
                 self.get_logger().info("Rotation complete. Switching to Linear Move.")
-                print("error within threshold")
-                twist_msg.angular.z = 0.0 # Stop rotation immediately
-               
-                # Reset linear PID and switch state
+                twist_msg.angular.z = 0.0 
+                
                 self.pid_dist.reset()
+                # Optional: Reset the rotational PID here too, so the 'Heading Hold' starts fresh
+                self.pid_rot.reset() 
+
                 if self.skip_linear:
                     self.current_state = self.STATE_FINISHED
                 else:
                     self.current_state = self.STATE_MOVING
 
         elif self.current_state == self.STATE_MOVING:
-            # Stage 2: Linear Distance Control
-           
-            # Distance remaining can now be negative if it overshoots
+            # Stage 2: Linear Distance Control WITH Active Heading Correction
+            
+            # 1. Calculate Linear Velocity (Same as before)
             distance_remaining = self.target_dist - self.current_dist_travelled
-           
-            # Use PID Controller for accurate distance tracking
             linear_vel = self.pid_dist.calculate(distance_remaining)
-           
-            # Apply the initial commanded direction.
             twist_msg.linear.x = linear_vel * self.movement_direction
-           
-            # Check for movement completion (e.g., total distance remaining is less than 5cm)
+            
+            # 2. Calculate Angular Velocity (THE FIX)
+            # We actively correct the angle to maintain our intended heading while moving.
+            angle_error = self.target_angle_rad - (self.current_yaw - self.start_yaw)
+            angle_error = math.atan2(math.sin(angle_error), math.cos(angle_error))
+            
+            # Feed the angle error into the rotational PID to fight the drift
+            angular_vel = -self.pid_heading.calculate(angle_error)
+            twist_msg.angular.z = angular_vel
+            
+            # Check for movement completion
             if abs(distance_remaining) < 0.005:
                 self.get_logger().info("Linear move complete.")
-                twist_msg.linear.x = 0.0 # Stop movement immediately
+                twist_msg.linear.x = 0.0 
+                twist_msg.angular.z = 0.0 # Stop both linear and angular
                 self.current_state = self.STATE_FINISHED
-               
-            # Optional: Add a safety check for unexpected large yaw drift during straight motion
-            # (Requires a secondary P-controller for steering correction, omitted for simplicity)
 
         elif self.current_state == self.STATE_FINISHED:
-            # Movement sequence completed, send completion signal
-           
+            # ... (Your existing code)
             achieved_msg = Point()
-           
-            # Achieved Distance: current_dist_travelled
             achieved_msg.x = self.current_dist_travelled
-            # Achieved Angle: Current Yaw relative to Start Yaw
             achieved_msg.y = self.current_yaw - self.start_yaw
-           
             self.completion_publisher.publish(achieved_msg)
-            self.get_logger().info("Published completion signal.")
-           
-            # Return to idle state, waiting for next command
             self.current_state = self.STATE_IDLE
 
         elif self.current_state == self.STATE_IDLE:
-            # If idle, ensure velocity is zero
             twist_msg.linear.x = 0.0
             twist_msg.angular.z = 0.0
-           
-        # Publish the final Twist command regardless of the state (except IDLE)
+            
         self.cmd_vel_publisher.publish(twist_msg)
 
 
