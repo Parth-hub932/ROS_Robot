@@ -1,318 +1,510 @@
+#!/usr/bin/env python3
+"""
+MERGED PID: stable rollback structure + targeted fixes
+
+From stable rollback (your best):
+- rot_slowdown_gain * abs_err for rotation speed cap
+- approach_gain * remain for linear speed
+- PID with min_output stiction kick (but only when far from target)
+- Simple ramp_to for accel limiting
+
+Added fixes:
+- Predictive braking cap for rotation: v <= sqrt(2 * ang_decel * remaining)
+- Predictive braking cap for linear:   v <= sqrt(2 * decel * remaining)
+- Rotation completion requires yaw_rate small (no more finishing while spinning)
+- Odom settle before publishing /pid_result (no more under-reporting)
+- Direct quat_to_yaw (no tf_transformations dependency)
+- Heading gyro damping (reduces wobble)
+- Uses wheel odom by default (less lag than EKF)
+"""
+
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Point, Twist
 from nav_msgs.msg import Odometry
+from sensor_msgs.msg import Imu
 import math
-from tf_transformations import euler_from_quaternion # Standard tool for Q-to-Yaw conversion
 
-# --- PID Controller Class for Angular/Linear Control ---
+
+def clamp(x, lo, hi):
+    return max(lo, min(hi, x))
+
+
+def norm_angle(a):
+    return math.atan2(math.sin(a), math.cos(a))
+
+
+def quat_to_yaw(qx, qy, qz, qw):
+    siny_cosp = 2.0 * (qw * qz + qx * qy)
+    cosy_cosp = 1.0 - 2.0 * (qy * qy + qz * qz)
+    return math.atan2(siny_cosp, cosy_cosp)
+
+
 class PIDController:
-    """A general PID controller class, incorporating anti-windup and deadband."""
-   
-    # Added min_out (deadband) and logger
-    def __init__(self, kp, ki, kd, max_out, min_out, dt, logger):
-        self.Kp = kp
-        self.Ki = ki
-        self.Kd = kd
-        self.max_output = max_out
-        self.min_output = min_out  # Minimum absolute velocity limit (deadband)
-        self.dt = dt
-        self.logger = logger       # Logger instance for debugging
-       
+    def __init__(self, kp, ki, kd, max_out, min_out, dt):
+        self.Kp = float(kp)
+        self.Ki = float(ki)
+        self.Kd = float(kd)
+        self.max_output = float(max_out)
+        self.min_output = float(min_out)
+        self.dt = max(float(dt), 1e-4)
         self.integral = 0.0
         self.last_error = 0.0
-
-    def calculate(self, error):
-       
-        # Proportional term
-        P = self.Kp * error
-       
-        # Integral term
-        self.integral += error * self.dt
-       
-        # Anti-windup check (saturate integral to prevent massive buildup)
-        if self.Ki != 0:
-            if self.integral * self.Ki > self.max_output:
-                self.integral = self.max_output / self.Ki
-            elif self.integral * self.Ki < -self.max_output:
-                self.integral = -self.max_output / self.Ki
-           
-        I = self.Ki * self.integral
-       
-        # Derivative term
-        D = self.Kd * (error - self.last_error) / self.dt if self.dt > 0 else 0.0
-       
-        # Total output
-        output = P + I + D
-       
-        # --- Saturation and Deadband (Min/Max limits) ---
-       
-        # 1. Clamp output to Maximum allowed value
-        if output > self.max_output:
-            output = self.max_output
-        elif output < -self.max_output:
-            output = -self.max_output
-           
-        # 2. Apply Deadband (Minimum velocity)
-        # If the output is within the deadband, but non-zero, push it to the min_output
-        # This overcomes static friction (stiction).
-        if abs(output) > 0.0 and abs(output) < self.min_output:
-            output = math.copysign(self.min_output, output)
-           
-        self.last_error = error
-        return output
 
     def reset(self):
         self.integral = 0.0
         self.last_error = 0.0
 
+    def calculate(self, error):
+        P = self.Kp * error
 
-# --- Distance and Rotation PID Node ---
+        self.integral += error * self.dt
+        if self.Ki != 0.0:
+            lim = self.max_output / (self.Ki + 1e-12)
+            self.integral = clamp(self.integral, -lim, lim)
+        I = self.Ki * self.integral
+
+        D = self.Kd * (error - self.last_error) / self.dt
+        self.last_error = error
+
+        out = clamp(P + I + D, -self.max_output, self.max_output)
+
+        # Stiction kick — but caller decides when to apply it
+        return out
+
+
 class DistancePIDController(Node):
-   
-    # Define the possible states for the sequential movement
-    STATE_IDLE = 0
-    STATE_ROTATING = 1
-    STATE_MOVING = 2
-    STATE_FINISHED = 3
+    IDLE = 0
+    ROTATING = 1
+    ROT_SETTLE = 2
+    MOVING = 3
+    LIN_SETTLE = 4
+    FINISHED = 5
 
     def __init__(self):
-        super().__init__('distance_pid_controller')
+        super().__init__("pid_node")
 
-        # --- Parameter Declaration ---
-        self.declare_parameter('control_rate', 50)
-       
-        # Topic Names
-        self.declare_parameter('target_topic', "/target_movement")
-        self.declare_parameter('odom_topic', "/odometry/filtered")
-        self.declare_parameter('cmd_vel_topic', "/cmd_velocity")
-        self.declare_parameter('completion_topic', "completed_movement")
+        # Topics & rate
+        self.declare_parameter("control_rate", 25)
+        self.declare_parameter("target_topic", "/pid_goal")
+        self.declare_parameter("completion_topic", "/pid_result")
+        self.declare_parameter("odom_topic", "/mecanum_base_controller/odometry")
+        self.declare_parameter("cmd_vel_topic", "/mecanum_base_controller/reference_unstamped")
+        self.declare_parameter("imu_topic", "/imu/data")
 
-        # Linear PID Gains
-        self.declare_parameter('kp_lin', 0.5)
-        self.declare_parameter('ki_lin', 0.01)
-        self.declare_parameter('kd_lin', 0.01)
-       
-        # Angular PID Gains
-        self.declare_parameter('kp_rot', 0.05)
-        self.declare_parameter('ki_rot', 0.0)
-        self.declare_parameter('kd_rot', 0.02)
+        # Rotation PID
+        self.declare_parameter("kp_rot", 1.2)
+        self.declare_parameter("ki_rot", 0.01)
+        self.declare_parameter("kd_rot", 0.05)
+        self.declare_parameter("max_angular_vel", 0.8)
+        self.declare_parameter("min_angular_vel", 0.02)
+        self.declare_parameter("max_ang_accel", 2.0)
 
-        # HEading PID gains
-        self.declare_parameter('kp_head', 0.05)
-        self.declare_parameter('ki_head', 0.0)
-        self.declare_parameter('kd_head', 0.02)
+        # Rotation slowdown (from your stable rollback)
+        self.declare_parameter("rot_slowdown_gain", 1.4)
+        self.declare_parameter("rot_min_apply_err", 0.08)
 
-        # Velocity Limits
-        self.declare_parameter('max_angular_vel', 1.0)
-        self.declare_parameter('max_linear_vel', 0.5)
-        self.declare_parameter('max_correction_rate', 0.5)
+        # Rotation braking cap (new fix: prevents overshoot)
+        self.declare_parameter("max_ang_decel", 3.5)
 
-        self.declare_parameter('min_angular_vel', 0.05)
-        self.declare_parameter('min_linear_vel', 0.05)
-        self.declare_parameter('min_correction_rate', 0.05)
-        
+        # Gyro damping
+        self.declare_parameter("gyro_damping_gain", 0.35)
 
+        # Rotation completion
+        self.declare_parameter("rotation_threshold_rad", 0.008)
+        self.declare_parameter("yaw_rate_stop_rad_s", 0.05)
+        self.declare_parameter("rotation_settle_s", 0.20)
+        self.declare_parameter("rot_rate_settle_s", 0.10)
+        self.declare_parameter("rotation_timeout_s", 25.0)
 
-        # --- Configuration Retrieval ---
-        self.rate = self.get_parameter('control_rate').get_parameter_value().integer_value
-        self.dt = 1.0 / self.rate
-       
-        # Retrieve Topic Names
-        target_topic = self.get_parameter('target_topic').get_parameter_value().string_value
-        odom_topic = self.get_parameter('odom_topic').get_parameter_value().string_value
-        cmd_vel_topic = self.get_parameter('cmd_vel_topic').get_parameter_value().string_value
-        completion_topic = self.get_parameter('completion_topic').get_parameter_value().string_value
+        # Linear PID
+        self.declare_parameter("kp_lin", 1.2)
+        self.declare_parameter("ki_lin", 0.17)
+        self.declare_parameter("kd_lin", 0.25)
+        self.declare_parameter("max_linear_vel", 0.20)
+        self.declare_parameter("min_linear_vel", 0.01)
+        self.declare_parameter("max_accel", 0.5)
 
-        # Retrieve PID Gains
-        KP_LIN = self.get_parameter('kp_lin').get_parameter_value().double_value
-        KI_LIN = self.get_parameter('ki_lin').get_parameter_value().double_value
-        KD_LIN = self.get_parameter('kd_lin').get_parameter_value().double_value
-       
-        KP_ROT = self.get_parameter('kp_rot').get_parameter_value().double_value
-        KI_ROT = self.get_parameter('ki_rot').get_parameter_value().double_value
-        KD_ROT = self.get_parameter('kd_rot').get_parameter_value().double_value
+        # Linear braking cap (new fix: prevents coast overshoot)
+        self.declare_parameter("max_decel", 0.35)
 
-        KP_HEAD = self.get_parameter('kp_head').get_parameter_value().double_value
-        KI_HEAD = self.get_parameter('ki_head').get_parameter_value().double_value
-        KD_HEAD = self.get_parameter('kd_head').get_parameter_value().double_value
+        # Approach slowdown (from your stable rollback)
+        self.declare_parameter("approach_gain", 2.5)
 
-        # Retrieve Velocity Limits
-        MAX_ANGULAR_VEL = self.get_parameter('max_angular_vel').get_parameter_value().double_value
-        MAX_LINEAR_VEL = self.get_parameter('max_linear_vel').get_parameter_value().double_value
-        MAX_CORRECTION_RATE = self.get_parameter('max_correction_rate').get_parameter_value().double_value
+        # Heading correction
+        self.declare_parameter("kp_head", 3.0)
+        self.declare_parameter("ki_head", 0.2)
+        self.declare_parameter("kd_head", 0.25)
+        self.declare_parameter("max_correction_rate", 0.5)
+        self.declare_parameter("min_correction_rate", 0.01)
+        self.declare_parameter("heading_deadband_rad", 0.01)
+        self.declare_parameter("head_gyro_damping_gain", 0.10)
 
+        # Completion / timing
+        self.declare_parameter("distance_threshold_m", 0.005)
+        self.declare_parameter("linear_settle_s", 0.25)
+        self.declare_parameter("movement_timeout_s", 30.0)
 
-        MIN_ANGULAR_VEL = self.get_parameter('min_angular_vel').get_parameter_value().double_value
-        MIN_LINEAR_VEL = self.get_parameter('min_linear_vel').get_parameter_value().double_value
-        MIN_CORRECTION_RATE = self.get_parameter('min_correction_rate').get_parameter_value().double_value
+        # Odom settle (new fix: wait for distance to stop changing)
+        self.declare_parameter("odom_stable_eps_m", 0.002)
+        self.declare_parameter("odom_stable_time_s", 0.20)
 
+        # Read all params
+        self.rate = float(self.get_parameter("control_rate").value)
+        self.dt = 1.0 / max(1.0, self.rate)
 
-        # --- Publishers and Subscribers ---
-        self.create_subscription(Point, target_topic, self.target_callback, 10)
-       
-        # Subscribes to filtered odometry
-        self.create_subscription(Odometry, odom_topic, self.odom_callback, 10)
+        self.target_topic = self.get_parameter("target_topic").value
+        self.completion_topic = self.get_parameter("completion_topic").value
+        self.odom_topic = self.get_parameter("odom_topic").value
+        self.cmd_vel_topic = self.get_parameter("cmd_vel_topic").value
+        self.imu_topic = self.get_parameter("imu_topic").value
 
-        self.cmd_vel_publisher = self.create_publisher(Twist, cmd_vel_topic, 10)
-       
-        # Publishes movement completion back to the app_subscriber
-        self.completion_publisher = self.create_publisher(Point, completion_topic, 10)
-       
-        # --- Control State ---
-        self.current_state = self.STATE_IDLE
-       
-        # --- Target and Feedback Storage ---
+        self.MAX_ANG = float(self.get_parameter("max_angular_vel").value)
+        self.MIN_ANG = float(self.get_parameter("min_angular_vel").value)
+        self.MAX_ANG_ACCEL = float(self.get_parameter("max_ang_accel").value)
+        self.MAX_ANG_DECEL = float(self.get_parameter("max_ang_decel").value)
+        self.ROT_SLOW_K = float(self.get_parameter("rot_slowdown_gain").value)
+        self.ROT_MIN_APPLY_ERR = float(self.get_parameter("rot_min_apply_err").value)
+        self.GYRO_DAMP = float(self.get_parameter("gyro_damping_gain").value)
+
+        self.ROT_THRESH = float(self.get_parameter("rotation_threshold_rad").value)
+        self.YAW_RATE_STOP = float(self.get_parameter("yaw_rate_stop_rad_s").value)
+        self.ROT_SETTLE_T = float(self.get_parameter("rotation_settle_s").value)
+        self.ROT_RATE_SETTLE = float(self.get_parameter("rot_rate_settle_s").value)
+        self.ROT_TIMEOUT = float(self.get_parameter("rotation_timeout_s").value)
+
+        self.MAX_LIN = float(self.get_parameter("max_linear_vel").value)
+        self.MIN_LIN = float(self.get_parameter("min_linear_vel").value)
+        self.MAX_ACCEL = float(self.get_parameter("max_accel").value)
+        self.MAX_DECEL = float(self.get_parameter("max_decel").value)
+        self.APPROACH_K = float(self.get_parameter("approach_gain").value)
+
+        self.MAX_CORR = float(self.get_parameter("max_correction_rate").value)
+        self.MIN_CORR = float(self.get_parameter("min_correction_rate").value)
+        self.HEAD_DB = float(self.get_parameter("heading_deadband_rad").value)
+        self.HEAD_GYRO_DAMP = float(self.get_parameter("head_gyro_damping_gain").value)
+
+        self.DIST_THRESH = float(self.get_parameter("distance_threshold_m").value)
+        self.LIN_SETTLE_T = float(self.get_parameter("linear_settle_s").value)
+        self.MOV_TIMEOUT = float(self.get_parameter("movement_timeout_s").value)
+
+        self.ODOM_STABLE_EPS = float(self.get_parameter("odom_stable_eps_m").value)
+        self.ODOM_STABLE_T = float(self.get_parameter("odom_stable_time_s").value)
+
+        # Controllers (same structure as your stable rollback)
+        self.pid_rot = PIDController(
+            self.get_parameter("kp_rot").value,
+            self.get_parameter("ki_rot").value,
+            self.get_parameter("kd_rot").value,
+            self.MAX_ANG, self.MIN_ANG, self.dt
+        )
+        self.pid_head = PIDController(
+            self.get_parameter("kp_head").value,
+            self.get_parameter("ki_head").value,
+            self.get_parameter("kd_head").value,
+            self.MAX_CORR, self.MIN_CORR, self.dt
+        )
+
+        # Pub/Sub
+        self.create_subscription(Point, self.target_topic, self.target_cb, 10)
+        self.create_subscription(Odometry, self.odom_topic, self.odom_cb, 10)
+        self.create_subscription(Imu, self.imu_topic, self.imu_cb, 10)
+        self.cmd_pub = self.create_publisher(Twist, self.cmd_vel_topic, 10)
+        self.done_pub = self.create_publisher(Point, self.completion_topic, 10)
+
+        # Runtime state
+        self.state = self.IDLE
+
         self.target_dist = 0.0
-        self.target_angle_rad = 0.0
-        self.current_yaw = 0.0
-        self.current_odom_x = 0.0
-        self.current_odom_y = 0.0
-        self.current_dist_travelled = 0.0
-       
-        # Reference points for relative motion
-        self.start_yaw = 0.0
-        self.start_pos_x = 0.0
-        self.start_pos_y = 0.0
-       
-        # Direction of movement (1.0 for forward, -1.0 for backward). Used to ensure
-        # the final linear command direction is correct, irrespective of PID output sign.
-        self.movement_direction = 1.0
+        self.target_angle = 0.0
+        self.move_dir = 1.0
+        self.skip_linear = False
 
-        # --- Controllers (Initialized with Parameters) ---
-        self.pid_rot = PIDController(KP_ROT, KI_ROT, KD_ROT,
-                                     MAX_ANGULAR_VEL, MIN_ANGULAR_VEL,
-                                     self.dt, self.get_logger())
-                                     
-        self.pid_dist = PIDController(KP_LIN, KI_LIN, KD_LIN,
-                                      MAX_LINEAR_VEL, MIN_LINEAR_VEL,
-                                      self.dt, self.get_logger())
+        self.ox = self.oy = 0.0
+        self.ox0 = self.oy0 = 0.0
+        self.dist_travelled = 0.0
 
-        self.pid_heading = PIDController(KP_HEAD, KI_HEAD, KD_HEAD,
-                                      MAX_CORRECTION_RATE, MIN_CORRECTION_RATE,
-                                      self.dt, self.get_logger())
+        self.imu_yaw = 0.0
+        self.imu_yaw0 = 0.0
+        self.yaw_rate_z = 0.0
+        self.imu_valid = False
 
-        # --- Main Control Loop Timer ---
-        self.timer = self.create_timer(self.dt, self.control_loop)
-       
-        self.get_logger().info('Distance PID Controller Node Initialized with parameters.')
+        self.v_lin = 0.0
+        self.v_ang = 0.0
 
-    # --- CALLBACKS ---
+        self.t_phase = 0.0
+        self.t_settle = 0.0
+        self.t_rate_ok = None
 
-    def target_callback(self, msg):
-        """Receives the new polar target from the app_subscriber."""
-        if self.current_state != self.STATE_IDLE and self.current_state != self.STATE_FINISHED:
-            self.get_logger().warn("New target received while busy. Ignoring.")
+        self.last_dist = 0.0
+        self.t_dist_stable = None
+
+        self.create_timer(self.dt, self.loop)
+        self.get_logger().info(
+            f"MERGED PID ready {self.rate:.0f}Hz | "
+            f"rollback structure + braking cap + odom settle"
+        )
+
+    def now(self):
+        return self.get_clock().now().nanoseconds / 1e9
+
+    def ramp_to(self, cur, tgt, accel):
+        step = accel * self.dt
+        d = tgt - cur
+        if abs(d) <= step:
+            return tgt
+        return cur + math.copysign(step, d)
+
+    def ramp_to_asym(self, cur, tgt, acc_up, acc_down):
+        d = tgt - cur
+        step = (acc_up if d >= 0.0 else acc_down) * self.dt
+        if abs(d) <= step:
+            return tgt
+        return cur + math.copysign(step, d)
+
+    # Callbacks
+    def imu_cb(self, msg: Imu):
+        self.yaw_rate_z = float(msg.angular_velocity.z)
+        q = msg.orientation
+        if abs(q.w) < 1e-8 and abs(q.x) < 1e-8 and abs(q.y) < 1e-8 and abs(q.z) < 1e-8:
+            self.imu_valid = False
+            return
+        self.imu_yaw = quat_to_yaw(q.x, q.y, q.z, q.w)
+        self.imu_valid = True
+
+    def odom_cb(self, msg: Odometry):
+        self.ox = float(msg.pose.pose.position.x)
+        self.oy = float(msg.pose.pose.position.y)
+        dx = self.ox - self.ox0
+        dy = self.oy - self.oy0
+        self.dist_travelled = math.sqrt(dx * dx + dy * dy)
+
+    def target_cb(self, msg: Point):
+        if self.state not in (self.IDLE, self.FINISHED):
+            self.get_logger().warn("Busy - ignoring new target.")
+            return
+        if not self.imu_valid:
+            self.get_logger().warn("IMU not valid yet - ignoring target.")
             return
 
-        # Target distance is read as absolute, and direction is stored separately.
-        self.target_dist = abs(msg.x)
-        self.skip_linear = self.target_dist < 0.01
-        self.target_angle_rad = msg.y
-        #self.target_world_yaw = math.atan2(math.sin(self.target_world_yaw),math.cos(self.target_world_yaw))
-        # Determine movement direction based on target distance sign (used in control_loop)
-        self.movement_direction = math.copysign(1.0, msg.x)
-       
-        # Reset position/yaw references to the current filtered state (relative movement)
-        self.start_yaw = self.current_yaw
-        self.start_pos_x = self.current_odom_x
-        self.start_pos_y = self.current_odom_y
-        self.current_dist_travelled = 0.0
-       
-        # Reset PID controllers
+        self.target_dist = abs(float(msg.x))
+        self.move_dir = math.copysign(1.0, float(msg.x)) if msg.x != 0.0 else 1.0
+        self.target_angle = float(msg.y)
+        self.skip_linear = self.target_dist < 0.005
+
+        self.imu_yaw0 = self.imu_yaw
+        self.ox0 = self.ox
+        self.oy0 = self.oy
+        self.dist_travelled = 0.0
+
         self.pid_rot.reset()
-        self.pid_dist.reset()
+        self.pid_head.reset()
+        self.v_lin = 0.0
+        self.v_ang = 0.0
 
-        # Start the sequence with rotation
-        self.current_state = self.STATE_ROTATING
-        self.get_logger().info(f"Target set: Turn {self.target_angle_rad:.2f} rad, Move {self.target_dist:.2f} m.")
+        self.t_phase = self.now()
+        self.t_rate_ok = None
+        self.last_dist = 0.0
+        self.t_dist_stable = None
 
+        self.state = self.ROTATING
 
-    def odom_callback(self, msg):
-        """Receives odometry feedback and updates current state."""
-        # 1. Update position (for distance tracking)
-        self.current_odom_x = msg.pose.pose.position.x
-        self.current_odom_y = msg.pose.pose.position.y
-       
-        # Calculate distance travelled from the start position
-        dx = self.current_odom_x - self.start_pos_x
-        dy = self.current_odom_y - self.start_pos_y
-        self.current_dist_travelled = math.sqrt(dx*dx + dy*dy)
-       
-        # 2. Update Yaw (CRITICAL: Quaternion to Yaw Conversion)
-        orientation_q = msg.pose.pose.orientation
-       
-        # euler_from_quaternion returns roll, pitch, yaw
-        (roll, pitch, yaw) = euler_from_quaternion([orientation_q.x, orientation_q.y,
-                                                    orientation_q.z, orientation_q.w])
-         
-        self.current_yaw = yaw
+        self.get_logger().info(
+            f"Target: turn={math.degrees(self.target_angle):.1f}deg "
+            f"dist={self.target_dist*100:.1f}cm"
+        )
 
+    # Main loop
+    def loop(self):
+        tw = Twist()
 
-    # --- CONTROL LOOP ---
+        # ======================== ROTATING ========================
+        if self.state == self.ROTATING:
+            if (self.now() - self.t_phase) > self.ROT_TIMEOUT:
+                self.get_logger().warn("Rotation timeout")
+                self.state = self.LIN_SETTLE
+                self.t_settle = self.now()
+            else:
+                turned = norm_angle(self.imu_yaw - self.imu_yaw0)
+                err = norm_angle(self.target_angle - turned)
+                abs_err = abs(err)
 
-    def control_loop(self):
-        """Main loop runs at the declared rate (e.g., 50Hz)."""
-        twist_msg = Twist()
+                # PID output
+                cmd = -self.pid_rot.calculate(err)
 
-        if self.current_state == self.STATE_ROTATING:
-            # Stage 1: Rotation Control
-            angle_error = self.target_angle_rad - (self.current_yaw - self.start_yaw)
-            angle_error = math.atan2(math.sin(angle_error), math.cos(angle_error))
-            
-            angular_vel = -self.pid_rot.calculate(angle_error)
-            twist_msg.angular.z = angular_vel
-            
-            if abs(angle_error) < 0.008:
-                self.get_logger().info("Rotation complete. Switching to Linear Move.")
-                twist_msg.angular.z = 0.0 
-                
-                self.pid_dist.reset()
-                # Optional: Reset the rotational PID here too, so the 'Heading Hold' starts fresh
-                self.pid_rot.reset() 
+                # Gyro damping
+                cmd = cmd - (self.GYRO_DAMP * self.yaw_rate_z)
 
-                if self.skip_linear:
-                    self.current_state = self.STATE_FINISHED
+                # Speed cap 1: your stable rollback linear cap
+                cap_linear = self.ROT_SLOW_K * abs_err
+
+                # Speed cap 2: predictive braking cap (new)
+                cap_brake = math.sqrt(max(0.0, 2.0 * self.MAX_ANG_DECEL * abs_err))
+
+                # Use the LOWER of both caps (whichever is more conservative)
+                max_now = min(self.MAX_ANG, cap_linear, cap_brake)
+
+                # Stiction: only force min vel when far from target
+                if abs_err >= self.ROT_MIN_APPLY_ERR:
+                    max_now = max(max_now, self.MIN_ANG)
+
+                cmd = clamp(cmd, -max_now, +max_now)
+
+                # Accel ramp
+                self.v_ang = self.ramp_to(self.v_ang, cmd, self.MAX_ANG_ACCEL)
+
+                tw.angular.z = self.v_ang
+                tw.linear.x = 0.0
+
+                # FIX: require BOTH angle small AND yaw_rate small
+                if abs_err < self.ROT_THRESH and abs(self.yaw_rate_z) < self.YAW_RATE_STOP:
+                    self.v_ang = 0.0
+                    tw.angular.z = 0.0
+                    self.pid_rot.reset()
+                    self.t_settle = self.now()
+                    self.t_rate_ok = None
+                    self.state = self.ROT_SETTLE
+
+        # ======================== ROT_SETTLE ========================
+        elif self.state == self.ROT_SETTLE:
+            tw.linear.x = 0.0
+            tw.angular.z = 0.0
+
+            if abs(self.yaw_rate_z) <= self.YAW_RATE_STOP:
+                if self.t_rate_ok is None:
+                    self.t_rate_ok = self.now()
+            else:
+                self.t_rate_ok = None
+
+            min_ok = (self.now() - self.t_settle) >= self.ROT_SETTLE_T
+            rate_ok = (self.t_rate_ok is not None) and \
+                      ((self.now() - self.t_rate_ok) >= self.ROT_RATE_SETTLE)
+
+            if min_ok and rate_ok:
+                turned = norm_angle(self.imu_yaw - self.imu_yaw0)
+                err = norm_angle(self.target_angle - turned)
+
+                if abs(err) > self.ROT_THRESH * 3.0:
+                    self.pid_rot.reset()
+                    self.t_phase = self.now()
+                    self.state = self.ROTATING
                 else:
-                    self.current_state = self.STATE_MOVING
+                    if self.skip_linear:
+                        self.state = self.LIN_SETTLE
+                        self.t_settle = self.now()
+                        self.last_dist = self.dist_travelled
+                        self.t_dist_stable = None
+                    else:
+                        self.pid_head.reset()
+                        self.t_phase = self.now()
+                        self.state = self.MOVING
 
-        elif self.current_state == self.STATE_MOVING:
-            # Stage 2: Linear Distance Control WITH Active Heading Correction
-            
-            # 1. Calculate Linear Velocity (Same as before)
-            distance_remaining = self.target_dist - self.current_dist_travelled
-            linear_vel = self.pid_dist.calculate(distance_remaining)
-            twist_msg.linear.x = linear_vel * self.movement_direction
-            
-            # 2. Calculate Angular Velocity (THE FIX)
-            # We actively correct the angle to maintain our intended heading while moving.
-            angle_error = self.target_angle_rad - (self.current_yaw - self.start_yaw)
-            angle_error = math.atan2(math.sin(angle_error), math.cos(angle_error))
-            
-            # Feed the angle error into the rotational PID to fight the drift
-            angular_vel = -self.pid_heading.calculate(angle_error)
-            twist_msg.angular.z = angular_vel
-            
-            # Check for movement completion
-            if abs(distance_remaining) < 0.005:
-                self.get_logger().info("Linear move complete.")
-                twist_msg.linear.x = 0.0 
-                twist_msg.angular.z = 0.0 # Stop both linear and angular
-                self.current_state = self.STATE_FINISHED
+        # ======================== MOVING ========================
+        elif self.state == self.MOVING:
+            if (self.now() - self.t_phase) > self.MOV_TIMEOUT:
+                self.get_logger().warn("Movement timeout")
+                self.state = self.LIN_SETTLE
+                self.t_settle = self.now()
+                self.last_dist = self.dist_travelled
+                self.t_dist_stable = None
+            else:
+                remain = max(0.0, self.target_dist - self.dist_travelled)
 
-        elif self.current_state == self.STATE_FINISHED:
-            # ... (Your existing code)
-            achieved_msg = Point()
-            achieved_msg.x = self.current_dist_travelled
-            achieved_msg.y = self.current_yaw - self.start_yaw
-            self.completion_publisher.publish(achieved_msg)
-            self.current_state = self.STATE_IDLE
+                # Speed cap 1: your stable rollback approach gain
+                v_approach = self.APPROACH_K * remain
 
-        elif self.current_state == self.STATE_IDLE:
-            twist_msg.linear.x = 0.0
-            twist_msg.angular.z = 0.0
-            
-        self.cmd_vel_publisher.publish(twist_msg)
+                # Speed cap 2: predictive braking (new)
+                v_brake = math.sqrt(max(0.0, 2.0 * self.MAX_DECEL * remain))
+
+                # Use the lower of both
+                v_tgt = min(self.MAX_LIN, v_approach, v_brake)
+
+                # Accel/decel ramp (decel can be faster)
+                self.v_lin = self.ramp_to_asym(
+                    self.v_lin, v_tgt, self.MAX_ACCEL, self.MAX_DECEL
+                )
+
+                # Stiction only when far from target
+                if remain > 0.05 and 0.0 < abs(self.v_lin) < self.MIN_LIN:
+                    self.v_lin = math.copysign(self.MIN_LIN, self.v_lin)
+
+                tw.linear.x = self.v_lin * self.move_dir
+
+                # Heading correction (same as stable rollback + gyro damping)
+                turned = norm_angle(self.imu_yaw - self.imu_yaw0)
+                h_err = norm_angle(self.target_angle - turned)
+
+                if abs(h_err) < self.HEAD_DB:
+                    corr = 0.0
+                    self.pid_head.reset()
+                else:
+                    corr = -self.pid_head.calculate(h_err)
+
+                    # Gyro damping on heading (reduces wobble)
+                    corr = corr - (self.HEAD_GYRO_DAMP * self.yaw_rate_z)
+
+                    corr = clamp(corr, -self.MAX_CORR, +self.MAX_CORR)
+
+                    # Stiction for heading only when error is meaningful
+                    if abs(h_err) > 0.03 and 0.0 < abs(corr) < self.MIN_CORR:
+                        corr = math.copysign(self.MIN_CORR, corr)
+
+                tw.angular.z = corr
+
+                if remain <= self.DIST_THRESH or self.dist_travelled >= self.target_dist:
+                    self.v_lin = 0.0
+                    tw.linear.x = 0.0
+                    tw.angular.z = 0.0
+                    self.state = self.LIN_SETTLE
+                    self.t_settle = self.now()
+                    self.last_dist = self.dist_travelled
+                    self.t_dist_stable = None
+
+        # ======================== LIN_SETTLE ========================
+        elif self.state == self.LIN_SETTLE:
+            tw.linear.x = 0.0
+            tw.angular.z = 0.0
+            self.v_lin = 0.0
+            self.v_ang = 0.0
+
+            # FIX: wait for odom to stop changing before publishing
+            d_change = abs(self.dist_travelled - self.last_dist)
+            self.last_dist = self.dist_travelled
+
+            if d_change <= self.ODOM_STABLE_EPS:
+                if self.t_dist_stable is None:
+                    self.t_dist_stable = self.now()
+            else:
+                self.t_dist_stable = None
+
+            time_ok = (self.now() - self.t_settle) >= self.LIN_SETTLE_T
+            odom_ok = (self.t_dist_stable is not None) and \
+                      ((self.now() - self.t_dist_stable) >= self.ODOM_STABLE_T)
+
+            if time_ok and odom_ok:
+                self.state = self.FINISHED
+
+        # ======================== FINISHED ========================
+        elif self.state == self.FINISHED:
+            tw.linear.x = 0.0
+            tw.angular.z = 0.0
+
+            total_turn = norm_angle(self.imu_yaw - self.imu_yaw0)
+
+            done = Point()
+            done.x = float(self.dist_travelled)
+            done.y = float(total_turn)
+            done.z = 0.0
+            self.done_pub.publish(done)
+
+            self.state = self.IDLE
+
+        # ======================== IDLE ========================
+        else:
+            tw.linear.x = 0.0
+            tw.angular.z = 0.0
+
+        self.cmd_pub.publish(tw)
 
 
 def main(args=None):
@@ -326,5 +518,6 @@ def main(args=None):
         node.destroy_node()
         rclpy.shutdown()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

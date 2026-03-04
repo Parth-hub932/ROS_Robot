@@ -15,7 +15,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-
 // LibSerial for UART
 #include <libserial/SerialPort.h>
 
@@ -33,7 +32,7 @@ public:
   // Lifecycle Methods
   hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override;
   hardware_interface::CallbackReturn on_configure(const rclcpp_lifecycle::State & previous_state) override;
-  hardware_interface::CallbackReturn on_cleanup( const rclcpp_lifecycle::State & previous_state) override;
+  hardware_interface::CallbackReturn on_cleanup(const rclcpp_lifecycle::State & previous_state) override;
   hardware_interface::CallbackReturn on_activate(const rclcpp_lifecycle::State & previous_state) override;
   hardware_interface::CallbackReturn on_deactivate(const rclcpp_lifecycle::State & previous_state) override;
 
@@ -54,8 +53,8 @@ private:
   // =========================
   LibSerial::SerialPort serial_port_;
   std::string port_name_;
-  double ticks_per_rev_;
-  bool first_write_;
+  double ticks_per_rev_{1980.0};
+  bool first_write_{true};
 
   // =========================
   // ROS2 CONTROL STORAGE
@@ -67,26 +66,21 @@ private:
   // =========================
   // ENCODER TIMING
   // =========================
-  std::vector<long> prev_ticks_;
+  std::vector<int64_t> prev_ticks_;
   rclcpp::Time prev_time_;
-  bool first_read_pass_;
+  bool first_read_pass_{true};
 
   // =========================
   // IMU
   // =========================
   rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
-  std::shared_ptr<rclcpp::Node> node_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr feedback_pub_;
+  std::shared_ptr<rclcpp::Node> node_;
 
   // =========================
-  // ACK SAFETY VERIFICATION
+  // WRITE THROTTLE
   // =========================
-  int last_tx_cmd_[4] = {0, 0, 0, 0};   // Last M,m1,m2,m3,m4 sent
-  int last_rx_ack_[4] = {0, 0, 0, 0};   // Last R,m1,m2,m3,m4 received
-
-  bool ack_received_ = false;          // True when valid ACK received
-  rclcpp::Time last_tx_time_;          // For timeout watchdog
-  rclcpp::Time last_write_time_;        // For timeout watchdog
+  rclcpp::Time last_write_time_;
 };
 
 }  // namespace mecanum_hardware
